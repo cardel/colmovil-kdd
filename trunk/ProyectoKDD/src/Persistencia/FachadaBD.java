@@ -19,10 +19,11 @@ public class FachadaBD {
     private String contrasena;
     private Connection conexion;
 
-    public FachadaBD(String usuario, String contrasena,String url) {
-        this.url = url;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
+    public FachadaBD()
+    {
+        url="jdbc:mysql://localhost:3306/Colmovil";
+        usuario= "colmovil";
+        contrasena= "colmovil";
     }
 
     public Connection abrirConexion() {
@@ -30,6 +31,7 @@ public class FachadaBD {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 conexion = DriverManager.getConnection(url,usuario, contrasena);
+                System.out.println( "Conexion exitosa");
             } catch (Exception exception) {
                 System.out.println(exception.toString());
             }
@@ -44,5 +46,14 @@ public class FachadaBD {
             }
         } catch (SQLException exception) {
         }
+    }
+
+
+    public static void main(String[] args)
+    {
+        FachadaBD objFachadaBD= new FachadaBD();
+        objFachadaBD.abrirConexion();
+        objFachadaBD.cerrarConexion();
+
     }
 }
