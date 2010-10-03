@@ -2,60 +2,36 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Principal;
 
-import Persistencia.FachadaBD;
-import cargaYManejoDeDatos.ConversorCVSaArff;
-import cargaYManejoDeDatos.ManejoArchivosCVS;
-import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.ResultSet;
+import Control.Controladora;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
- * @author carlos
+ * @author Gema
  */
 public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        /*
-         * Manejo de archivos CVS
-         */
-        ManejoArchivosCVS cargaArchivoCVS = new ManejoArchivosCVS();
-        cargaArchivoCVS.cargarArchivoCVS();
-
-        ConversorCVSaArff conversorCVSaArff = new ConversorCVSaArff();
-
+    public static void main(String args[]) throws ClassNotFoundException, InstantiationException
+    {
         try {
-
-            conversorCVSaArff.convertirArchivo("./Datos/bank.csv", "./Datos/bank.arff");
-            Thread.sleep(5000);
-
-            /*
-             * Base de datos
-             */
-            FachadaBD fachada = new FachadaBD("root", "cardel", "jdbc:mysql://localhost:3306/colmovil");
-            Connection conexion = fachada.abrirConexion();
-            Statement st = conexion.createStatement();
-
-            String query = "select * from localizacion";
-            ResultSet rs = st.executeQuery(query);
-
-
-            while (rs.next()) {
-                System.out.println(rs.getString(1) + "-->" + rs.getString(2));
-            }
-            rs.close();
-
-        } catch (Exception e) {
-            System.out.println(e.toString());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        ColmovilGUI objColmovilGUI= new ColmovilGUI();
+//        objColmovilGUI.setVisible(true);
 
+        Controladora objControladora= new Controladora();
+        objControladora.mostrarGUI();
+        //objControladora.consultaNombreAtributos();
+        //objControladora.consultaTipoAtributo("nombre","cliente");
 
-        System.exit(0);
     }
 }
