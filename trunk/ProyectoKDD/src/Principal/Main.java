@@ -32,6 +32,7 @@ public class Main {
         objControladora.mostrarGUI();
         //objControladora.consultaNombreAtributos();
         //objControladora.consultaTipoAtributo("nombre","cliente");
+        //objControladora.consultaMax("estrato", "cliente");
 
     }
 }
