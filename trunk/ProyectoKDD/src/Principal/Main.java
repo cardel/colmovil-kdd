@@ -6,6 +6,7 @@
 package Principal;
 
 import Control.Controladora;
+import Persistencia.ConexionBDWeka;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -33,6 +34,9 @@ public class Main {
         //objControladora.consultaNombreAtributos();
         //objControladora.consultaTipoAtributo("nombre","cliente");
         //objControladora.consultaMax("estrato", "cliente");
+
+        ConexionBDWeka fachadaBDWeka = new ConexionBDWeka();
+        fachadaBDWeka.conectarBaseWeka();
 
     }
 }
