@@ -23,7 +23,7 @@ public class ConexionBDWeka {
             query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
 
             query.setUsername("root");
-            query.setPassword("cardel");
+            query.setPassword("");
             query.connectToDatabase();
 
             query.execute("select * from cliente");
