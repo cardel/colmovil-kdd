@@ -13,7 +13,7 @@ package GUI;
 
 import Control.ConsultaNulos;
 import Control.Controladora;
-import Persistencia.FachadaBD;
+import Papelera.FachadaBD;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
 import javax.print.DocFlavor.STRING;
