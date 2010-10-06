@@ -6,7 +6,7 @@
 package Control;
 
 import GUI.ColmovilGUI;
-import Persistencia.FachadaBD;
+import Papelera.FachadaBD;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;

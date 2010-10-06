@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Principal;
 
 import Control.Controladora;
-import Persistencia.ConexionBDWeka;
+import FiltrosYAlgortimos.QuitaAtributos;
+import FiltrosYAlgortimos.RecortarDatosEntrada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -17,8 +17,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Gema
  */
 public class Main {
-    public static void main(String args[]) throws ClassNotFoundException, InstantiationException
-    {
+
+    public static void main(String args[]) throws ClassNotFoundException, InstantiationException {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (IllegalAccessException ex) {
@@ -29,14 +29,31 @@ public class Main {
 //        ColmovilGUI objColmovilGUI= new ColmovilGUI();
 //        objColmovilGUI.setVisible(true);
 
-        Controladora objControladora= new Controladora();
+        Controladora objControladora = new Controladora();
         objControladora.mostrarGUI();
         //objControladora.consultaNombreAtributos();
         //objControladora.consultaTipoAtributo("nombre","cliente");
         //objControladora.consultaMax("estrato", "cliente");
 
-        ConexionBDWeka fachadaBDWeka = new ConexionBDWeka();
-        fachadaBDWeka.conectarBaseWeka();
+        //ConexionBDWeka fachadaBDWeka = new ConexionBDWeka();
+        //fachadaBDWeka.conectarBaseWeka();
 
+        //GuardarConsultarComoArff guardarConsultarComoArff = new GuardarConsultarComoArff();
+        //guardarConsultarComoArff.guardarConsultarComoArff("select * from cliente where estrato <= 2", "prueba1.arff");
+
+        QuitaAtributos atributos = new QuitaAtributos();
+        atributos.quitarAtributos("select * from cliente where estrato <= 2");
+
+        //ReemplazoNulos reemplazoNulos = new ReemplazoNulos();
+        //reemplazoNulos.reemplazarNulos("select * from equipo_celular");
+
+        //DatosStringANominales datosStringANominales = new DatosStringANominales();
+        //datosStringANominales.convertirStringANominar("select * from plan_voz");
+
+        //LlenarConMissing llenarConMissing = new LlenarConMissing();
+        //llenarConMissing.llenarConMissingDatos("select * from equipo_celular");
+
+        RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();
+        recortarDatosEntrada.recontrarEntrada("select * from equipo_plan_datos", 60);
     }
 }

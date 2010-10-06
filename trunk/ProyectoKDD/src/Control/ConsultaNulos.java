@@ -10,7 +10,7 @@ package Control;
  * and open the template in the editor.
  */
 
-import Persistencia.FachadaBD;
+import Papelera.FachadaBD;
 import java.sql.*;
 import javax.swing.*;
 import java.util.Vector;
