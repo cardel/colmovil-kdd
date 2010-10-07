@@ -9,8 +9,8 @@ package FiltrosYAlgortimos;
  * @author Carlos
  */
 //import java.util.logging.Filter;
+import Persistencia.FachadaBDConWeka;
 import weka.core.Instances;
-import weka.experiment.InstanceQuery;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.ReplaceMissingValues;
 
@@ -23,16 +23,12 @@ public class ReemplazoNulos {
     public void reemplazarNulos(String consulta) {
 
         try {
-            InstanceQuery query = new InstanceQuery();
-            query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
-            query.setUsername("root");
-            query.setPassword("");
-            query.connectToDatabase();
+            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+            Instances data = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
             // Reemplaza todos los valores perdidos para atributos nominales y numéricos en un conjunto de datos con
             //las modas si es nominal y medias de los datos numericos.
             //declaration of the filter
 
-            Instances data = query.retrieveInstances(consulta);
             ReplaceMissingValues x = new ReplaceMissingValues();
 
             x.setInputFormat(data);

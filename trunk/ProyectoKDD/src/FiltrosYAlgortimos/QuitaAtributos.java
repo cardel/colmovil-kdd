@@ -12,14 +12,11 @@ package FiltrosYAlgortimos;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+import Persistencia.FachadaBDConWeka;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 import java.awt.BorderLayout;
-import weka.classifiers.trees.J48;
 import weka.core.Instances;
-import weka.experiment.InstanceQuery;
-import weka.gui.treevisualizer.PlaceNode2;
-import weka.gui.treevisualizer.TreeVisualizer;
 
 public class QuitaAtributos {
 
@@ -33,14 +30,9 @@ public class QuitaAtributos {
         try {
             Instances instNew;
             Remove remove;
-
-            InstanceQuery query = new InstanceQuery();
-            query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
-            query.setUsername("root");
-            query.setPassword("");
-            query.connectToDatabase();
-
-            Instances data = query.retrieveInstances(consulta);
+            
+            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+            Instances data = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
 
             remove = new Remove();
             //ESTOS SERAN LOS ATRIBUTOS QUE SE ELIMINARAN
