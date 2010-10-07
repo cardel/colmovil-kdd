@@ -4,8 +4,8 @@
  */
 package FiltrosYAlgortimos;
 
+import Persistencia.FachadaBDConWeka;
 import weka.core.Instances;
-import weka.experiment.InstanceQuery;
 
 /**
  *
@@ -17,12 +17,8 @@ public class DatosStringANominales {
 
         try {
 
-            InstanceQuery query = new InstanceQuery();
-            query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
-            query.setUsername("root");
-            query.setPassword("");
-            query.connectToDatabase();
-            Instances dataQuery = query.retrieveInstances(consulta);
+            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+            Instances dataQuery = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
 
             weka.core.Instances data = new weka.core.Instances(dataQuery);
             data.setClassIndex(data.numAttributes() - 1); // This might not be needed
@@ -30,7 +26,7 @@ public class DatosStringANominales {
 
             System.out.println(data);
             stringToNominal.setInputFormat(data);
-            
+
             weka.core.Instances filteredData = weka.filters.unsupervised.attribute.StringToNominal.useFilter(data, stringToNominal);
             System.out.println(filteredData);
         } catch (Exception e) {

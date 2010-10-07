@@ -4,8 +4,8 @@
  */
 package FiltrosYAlgortimos;
 
+import Persistencia.FachadaBDConWeka;
 import weka.core.Instances;
-import weka.experiment.InstanceQuery;
 import weka.filters.unsupervised.instance.RemovePercentage;
 
 /**
@@ -17,12 +17,8 @@ public class RecortarDatosEntrada {
     public void recontrarEntrada(String consulta, int porcentaje) {
 
         try {
-            InstanceQuery query = new InstanceQuery();
-            query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
-            query.setUsername("root");
-            query.setPassword("");
-            query.connectToDatabase();
-            Instances dataQuery = query.retrieveInstances(consulta);
+            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+            Instances dataQuery = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
             weka.core.Instances data = new weka.core.Instances(dataQuery);
             data.setClassIndex(data.numAttributes() - 1); // This might not be needed
             RemovePercentage rp = new RemovePercentage();

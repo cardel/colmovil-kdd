@@ -8,8 +8,8 @@ package FiltrosYAlgortimos;
  *
  * @author Carlos
  */
+import Persistencia.FachadaBDConWeka;
 import weka.core.Instances;
-import weka.experiment.InstanceQuery;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.TimeSeriesDelta;
 
@@ -18,12 +18,9 @@ public class LlenarConMissing {
     public void llenarConMissingDatos(String consulta) {
 
         try {
-            InstanceQuery query = new InstanceQuery();
-            query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
-            query.setUsername("root");
-            query.setPassword("");
-            query.connectToDatabase();
-            Instances dataQuery = query.retrieveInstances(consulta);
+
+            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+            Instances dataQuery = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
             weka.core.Instances data = new weka.core.Instances(dataQuery);
             weka.filters.unsupervised.attribute.TimeSeriesDelta timeSeriesDelta = new weka.filters.unsupervised.attribute.TimeSeriesDelta();
             Filter fil = new TimeSeriesDelta();
