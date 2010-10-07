@@ -34,7 +34,7 @@ public class FachadaBDConWeka {
     public FachadaBDConWeka() throws Exception {
 
         nombre = "colmovil";
-        password = "";
+        password = "colmovil";
         query = new InstanceQuery();
     }
 
