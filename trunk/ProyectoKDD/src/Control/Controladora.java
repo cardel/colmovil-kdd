@@ -53,7 +53,7 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaNombreTablas);
-            System.out.println("Nombre Tablas");
+            //System.out.println("Nombre Tablas");
             vectorNombreTablas.addElement("--");
             while(tabla.next()){
               // System.out.println("Codigo: " + tabla.getString(1));
@@ -61,7 +61,7 @@ public class Controladora
             }
 
             //conexion.close();
-             System.out.println("Conexion cerrada");
+            // System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,7 +80,7 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaNombreAtributos);
-            System.out.println("Atributos");
+            //System.out.println("Atributos");
             //
             while(tabla.next()){
               // System.out.println("Codigo: " + tabla.getString(1));
@@ -88,7 +88,7 @@ public class Controladora
             }
 
             //conexion.close();
-             System.out.println("Conexion cerrada");
+             //System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -119,7 +119,7 @@ public class Controladora
             }
 
             //conexion.close();
-             System.out.println("Conexion cerrada");
+             //System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -143,15 +143,15 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaMaximo);
-            System.out.println("consultando maximo");
+            //System.out.println("consultando maximo");
             //
             while(tabla.next()){
-              System.out.println("maximo: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
+             // System.out.println("maximo: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
                vectorMaximo.addElement(tabla.getString(1).toString());
             }
 
             //conexion.close();
-             System.out.println("Conexion cerrada");
+            // System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -174,15 +174,15 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaMinimo);
-            System.out.println("consultando minimo");
+           // System.out.println("consultando minimo");
             //
             while(tabla.next()){
-              System.out.println("minimo: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
+              //System.out.println("minimo: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
                vectorMinimo.addElement(tabla.getString(1).toString());
             }
 
            // conexion.close();
-             System.out.println("Conexion cerrada");
+             //System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -205,15 +205,15 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaPromedio);
-            System.out.println("consultando promedio");
+            //System.out.println("consultando promedio");
             //
             while(tabla.next()){
-              System.out.println("promedio: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
+              //System.out.println("promedio: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
                vectorPromedio.addElement(tabla.getString(1).toString());
             }
 
            // conexion.close();
-             System.out.println("Conexion cerrada");
+             //System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -236,15 +236,15 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaDesvEst);
-            System.out.println("consultando desv est");
+            //System.out.println("consultando desv est");
             //
             while(tabla.next()){
-              System.out.println("desv est: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
+              //System.out.println("desv est: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
                vectorDesvEst.addElement(tabla.getString(1).toString());
             }
 
             //conexion.close();
-             System.out.println("Conexion cerrada");
+             //System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -267,15 +267,15 @@ public class Controladora
             Connection conexion = objFachadaBD.abrirConexion();
             Statement sentencia = conexion.createStatement();
             ResultSet tabla = sentencia.executeQuery(sqlConsultaDistintos);
-            System.out.println("consultando dISTINTOS");
+           // System.out.println("consultando dISTINTOS");
             //
             while(tabla.next()){
-              System.out.println("dISTINTOS: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
+              //System.out.println("dISTINTOS: " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
                vectorDistintos.addElement(tabla.getString(1).toString());
             }
 
             //conexion.close();
-             System.out.println("Conexion cerrada");
+            // System.out.println("Conexion cerrada");
         } catch (SQLException ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -286,5 +286,110 @@ public class Controladora
 //        }
           return vectorDistintos;
     }
+
+    public Vector<Integer> consultaGraficoDispersion(String nombreAtributoNumerico, String nombreTabla)
+    {
+        Vector<Integer> VectorDatosNumericos= new Vector<Integer>();
+        try {
+            String sqlConsultaDistintos;
+            sqlConsultaDistintos = "SELECT "+ nombreAtributoNumerico
+                                         + " FROM "+ nombreTabla;
+
+            Connection conexion = objFachadaBD.abrirConexion();
+            Statement sentencia = conexion.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sqlConsultaDistintos);
+            //
+            while(tabla.next()){
+               VectorDatosNumericos.addElement(tabla.getInt(1));
+            }
+
+            //conexion.close();
+             //System.out.println("Conexion cerrada");
+        } catch (SQLException ex) {
+            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        for(int j=0; j<vectorTipoAtributo.size(); j++)
+//        {
+//                System.out.println("vector: " + vectorTipoAtributo.elementAt(j));
+//        }
+          return VectorDatosNumericos;
+    }
+
+    public Vector<String> consultaValoresPosiblesAtributoNominal(String nombreAtributo, String nombreTabla)
+    {
+        Vector<String> vectorValoresPosiblesAtributoNominal= new Vector<String>();
+        try {
+            String sqlValoresPosiblesAtributoNominal;
+            sqlValoresPosiblesAtributoNominal = "SELECT DISTINCT "+ nombreAtributo
+                                         + " FROM "+ nombreTabla;
+
+            Connection conexion = objFachadaBD.abrirConexion();
+            Statement sentencia = conexion.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sqlValoresPosiblesAtributoNominal);
+           // System.out.println("consultando valores posibles");
+            //
+            while(tabla.next()){
+              //System.out.println("dISTINTOS: " + tabla.getInt(1));//es 1 porque solo necesito la primera columna del tipo
+               vectorValoresPosiblesAtributoNominal.addElement(tabla.getString(1));
+            }
+
+            //conexion.close();
+            // System.out.println("Conexion cerrada");
+        } catch (SQLException ex) {
+            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        for(int j=0; j<vectorTipoAtributo.size(); j++)
+//        {
+//                System.out.println("vector: " + vectorTipoAtributo.elementAt(j));
+//        }
+          return vectorValoresPosiblesAtributoNominal;
+
+    }
+
+    public Vector<Vector> consultaTablaEstadisticasAtributoNominal(String nombreAtributo, String nombreTabla)
+    {
+        Vector<String> vectorValoresPosibles= new Vector<String>();
+        Vector<Vector> tablaAtributoNominal=new Vector<Vector>();
+        
+        String sqlCantidadValoresPosibles;
+        String valorPosible="";
+        String cantidadValorPosible="";
+        vectorValoresPosibles=consultaValoresPosiblesAtributoNominal(nombreAtributo, nombreTabla);
+        for(int i=0; i<vectorValoresPosibles.size();i++)
+        {
+            Vector<String> nuevoVector= new Vector<String>();
+            valorPosible=vectorValoresPosibles.elementAt(i);
+              try {
+                sqlCantidadValoresPosibles = "SELECT COUNT("+ nombreAtributo+")"
+                                             + " FROM "+ nombreTabla
+                                             +" WHERE "+nombreAtributo+" = '"+valorPosible+"'";
+
+                Connection conexion = objFachadaBD.abrirConexion();
+                Statement sentencia = conexion.createStatement();
+                ResultSet tabla = sentencia.executeQuery(sqlCantidadValoresPosibles);
+                //System.out.println("consultando cantidad valores posibles");
+                //
+                while(tabla.next()){
+                  //System.out.println("tabla atributo nominal " + tabla.getString(1));//es 1 porque solo necesito la primera columna del tipo
+                   cantidadValorPosible=tabla.getString(1);
+                }
+                //*****  llenar vector
+                nuevoVector.add(valorPosible);
+                nuevoVector.add(cantidadValorPosible);
+                //************   llenas tabla
+                tablaAtributoNominal.addElement(nuevoVector);
+
+                //conexion.close();
+                // System.out.println("Conexion cerrada");
+            } catch (SQLException ex) {
+                Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return tablaAtributoNominal;
+
+    }
+
 
 }

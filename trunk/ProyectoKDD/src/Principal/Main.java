@@ -41,8 +41,8 @@ public class Main {
         //GuardarConsultarComoArff guardarConsultarComoArff = new GuardarConsultarComoArff();
         //guardarConsultarComoArff.guardarConsultarComoArff("select * from cliente where estrato <= 2", "prueba1.arff");
 
-        QuitaAtributos atributos = new QuitaAtributos();
-        atributos.quitarAtributos("select * from cliente where estrato <= 2");
+        //QuitaAtributos atributos = new QuitaAtributos();
+        //atributos.quitarAtributos("select * from cliente where estrato <= 2");
 
         //ReemplazoNulos reemplazoNulos = new ReemplazoNulos();
         //reemplazoNulos.reemplazarNulos("select * from equipo_celular");

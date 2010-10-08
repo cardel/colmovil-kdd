@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 public class ColmovilGUI extends javax.swing.JFrame {
 
     BufferedImage imagenDelGrafico= null;
+    BufferedImage imagenDelGraficoDispersion= null;
     Vector <Vector> vectorNombreAtributos;//es una tabla
     Vector<String> vectorNombreColumnaTablaAtributos;
     Vector<String> vectorNombreTablas= new Vector<String>();
@@ -74,6 +75,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
     public void actualizarTabla()
     {
         jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
+        jTableAtributos.getColumnModel().getColumn(0).setPreferredWidth(20);
+        jTableAtributos.getColumnModel().getColumn(1).setPreferredWidth(30);
+        jTableAtributos.getColumnModel().getColumn(2).setPreferredWidth(200);
     }
 
     public void actualizarComboBox()
@@ -94,10 +98,18 @@ public class ColmovilGUI extends javax.swing.JFrame {
         vectorNombreColumnaTablaEstadisticas.addElement("Estadística");
         vectorNombreColumnaTablaEstadisticas.addElement("Valor");
     }
+    public void inicializarNombreColumnasTablaEstaditicasDatoNominal()
+    {
+        vectorNombreColumnaTablaEstadisticas= new Vector<String>();
+        vectorNombreColumnaTablaEstadisticas.addElement("Atributo");
+        vectorNombreColumnaTablaEstadisticas.addElement("Cantidad");
+    }
 
     public void actualizarTablaEstadisticas()
     {
         jTableEstadistica.setModel(new DefaultTableModel(vectorEstadidticas, vectorNombreColumnaTablaEstadisticas));
+        jTableEstadistica.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTableEstadistica.getColumnModel().getColumn(1).setPreferredWidth(80);
     }
     
     public void llenarTablaAtributos(String nombreTabla)
@@ -117,12 +129,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
             //nuevoVector.add("hola");
             
 
-           System.out.println("nuevo vector: "+ nuevoVector);
+           //System.out.println("nuevo vector: "+ nuevoVector);
             vectorNombreAtributos.addElement(nuevoVector);
             //nuevoVector.clear();
             //System.out.println("vector tabla: "+ vectorNombreAtributos);
        }
-        System.out.println("vector tabla: "+ vectorNombreAtributos);
+        //System.out.println("vector tabla: "+ vectorNombreAtributos);
 
     }
 
@@ -167,7 +179,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
           nuevoVector.addElement(valoresEstadisticas.elementAt(i));
           //lleno el vector de vectores
           vectorEstadidticas.addElement(nuevoVector);
-          System.out.println("vector tabla estadisticas: "+ vectorEstadidticas);
+          //System.out.println("vector tabla estadisticas: "+ vectorEstadidticas);
       }
     }
 
@@ -187,6 +199,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jButtonNinguno = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAtributos = new javax.swing.JTable();
+        jButtonEliminar = new javax.swing.JButton();
+        jButtonLimpiar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButtonAbrir = new javax.swing.JButton();
         jButtonConexionBD = new javax.swing.JButton();
@@ -202,12 +216,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jTextFieldNulos = new javax.swing.JTextField();
         jTextFieldTipo = new javax.swing.JTextField();
         jTextFieldDistinto = new javax.swing.JTextField();
-        jPanel8 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPanelGraficoBarras = new javax.swing.JPanel();
         labelGrafico = new javax.swing.JLabel();
-        jButtonEliminar = new javax.swing.JButton();
-        jButtonLimpiar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jComboBoxNombreTablas = new javax.swing.JComboBox();
+        jPanelGraficoDispersion = new javax.swing.JPanel();
+        jLabelGraficoDispersion = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -254,31 +270,45 @@ public class ColmovilGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableAtributos);
 
+        jButtonEliminar.setText("Eliminar");
+
+        jButtonLimpiar.setText("Limpiar");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jButtonSeleccionarTodo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jButtonNinguno)
-                .addGap(28, 28, 28))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jButtonEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpiar))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jButtonSeleccionarTodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addComponent(jButtonNinguno)))
+                .addGap(27, 27, 27))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSeleccionarTodo)
                     .addComponent(jButtonNinguno))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEliminar)
+                    .addComponent(jButtonLimpiar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonAbrir.setText("Abrir");
@@ -337,7 +367,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jLabelNombre.setText("Nombre:");
 
-        jLabelNulos.setText("% Nulos: ");
+        jLabelNulos.setText("% Nulos Atributo: ");
 
         jLabelTipo.setText("Tipo:");
 
@@ -363,31 +393,43 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("%Nulos Tabla:");
+
+        jTextField1.setEditable(false);
+        jTextField1.setText("%");
+        jTextField1.setBorder(null);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelNulos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNulos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTipo)
-                    .addComponent(jLabelDistinto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldDistinto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(57, 57, 57))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNulos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNulos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTipo)
+                            .addComponent(jLabelDistinto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldDistinto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,29 +453,27 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldDistinto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelGraficoBarras.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(labelGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(3, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelGraficoBarrasLayout = new javax.swing.GroupLayout(jPanelGraficoBarras);
+        jPanelGraficoBarras.setLayout(jPanelGraficoBarrasLayout);
+        jPanelGraficoBarrasLayout.setHorizontalGroup(
+            jPanelGraficoBarrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelGrafico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+        jPanelGraficoBarrasLayout.setVerticalGroup(
+            jPanelGraficoBarrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
         );
-
-        jButtonEliminar.setText("Eliminar");
-
-        jButtonLimpiar.setText("Limpiar");
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Tabla"));
 
@@ -462,6 +502,19 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jComboBoxNombreTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jPanelGraficoDispersion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanelGraficoDispersionLayout = new javax.swing.GroupLayout(jPanelGraficoDispersion);
+        jPanelGraficoDispersion.setLayout(jPanelGraficoDispersionLayout);
+        jPanelGraficoDispersionLayout.setHorizontalGroup(
+            jPanelGraficoDispersionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+        );
+        jPanelGraficoDispersionLayout.setVerticalGroup(
+            jPanelGraficoDispersionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -474,15 +527,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonLimpiar)
-                            .addComponent(jButtonEliminar))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel8, 0, 364, Short.MAX_VALUE)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                            .addComponent(jPanelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,18 +545,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jButtonEliminar)
-                        .addGap(38, 38, 38)
-                        .addComponent(jButtonLimpiar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(135, 135, 135))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGraficoDispersion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
 
         jTabbedPane1.addTab("Preprocesamiento", jPanel1);
@@ -513,41 +560,41 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 711, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 678, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab3", jPanel3);
+        jTabbedPane1.addTab("Asociación", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 711, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 678, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("Clasificación", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
         );
 
         pack();
@@ -571,19 +618,26 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jTableAtributosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAtributosMouseClicked
         // TODO add your handling code here:
         int fila= jTableAtributos.getSelectedRow();
+        int porcentajeNulosPorAtributo=0;
+        int porcentajeNulosPorRegistro=0;
         Controladora objControladora= new Controladora();
+        ConsultaNulos objConsultaNulos= new ConsultaNulos();
         String nombreAtributo=jTableAtributos.getValueAt(fila, 2).toString();
         Vector<String> tipoAtributo=new Vector<String>();
         Vector<String> distinto= new Vector<String>();
+        Vector<Integer> vectorDatosNumericos= new Vector<Integer>();
         tipoAtributo=objControladora.consultaTipoAtributo(nombreAtributo,nombreTabla);
         distinto= objControladora.consultaDistintos(nombreAtributo, nombreTabla);
+        porcentajeNulosPorAtributo=objConsultaNulos.porcentajeValoresNulosPorAtributo(nombreTabla, nombreAtributo);
+        porcentajeNulosPorRegistro=objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
         //JOptionPane.showMessageDialog(null, "fila No.: "+fila);
         jTextFieldNombre.setText(nombreAtributo);
         jTextFieldDistinto.setText(distinto.elementAt(0));
-        ConsultaNulos objConsultaNulos= new ConsultaNulos();
+        jTextFieldNulos.setText(Integer.toString(porcentajeNulosPorAtributo)+"%");
+        jTextField1.setText(Integer.toString(porcentajeNulosPorRegistro)+"%");
         int cantidadNulos=objConsultaNulos.contarValoresNulosPorAtributo(nombreTabla, nombreAtributo);
         int cantidadRegistros= objConsultaNulos.totalRegistros(nombreTabla);
-        //*********************  mostrar grafico
+        //*********************  mostrar grafico de barras
         StackedBarChart grafico= new StackedBarChart();
         imagenDelGrafico= grafico.createStackedBarChart(cantidadNulos, cantidadRegistros);
         labelGrafico.setIcon(new ImageIcon(imagenDelGrafico));
@@ -591,16 +645,29 @@ public class ColmovilGUI extends javax.swing.JFrame {
         if(tipoAtributo.elementAt(0).equals("bigint") || tipoAtributo.elementAt(0).equals("int") || tipoAtributo.elementAt(0).equals("float"))
         {
             jTextFieldTipo.setText("Numerico");
+            //**********  llenar tabla de estadísitcas para atributos numéricos
+            inicializarNombreColumnasTablaEstaditicasDatoNumerico();
             vectorEstadidticas.clear();
             llenarTablaEstadisticasDatoNumerico(nombreAtributo, nombreTabla);
             actualizarTablaEstadisticas();
+            //***************************  mostrar Grafico de Dispersion
+            GraficoDispersion objGraficoDispersion= new GraficoDispersion();
+            vectorDatosNumericos= objControladora.consultaGraficoDispersion(nombreAtributo, nombreTabla);
+            imagenDelGraficoDispersion= objGraficoDispersion.crearGraficodispersion(vectorDatosNumericos, nombreAtributo);
+            jLabelGraficoDispersion.setIcon(new ImageIcon(imagenDelGraficoDispersion));
 
         }
         else
         {
-            if(tipoAtributo.elementAt(0).equals("varchar"))
+            if(tipoAtributo.elementAt(0).equals("varchar") || tipoAtributo.elementAt(0).equals("date"))
             {
                 jTextFieldTipo.setText("Nominal");
+                //***********  llenar tabla de estadísitcas para atributos nominales
+                inicializarNombreColumnasTablaEstaditicasDatoNominal();
+                vectorEstadidticas.clear();
+                vectorEstadidticas=objControladora.consultaTablaEstadisticasAtributoNominal(nombreAtributo, nombreTabla);
+                actualizarTablaEstadisticas();
+                
             }
             else
             {
@@ -643,7 +710,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNinguno;
     private javax.swing.JButton jButtonSeleccionarTodo;
     private javax.swing.JComboBox jComboBoxNombreTablas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDistinto;
+    private javax.swing.JLabel jLabelGraficoDispersion;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNulos;
     private javax.swing.JLabel jLabelTipo;
@@ -654,12 +723,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanelGraficoBarras;
+    private javax.swing.JPanel jPanelGraficoDispersion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableAtributos;
     private javax.swing.JTable jTableEstadistica;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldDistinto;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldNulos;

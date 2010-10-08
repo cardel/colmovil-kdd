@@ -14,11 +14,12 @@ package GUI;
  * and open the template in the editor.
  */
 
-import Control.ConsultaNulos;
 import java.awt.image.BufferedImage;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
 /**
@@ -58,11 +59,16 @@ public class StackedBarChart {
                false, //incluye leyenda?
                true, //incluye tooltips?
                false); //URLs?
-
-//       CategoryPlot plot = chart.getCategoryPlot();
+               //ChartFactory.createScatterPlot(null, null, null, null, PlotOrientation.HORIZONTAL, true, true, true)
+       CategoryPlot plot = chart.getCategoryPlot();
+       BarRenderer render= (BarRenderer)plot.getRenderer();
+       render.setMaximumBarWidth(.2);
+       render.setBaseItemLabelGenerator(new CategoryLabelGenerator());
+       //render.setItemLabelFont(new Font("Serif", Font.PLAIN,10));
+       render.setBaseItemLabelsVisible(true);
 //       plot.getRenderer().setSeriesPaint(0, new Color(30, 100, 175));
 //       plot.getRenderer().setSeriesPaint(1, new Color(90, 190, 110));
-       BufferedImage imagenGrafico= chart.createBufferedImage(371, 205);
+       BufferedImage imagenGrafico= chart.createBufferedImage(340, 210);
        return imagenGrafico;
    }
 
