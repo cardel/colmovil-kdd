@@ -44,11 +44,11 @@ public class ConsultaNulos
 
             while(nulos.next()){
                cantidadNulos=Integer.parseInt(nulos.getString(1));
-               System.out.println("Valores nulos: " + nulos.getString(1));
+               //System.out.println("Valores nulos: " + nulos.getString(1));
 
             }
             //conn.close();
-             System.out.println("Conexion cerrada");
+             //System.out.println("Conexion cerrada");
 
          }
          catch(SQLException e){ System.out.println(e); }
@@ -61,7 +61,7 @@ public class ConsultaNulos
         int cantidadRegistrosTabla=0;
         String cantidadRegistros;
         String sql_select_n= "SELECT COUNT(*) FROM "+nombreTabla+";";
-        System.out.println("nombre de la tabla "+nombreTabla);
+        //System.out.println("nombre de la tabla "+nombreTabla);
             try
             {
                 Connection conn= objFachada.abrirConexion();
@@ -70,9 +70,9 @@ public class ConsultaNulos
 
                 while(cantDatos.next()){
                   cantidadRegistros = cantDatos.getString(1);
-                  System.out.println("Cantidad de registros "+cantidadRegistros);
+                  //System.out.println("Cantidad de registros "+cantidadRegistros);
                   cantidadRegistrosTabla= Integer.parseInt(cantidadRegistros);
-                  System.out.println(cantidadRegistrosTabla);
+                 // System.out.println(cantidadRegistrosTabla);
                 }
 
                 //conn.close();
@@ -81,68 +81,67 @@ public class ConsultaNulos
                 System.out.println(e);
             }
             catch(Exception e){ System.out.println(e); }
-        System.out.println("cantidad  de reg: "+cantidadRegistrosTabla);
+        //System.out.println("cantidad  de reg: "+cantidadRegistrosTabla);
         return cantidadRegistrosTabla;
 
     }
 
-    public void contarValoresNulosPorRegistro(String nombreTabla)
+public int porcentajeValoresNulosPorAtributo(String nombreTabla, String nombreAtributo)
     {
-//        Controladora objControladora= new Controladora();
-//        vectorNombreAtributos= objControladora.consultaNombreAtributos(nombreTabla);
-//        String sql_select, sql_select_n,cantidadRegistros;
-//
-//        int contadorNulos=0, cantidadRegistrosTabla=0;
-//
-//        sql_select_n= "SELECT COUNT(*) FROM"+nombreTabla+";";
-//
-//            try
-//            {
-//                Connection conn= objFachada.abrirConexion();
-//                Statement sentencia = conn.createStatement();
-//                ResultSet cantDatos = sentencia.executeQuery(sql_select_n);
-//
-//                while(cantDatos.next()){
-//                  cantidadRegistros = cantDatos.getString(1);
-//                  cantidadRegistrosTabla= Integer.parseInt(cantidadRegistros);
-//                  System.out.println(cantidadRegistrosTabla);
-//                }
-//
-//                //conn.close();
-//
-//            } catch (SQLException e) {
-//                System.out.println(e);
-//            }
-//            catch(Exception e){ System.out.println(e); }
-//
-//       for(int j=0; j<cantidadRegistrosTabla;j++)
-//       {
-//        for (int i=0; i<vectorNombreAtributos.size(); i++)
-//        {
-//             System.out.println("entra al for");
-//            sql_select= "SELECT COUNT(*) FROM"+nombreTabla+"where"+vectorNombreAtributos.elementAt(i)+"is NULL LIMIT"+ j+","+j+";";
-//           // sql_select= "SELECT COUNT(*) FROM"+nombreTabla+"where"+vectorNombreAtributos.elementAt(i)+" = '';";
-//
-//            try
-//            {
-//                Connection conn= objFachada.abrirConexion();
-//                Statement sentencia = conn.createStatement();
-//                ResultSet nulos = sentencia.executeQuery(sql_select);
-//
-//                if(nulos.getString(1) == null ? "1" == null : nulos.getString(1).equals("1"))
-//                {
-//                    contadorNulos+=1;
-//                }
-//                //conn.close();
-//
-//            } catch (SQLException e) {
-//                System.out.println(e);
-//            }
-//            catch(Exception e){ System.out.println(e); }
-//
-//
-//        }
-//        }
+        int porcentajeNulosAtributo=0, cantidadNulosAtributo=0, cantidadRegistros=0;
+        cantidadNulosAtributo = contarValoresNulosPorAtributo(nombreTabla, nombreAtributo);
+        cantidadRegistros = totalRegistros(nombreTabla);
+
+        porcentajeNulosAtributo = (cantidadNulosAtributo*100)/cantidadRegistros;
+        //System.out.println("Porcentaje nulos por atributo"+porcentajeNulosAtributo);
+        return porcentajeNulosAtributo;
+    }
+
+    public int porcentajeValoresNulosPorRegistro(String nombreTabla)
+    {
+        Controladora objControladora= new Controladora();
+        vectorNombreAtributos= objControladora.consultaNombreAtributos(nombreTabla);
+        String sql_select, sql_select_n,nulosRegistro;
+
+        int contadorNulos=0,cantidadRegistrosTabla=0, cantidadNulosTabla=0, cantidadDatosTabla=0, porcentajeDeNulos=0;
+        cantidadRegistrosTabla=totalRegistros(nombreTabla);
+        cantidadDatosTabla= cantidadRegistrosTabla*vectorNombreAtributos.size();
+
+        for (int i=0; i<vectorNombreAtributos.size(); i++)
+        {
+            //System.out.println("Atributo: " + vectorNombreAtributos.elementAt(i));
+
+            sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" is NULL ;";
+            sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '';";
+
+            try
+            {
+                Connection conn= objFachada.abrirConexion();
+                Statement sentencia = conn.createStatement();
+                ResultSet nulos = sentencia.executeQuery(sql_select);
+
+                while(nulos.next())
+                {
+                    nulosRegistro= nulos.getString(1);
+                    cantidadNulosTabla= Integer.parseInt(nulosRegistro);
+                    contadorNulos+=cantidadNulosTabla;
+                }
+                //conn.close();
+
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+            catch(Exception e){ System.out.println(e); }
+
+
+
+        }
+
+        porcentajeDeNulos=(contadorNulos*100)/cantidadDatosTabla;
+//        System.out.println("La cantidad de datos nulos de la tabla es: "+contadorNulos);
+//        System.out.println("La cantidad de datos de la tabla es: "+cantidadDatosTabla);
+//        System.out.println("El porcentaje de datos nulos de la tabla es: "+porcentajeDeNulos);
+        return porcentajeDeNulos;
 
     }
 
