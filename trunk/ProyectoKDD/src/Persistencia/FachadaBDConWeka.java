@@ -54,7 +54,9 @@ public class FachadaBDConWeka {
         ResultSet salida = query.getResultSet();
         return salida;
     }
-    
+
+
+
     public void cerrarConexion() throws Exception
     {
         query.disconnectFromDatabase();
