@@ -11,6 +11,7 @@ package Control;
  */
 
 import Papelera.FachadaBD;
+import Persistencia.FachadaBDConWeka;
 import java.sql.*;
 import javax.swing.*;
 import java.util.Vector;
@@ -22,10 +23,12 @@ public class ConsultaNulos
 {
     FachadaBD objFachada;
     Vector<String> vectorNombreAtributos;
+    FachadaBDConWeka objFachadaBDConWeka;
 
     public ConsultaNulos()
     {
         objFachada = new FachadaBD();
+        objFachadaBDConWeka= new FachadaBDConWeka();
         vectorNombreAtributos= new Vector<String>();
     }
 
@@ -34,22 +37,15 @@ public class ConsultaNulos
     {
         String sql_select;
         int cantidadNulos=0;
-        sql_select="SELECT COUNT(*) FROM " +nombreTabla+" where"+nombreAtributo+" is NULL;";
-        sql_select="SELECT COUNT(*) FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
-
+//        sql_select="SELECT COUNT(*) FROM " +nombreTabla+" where"+nombreAtributo+" is NULL;";
+//        sql_select="SELECT COUNT(*) FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
+        //sql_select="SELECT "+ nombreAtributo +" FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
+        sql_select="SELECT * FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
          try{
-            Connection conn= objFachada.abrirConexion();
-            Statement sentencia = conn.createStatement();
-            ResultSet nulos = sentencia.executeQuery(sql_select);
-
-            while(nulos.next()){
-               cantidadNulos=Integer.parseInt(nulos.getString(1));
-               //System.out.println("Valores nulos: " + nulos.getString(1));
-
-            }
-            //conn.close();
-             //System.out.println("Conexion cerrada");
-
+            ResultSet nulos = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sql_select);
+            nulos.last();
+            cantidadNulos=nulos.getRow();
+            System.out.println("***********************  Valores nulos: " + cantidadNulos);
          }
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e); }
@@ -60,11 +56,12 @@ public class ConsultaNulos
     {
         int cantidadRegistrosTabla=0;
         String cantidadRegistros;
-        String sql_select_n= "SELECT COUNT(*) FROM "+nombreTabla+";";
+        int filas;
+        String sql_select_n= "SELECT * FROM "+nombreTabla+";";
         //System.out.println("nombre de la tabla "+nombreTabla);
             try
             {
-                Connection conn= objFachada.abrirConexion();
+               Connection conn= objFachada.abrirConexion();
                 Statement sentencia = conn.createStatement();
                 ResultSet cantDatos = sentencia.executeQuery(sql_select_n);
 
@@ -74,7 +71,6 @@ public class ConsultaNulos
                   cantidadRegistrosTabla= Integer.parseInt(cantidadRegistros);
                  // System.out.println(cantidadRegistrosTabla);
                 }
-
                 //conn.close();
 
             } catch (SQLException e) {
@@ -111,32 +107,21 @@ public int porcentajeValoresNulosPorAtributo(String nombreTabla, String nombreAt
         {
             //System.out.println("Atributo: " + vectorNombreAtributos.elementAt(i));
 
-            sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" is NULL ;";
-            sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '';";
-
+            //sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" is NULL ;";
+            //sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '';";
+            sql_select= "SELECT * FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '';";
             try
             {
-                Connection conn= objFachada.abrirConexion();
-                Statement sentencia = conn.createStatement();
-                ResultSet nulos = sentencia.executeQuery(sql_select);
-
-                while(nulos.next())
-                {
-                    nulosRegistro= nulos.getString(1);
-                    cantidadNulosTabla= Integer.parseInt(nulosRegistro);
-                    contadorNulos+=cantidadNulosTabla;
-                }
-                //conn.close();
+                ResultSet nulos = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sql_select);
+                nulos.last();
+                cantidadNulosTabla= nulos.getRow();
+                contadorNulos+=cantidadNulosTabla;   
 
             } catch (SQLException e) {
                 System.out.println(e);
             }
             catch(Exception e){ System.out.println(e); }
-
-
-
         }
-
         porcentajeDeNulos=(contadorNulos*100)/cantidadDatosTabla;
 //        System.out.println("La cantidad de datos nulos de la tabla es: "+contadorNulos);
 //        System.out.println("La cantidad de datos de la tabla es: "+cantidadDatosTabla);
