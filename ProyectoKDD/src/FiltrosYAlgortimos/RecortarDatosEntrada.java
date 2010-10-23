@@ -16,27 +16,28 @@ public class RecortarDatosEntrada {
 
     public void recontrarEntrada(String consulta, int porcentaje) {
 
-//        try {
-//            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
-//            Instances dataQuery = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
-//            weka.core.Instances data = new weka.core.Instances(dataQuery);
-//            data.setClassIndex(data.numAttributes() - 1); // This might not be needed
-//            RemovePercentage rp = new RemovePercentage();
-//            rp.setPercentage(porcentaje);
-//
-//            rp.setInputFormat(data);
-//
-//
-//            //ESTE ALGORITMO ELIMINA PORCENTAJE DE DATOS EN UN ARCHIVO
-//            //TIENE QUE SER UN DOUBLE O SI NO NO LO VA A TOMAR
-//
-//            rp.setOptions(new String[]{"-h", "70.0"});
-//            // -C col
-//            Instances filteredData = RemovePercentage.useFilter(data, rp);
-//
-//            System.out.println(filteredData);
-//
-//        } catch (Exception e) {
-//        }
+        try {
+            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+            Instances dataQuery = (Instances)fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
+            weka.core.Instances data = new weka.core.Instances(dataQuery);
+            data.setClassIndex(data.numAttributes() - 1); // This might not be needed
+            RemovePercentage rp = new RemovePercentage();
+            rp.setPercentage(porcentaje);
+
+            rp.setInputFormat(data);
+
+
+            //ESTE ALGORITMO ELIMINA PORCENTAJE DE DATOS EN UN ARCHIVO
+            //TIENE QUE SER UN DOUBLE O SI NO NO LO VA A TOMAR
+
+            rp.setOptions(new String[]{"-h", "70.0"});
+            // -C col
+            Instances filteredData = RemovePercentage.useFilter(data, rp);
+
+            System.out.println(filteredData);
+
+        } catch (Exception e) {
+               System.out.println(e.toString());
+        }
     }
 }
