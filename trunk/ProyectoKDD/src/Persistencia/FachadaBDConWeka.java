@@ -4,6 +4,7 @@
  */
 package Persistencia;
 
+import java.sql.ResultSet;
 import weka.core.Instances;
 import weka.experiment.InstanceQuery;
 
@@ -20,32 +21,45 @@ public class FachadaBDConWeka {
     /*
      * Constructor para indicar que se especifica nombre de usuarios y password en la BD
      */
-    public FachadaBDConWeka(String nombre, String password) throws Exception {
+    public FachadaBDConWeka(String nombre, String password)
+    {
 
 
         this.nombre = nombre;
         this.password = password;
-        query = new InstanceQuery();
+        //query = new InstanceQuery();
 
     }
     /*
      * Constructor para nombre usuario y password definido.
      */
-    public FachadaBDConWeka() throws Exception {
+    public FachadaBDConWeka()
+    {
 
         nombre = "colmovil";
         password = "colmovil";
-        query = new InstanceQuery();
+        //query = new InstanceQuery();
     }
 
-    public Instances realizarConsultaABaseDeDatosTipoWeka(String consulta) throws Exception {
-
+    public ResultSet realizarConsultaABaseDeDatosTipoWeka(String consulta) throws Exception {
+        query = new InstanceQuery();
         query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
         query.setUsername(nombre);
         query.setPassword(password);
 
         query.connectToDatabase();
-        Instances dataQuery = query.retrieveInstances(consulta);
-        return dataQuery;
+        //System.out.println("Conexion exitosa");
+        //Instances dataQuery = query.retrieveInstances(consulta);
+        query.execute(consulta);
+        ResultSet salida = query.getResultSet();
+        return salida;
     }
+    
+    public void cerrarConexion() throws Exception
+    {
+        query.disconnectFromDatabase();
+        //System.out.println("Se cerro la Conexion");
+    }
+
+
 }

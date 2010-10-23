@@ -45,27 +45,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         inicializarNombreColumnasTablaAtributos();
         inicializarNombreColumnasTablaEstaditicasDatoNumerico();
 
-        
-//        StackedBarChart grafico= new StackedBarChart();
-//        imagenDelGrafico= grafico.createStackedBarChart();
-//        labelGrafico.setIcon(new ImageIcon(imagenDelGrafico));
-
-        //Tabla
-//        Object[][] data={
-//            {"1", "", "equipo"},
-//            {"1", "", "precio"},
-//            {"1", "", "hola"}
-//        };
-//        String[] columnas={"No.", "boll", "Atributo"};
-//        jTableAtributos.setModel(new DefaultTableModel(data, columnas));
-
-//        Vector<String> nuevoVector=  new  Vector<String>();
-//        nuevoVector.add("1");
-//        nuevoVector.add("");
-//        //nuevoVector.add(vectorAtributo.elementAt(i));
-//        nuevoVector.add("hola");
-//        vectorNombreAtributos.addElement(nuevoVector);
-
        jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
        jTableEstadistica.setModel(new DefaultTableModel(vectorEstadidticas, vectorNombreColumnaTablaEstadisticas));
        jComboBoxNombreTablas.setEnabled(false);
@@ -124,7 +103,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         {
             Vector<Object> nuevoVector=  new  Vector<Object>();
             nuevoVector.addElement(Integer.toString(i+1));
-            nuevoVector.addElement("");
+            nuevoVector.addElement(new Boolean(false));
             nuevoVector.addElement(vectorAtributo.elementAt(i));
             //nuevoVector.add("hola");
             
@@ -149,6 +128,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
         
     }
 
+
+
     public void llenarTablaEstadisticasDatoNumerico(String nombreAtributo,String nombreTabla)
     {
       Vector<String> vectorNombreEstadisticas= new Vector<String>();
@@ -157,21 +138,18 @@ public class ColmovilGUI extends javax.swing.JFrame {
       vectorNombreEstadisticas.add("Minimo");
       vectorNombreEstadisticas.add("Promedio");
       vectorNombreEstadisticas.add("Desv Est");
-      Vector<String> vectorMax= new Vector<String>();
-      Vector<String> vectorMin= new Vector<String>();
-      Vector<String> vectorPromedio= new Vector<String>();
-      Vector<String> vectorDesvEst= new Vector<String>();
+     
       Vector<String> valoresEstadisticas= new Vector<String>();
+      Vector<String> vectorTotalEstadisticas= new Vector<String>();
       Controladora objControladora= new Controladora();
-      vectorMax= objControladora.consultaMax(nombreAtributo, nombreTabla);
-      vectorMin= objControladora.consultaMin(nombreAtributo, nombreTabla);
-      vectorPromedio= objControladora.consultaPromedio(nombreAtributo, nombreTabla);
-      vectorDesvEst= objControladora.consultaDesvEstandar(nombreAtributo, nombreTabla);
+      vectorTotalEstadisticas= objControladora.unirConsultaEstadisticas(nombreAtributo, nombreTabla);// se unió todas las consultas en una sola
       //se crea el vector con los valores de las estadisitcas
-      valoresEstadisticas.add(vectorMax.elementAt(0));
-      valoresEstadisticas.add(vectorMin.elementAt(0));
-      valoresEstadisticas.add(vectorPromedio.elementAt(0));
-      valoresEstadisticas.add(vectorDesvEst.elementAt(0));
+      valoresEstadisticas.add(vectorTotalEstadisticas.elementAt(0));// en la posicion 0 esta en maximo
+      valoresEstadisticas.add(vectorTotalEstadisticas.elementAt(1));// en la pos 1 esta el minimo
+      valoresEstadisticas.add(vectorTotalEstadisticas.elementAt(2));// en la pos 2 esta el promedio
+      valoresEstadisticas.add(vectorTotalEstadisticas.elementAt(3));// en la pos 3 esta la desv. estandar
+
+
       for(int i=0; i<vectorNombreEstadisticas.size(); i++)
       {
           Vector<Object> nuevoVector= new Vector<Object>();
@@ -257,9 +235,16 @@ public class ColmovilGUI extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         */
