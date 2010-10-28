@@ -18,7 +18,7 @@ public class RecortarDatosEntrada {
 
         try {
             FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
-            Instances dataQuery = (Instances)fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta);
+            Instances dataQuery = (Instances)fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
             weka.core.Instances data = new weka.core.Instances(dataQuery);
             data.setClassIndex(data.numAttributes() - 1); // This might not be needed
             RemovePercentage rp = new RemovePercentage();

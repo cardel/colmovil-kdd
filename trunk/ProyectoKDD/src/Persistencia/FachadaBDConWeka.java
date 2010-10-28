@@ -21,8 +21,7 @@ public class FachadaBDConWeka {
     /*
      * Constructor para indicar que se especifica nombre de usuarios y password en la BD
      */
-    public FachadaBDConWeka(String nombre, String password)
-    {
+    public FachadaBDConWeka(String nombre, String password) {
 
 
         this.nombre = nombre;
@@ -33,8 +32,8 @@ public class FachadaBDConWeka {
     /*
      * Constructor para nombre usuario y password definido.
      */
-    public FachadaBDConWeka()
-    {
+
+    public FachadaBDConWeka() {
 
         nombre = "colmovil";
         password = "colmovil";
@@ -55,13 +54,23 @@ public class FachadaBDConWeka {
         return salida;
     }
 
+    public Instances realizarConsultaABaseDeDatosTipoWekaInstances(String consulta) throws Exception {
+        query = new InstanceQuery();
+        query.setDatabaseURL("jdbc:mysql://localhost:3306/colmovil");
+        query.setUsername(nombre);
+        query.setPassword(password);
 
+        query.connectToDatabase();
+        System.out.println("Conexion exitosa");
+        query.execute(consulta);
+        Instances dataQuery = query.retrieveInstances(consulta);
 
-    public void cerrarConexion() throws Exception
-    {
+        //ResultSet salida = query.getResultSet();
+        return dataQuery;
+    }
+
+    public void cerrarConexion() throws Exception {
         query.disconnectFromDatabase();
         //System.out.println("Se cerro la Conexion");
     }
-
-
 }

@@ -21,7 +21,7 @@ public class FachadaBD {
 
     public FachadaBD()
     {
-        url="jdbc:mysql://localhost:3306/Colmovil";
+        url="jdbc:mysql://localhost:3306/colmovil";
         usuario= "colmovil";
         contrasena= "colmovil";
     }
