@@ -48,8 +48,8 @@ public class Main {
             //datosStringANominales.convertirStringANominar("select * from plan_voz");
             //LlenarConMissing llenarConMissing = new LlenarConMissing();
             //llenarConMissing.llenarConMissingDatos("select * from equipo_celular");
-            //RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();
-            //recortarDatosEntrada.recontrarEntrada("select * from equipo_plan_datos", 60);
+   //         RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();
+     //       recortarDatosEntrada.recontrarEntrada("select * from plan_datos", 60);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }

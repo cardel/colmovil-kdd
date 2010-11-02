@@ -4,7 +4,7 @@
  */
 package Persistencia;
 
-import java.sql.ResultSet;
+import java.sql.*;
 import weka.core.Instances;
 import weka.experiment.InstanceQuery;
 
@@ -64,13 +64,12 @@ public class FachadaBDConWeka {
         System.out.println("Conexion exitosa");
         query.execute(consulta);
         Instances dataQuery = query.retrieveInstances(consulta);
-
-        //ResultSet salida = query.getResultSet();
+        System.out.println("Consulta ok");
         return dataQuery;
     }
 
     public void cerrarConexion() throws Exception {
         query.disconnectFromDatabase();
-        //System.out.println("Se cerro la Conexion");
+        System.out.println("Se cerro la Conexion");
     }
 }
