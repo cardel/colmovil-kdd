@@ -6,7 +6,6 @@ package Principal;
 
 import Control.Controladora;
 import FiltrosYAlgortimos.QuitaAtributos;
-import FiltrosYAlgortimos.RecortarDatosEntrada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;

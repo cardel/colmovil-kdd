@@ -18,6 +18,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,6 +35,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     Vector<Vector> vectorEstadidticas = new Vector<Vector>();
     Vector<String> vectorNombreColumnaTablaEstadisticas;
     String nombreTabla;
+    ModeloTablaAtributos modeloTablaAtributos;
     /*
      * INICIO CLUSTERING
      */
@@ -48,17 +50,117 @@ public class ColmovilGUI extends javax.swing.JFrame {
         vectorEstadidticas = new Vector<Vector>();
         //vectorNombreColumnaTablaEstadisticas= new Vector<String>();
         initComponents();
-        inicializarNombreColumnasTablaAtributos();
         inicializarNombreColumnasTablaEstaditicasDatoNumerico();
 
-        jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
-        jTableEstadistica.setModel(new DefaultTableModel(vectorEstadidticas, vectorNombreColumnaTablaEstadisticas));
+//        jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
+//        jTableEstadistica.setModel(new DefaultTableModel(vectorEstadidticas, vectorNombreColumnaTablaEstadisticas));
+        modeloTablaAtributos= new ModeloTablaAtributos();
+        jTableAtributos.setModel(modeloTablaAtributos);
         jComboBoxNombreTablas.setEnabled(false);
         setLocationRelativeTo(null);
     }
 
+    //*********************************************  MODELO DE LA TABLA ********************************************
+    class ModeloTablaAtributos extends AbstractTableModel
+    {
+        private String[] columnNames = {"No.",
+                                        "",
+                                        "Atributos"};
+        private Object data[][];
+        public ModeloTablaAtributos()
+        {
+            data = new Object[vectorNombreAtributos.size()][3];
+            //System.out.println("*****  entra: ");
+            //System.out.println("*****  tamaño de vector de vectores: "+vectorNombreAtributos.size());
+            if(vectorNombreAtributos.size()>0)
+            {
+              //System.out.println("*****  pos 0,0: "+vectorNombreAtributos.elementAt(0).elementAt(0));
+                for(int i=0; i<vectorNombreAtributos.size(); i++)
+                {
+                    for(int j=0; j<3; j++)
+                    {
+                        data[i][j]=vectorNombreAtributos.elementAt(i).elementAt(j);
+                        //System.out.println("*****  vector: "+ data[i][j]);
+                    }
+                }
+            }
+        }
+        public int getColumnCount() {
+            return columnNames.length;
+        }
+
+        public int getRowCount() {
+            return data.length;
+        }
+
+        public String getColumnName(int col) {
+            return columnNames[col];
+        }
+
+        public Object getValueAt(int row, int col) {
+            return data[row][col];
+        }
+
+        /*
+         * JTable uses this method to determine the default renderer/
+         * editor for each cell.  If we didn't implement this method,
+         * then the last column would contain text ("true"/"false"),
+         * rather than a check box.
+         */
+        public Class getColumnClass(int c) {
+            return getValueAt(0, c).getClass();
+        }
+        /*
+         * Don't need to implement this method unless your table's
+         * editable.
+         */
+        public boolean isCellEditable(int row, int col) {
+            //Note that the data/cell address is constant,
+            //no matter where the cell appears onscreen.
+            if (col == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /*
+         * Don't need to implement this method unless your table's
+         * data can change.
+         */
+        public void setValueAt(Object value, int row, int col) {
+            data[row][col] = value;
+            fireTableCellUpdated(row, col);
+        }
+
+        public void seleccionarTodosLosAtributos()
+        {
+            for(int i=0; i<vectorNombreAtributos.size(); i++)
+            {
+                //System.out.println("data: "+data[i][1]);
+                data[i][1]=true;
+            }
+            fireTableRowsUpdated(0, vectorNombreAtributos.size()-1);
+        }
+        public void DeseleccionarTodosLosAtributos()
+        {
+            for(int i=0; i<vectorNombreAtributos.size(); i++)
+            {
+                //System.out.println("data: "+data[i][1]);
+                data[i][1]=false;
+            }
+            fireTableRowsUpdated(0, vectorNombreAtributos.size()-1);
+        }
+    }
+ //**************************************************************************** FIN MODELO DE LA TABLA  **************
+
     public void actualizarTabla() {
-        jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
+        //jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
+        modeloTablaAtributos= new ModeloTablaAtributos();
+        jTableAtributos.setModel(modeloTablaAtributos);
         jTableAtributos.getColumnModel().getColumn(0).setPreferredWidth(20);
         jTableAtributos.getColumnModel().getColumn(1).setPreferredWidth(30);
         jTableAtributos.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -66,13 +168,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     public void actualizarComboBox() {
         jComboBoxNombreTablas.setModel(new DefaultComboBoxModel(vectorNombreTablas));
-    }
-
-    public void inicializarNombreColumnasTablaAtributos() {
-        vectorNombreColumnaTablaAtributos = new Vector<String>();
-        vectorNombreColumnaTablaAtributos.addElement("No.");
-        vectorNombreColumnaTablaAtributos.addElement(" ");
-        vectorNombreColumnaTablaAtributos.addElement("Atributos");
     }
 
     public void inicializarNombreColumnasTablaEstaditicasDatoNumerico() {
@@ -190,7 +285,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jTextFieldTipo = new javax.swing.JTextField();
         jTextFieldDistinto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNulosTabla = new javax.swing.JTextField();
         jPanelGraficoBarras = new javax.swing.JPanel();
         labelGrafico = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -239,6 +334,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         });
 
         jButtonNinguno.setText("Ninguno");
+        jButtonNinguno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNingunoActionPerformed(evt);
+            }
+        });
 
         /*
         jTableAtributos.setModel(new javax.swing.table.DefaultTableModel(
@@ -400,9 +500,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jLabel1.setText("%Nulos Tabla:");
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("%");
-        jTextField1.setBorder(null);
+        jTextFieldNulosTabla.setEditable(false);
+        jTextFieldNulosTabla.setText("%");
+        jTextFieldNulosTabla.setBorder(null);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -430,10 +530,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldDistinto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14))
+                            .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldNulosTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
@@ -461,7 +561,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNulosTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -565,7 +665,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 773, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,7 +678,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 773, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -587,7 +687,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel3.setText("Procesamiento de datos utilizando clustering");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -703,7 +803,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel3)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,6 +890,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonSeleccionarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarTodoActionPerformed
         // TODO add your handling code here:
+        modeloTablaAtributos.seleccionarTodosLosAtributos();
     }//GEN-LAST:event_jButtonSeleccionarTodoActionPerformed
 
     private void jButtonConexionBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConexionBDActionPerformed
@@ -803,7 +904,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = jTableAtributos.getSelectedRow();
         int porcentajeNulosPorAtributo = 0;
-        int porcentajeNulosPorRegistro = 0;
+        //int porcentajeNulosPorRegistro = 0;
         Controladora objControladora = new Controladora();
         ConsultaNulos objConsultaNulos = new ConsultaNulos();
         String nombreAtributo = jTableAtributos.getValueAt(fila, 2).toString();
@@ -813,12 +914,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
         tipoAtributo = objControladora.consultaTipoAtributo(nombreAtributo, nombreTabla);
         distinto = objControladora.consultaDistintos(nombreAtributo, nombreTabla);
         porcentajeNulosPorAtributo = objConsultaNulos.porcentajeValoresNulosPorAtributo(nombreTabla, nombreAtributo);
-        porcentajeNulosPorRegistro = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
+        //porcentajeNulosPorRegistro = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
         //JOptionPane.showMessageDialog(null, "fila No.: "+fila);
         jTextFieldNombre.setText(nombreAtributo);
         jTextFieldDistinto.setText(distinto.elementAt(0));
         jTextFieldNulos.setText(Integer.toString(porcentajeNulosPorAtributo) + "%");
-        jTextField1.setText(Integer.toString(porcentajeNulosPorRegistro) + "%");
+        //jTextField1.setText(Integer.toString(porcentajeNulosPorRegistro) + "%");
         int cantidadNulos = objConsultaNulos.contarValoresNulosPorAtributo(nombreTabla, nombreAtributo);
         int cantidadRegistros = objConsultaNulos.totalRegistros(nombreTabla);
         //*********************  mostrar grafico de barras
@@ -861,6 +962,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
         vectorNombreAtributos.clear();
         llenarTablaAtributos(nombreTabla);
         actualizarTabla();
+        ConsultaNulos objConsultaNulos= new ConsultaNulos();
+        int porcentajeNulosTabla=0;
+        porcentajeNulosTabla=objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
+        jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla)+"%");
     }//GEN-LAST:event_jComboBoxNombreTablasActionPerformed
 
     private void jTextFieldDistintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDistintoActionPerformed
@@ -943,6 +1048,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void botonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarActionPerformed
         areaMostrarResultados.append(aplicarClustering.aplicarClustering(comboAlgortimo.getSelectedIndex(), Integer.parseInt(seleccionNumeroClusters.getValue().toString()), Integer.parseInt(porcentajeDatos.getValue().toString())));
     }//GEN-LAST:event_botonEjecutarActionPerformed
+
+    private void jButtonNingunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNingunoActionPerformed
+        // TODO add your handling code here:
+        modeloTablaAtributos.DeseleccionarTodosLosAtributos();
+    }//GEN-LAST:event_jButtonNingunoActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1001,10 +1111,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableAtributos;
     private javax.swing.JTable jTableEstadistica;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldDistinto;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldNulos;
+    private javax.swing.JTextField jTextFieldNulosTabla;
     private javax.swing.JTextField jTextFieldTipo;
     private javax.swing.JLabel labelGrafico;
     private javax.swing.JSpinner porcentajeDatos;
