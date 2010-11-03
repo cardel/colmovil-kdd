@@ -203,7 +203,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        botonCargarPreprocesamiento = new javax.swing.JButton();
         textoConsultaSQL = new javax.swing.JTextField();
         botonConsultaSQL = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -217,6 +216,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
         botonEjecutar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         botonLimpiarArea = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        seleccionPerfil = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -586,8 +588,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Carga de datos");
 
-        botonCargarPreprocesamiento.setText("Procesamiento");
-
         botonConsultaSQL.setText("Consulta SQL");
         botonConsultaSQL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -599,7 +599,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         areaMostrarResultados.setRows(5);
         jScrollPane4.setViewportView(areaMostrarResultados);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel5.setText("Parámetros");
 
         jLabel6.setText("Seleccione algortimo clustering");
@@ -618,58 +618,77 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         botonLimpiarArea.setText("Limpiar");
 
+        jLabel2.setText("Consulta personalizada");
+
+        jLabel10.setText("Perfil");
+
+        seleccionPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por franja", "Duracion llamadas por franja", "Nùmero llamadas por destino", "Duraciòn llamadas por destino", "Planes por sexo y edad", "Modalidad servicio por sexo y edad", "Valor recargas por medio", "Causa retiro por sexo y edad" }));
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(186, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(121, 121, 121))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(seleccionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addContainerGap())
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jLabel5))
-                            .addComponent(comboAlgortimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(porcentajeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(botonEjecutar)
-                                .addComponent(jLabel6)
-                                .addComponent(botonLimpiarArea))
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(textoConsultaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(botonConsultaSQL)
-                        .addGap(31, 31, 31))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCargarPreprocesamiento)
-                            .addComponent(jLabel4))
-                        .addContainerGap(570, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(194, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(113, 113, 113))
+                                .addComponent(jLabel4)
+                                .addContainerGap())
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addContainerGap())
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel8Layout.createSequentialGroup()
+                                            .addGap(85, 85, 85)
+                                            .addComponent(jLabel5))
+                                        .addComponent(comboAlgortimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7)
+                                        .addComponent(porcentajeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel8)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(botonEjecutar)
+                                            .addComponent(jLabel6)
+                                            .addComponent(botonLimpiarArea))
+                                        .addComponent(jLabel9))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(22, 22, 22))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                    .addComponent(textoConsultaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                                    .addComponent(botonConsultaSQL)
+                                    .addGap(31, 31, 31)))))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel3)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addGap(6, 6, 6)
+                .addComponent(seleccionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonCargarPreprocesamiento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textoConsultaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoConsultaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonConsultaSQL))
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
@@ -694,7 +713,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clustering", jPanel8);
@@ -817,15 +836,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaMostrarResultados;
-    private javax.swing.JButton botonCargarConsultaSQL;
-    private javax.swing.JButton botonCargarPreprocesamiento;
     private javax.swing.JButton botonConsultaSQL;
     private javax.swing.JButton botonEjecutar;
     private javax.swing.JButton botonLimpiarArea;
-    private javax.swing.JTextField campoIngresarConsultaSQL;
     private javax.swing.JComboBox comboAlgortimo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAbrir;
     private javax.swing.JButton jButtonConexionBD;
     private javax.swing.JButton jButtonEliminar;
@@ -835,6 +849,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSeleccionarTodo;
     private javax.swing.JComboBox jComboBoxNombreTablas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -856,18 +871,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelGraficoBarras;
     private javax.swing.JPanel jPanelGraficoDispersion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableAtributos;
     private javax.swing.JTable jTableEstadistica;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldDistinto;
     private javax.swing.JTextField jTextFieldNombre;
@@ -875,6 +886,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTipo;
     private javax.swing.JLabel labelGrafico;
     private javax.swing.JSpinner porcentajeDatos;
+    private javax.swing.JComboBox seleccionPerfil;
     private javax.swing.JTextField textoConsultaSQL;
     // End of variables declaration//GEN-END:variables
 }
