@@ -26,6 +26,7 @@ public class BinarizacionAtributos {
             System.out.println(instancia.instance(i).stringValue(posicionAtributo));
             if (instancia.instance(i).stringValue(posicionAtributo).equals(discriminador)) {
                 instancia.instance(i).setValue(posicionAtributo, 0.0);
+                instancia.delete(i);
                 System.out.println("YES");
             } else {
                 instancia.instance(i).setValue(posicionAtributo, 1.0);
