@@ -944,9 +944,9 @@
                     <StringItem index="10" value="N&#xfa;mero llamadas por sexo, edad y estado civil a destino"/>
                     <StringItem index="11" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil a destino"/>
                     <StringItem index="12" value="Planes de voz por sexo, edad y estado civil"/>
-                    <StringItem index="13" value="Planes de datos por sexo, edad y estado civil"/>
-                    <StringItem index="14" value="Modalidad servicio por sexo y edad"/>
-                    <StringItem index="15" value="Modalidad servicio por sexo, edad y estado civil"/>
+                    <StringItem index="13" value="Planes de datos por sexo, edad y estado civil "/>
+                    <StringItem index="14" value="Modalidad servicio por sexo, estrato y edad"/>
+                    <StringItem index="15" value="Modalidad servicio por sexo, edad, estrato y estado civil"/>
                     <StringItem index="16" value="Numero de recargas por medio por d&#xed;a"/>
                     <StringItem index="17" value="Valor promedio por recargas por medio por d&#xed;a"/>
                     <StringItem index="18" value="Causa retiro por sexo, edad y estado civil"/>
