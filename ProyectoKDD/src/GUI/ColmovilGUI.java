@@ -54,37 +54,35 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
 //        jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
 //        jTableEstadistica.setModel(new DefaultTableModel(vectorEstadidticas, vectorNombreColumnaTablaEstadisticas));
-        modeloTablaAtributos= new ModeloTablaAtributos();
+        modeloTablaAtributos = new ModeloTablaAtributos();
         jTableAtributos.setModel(modeloTablaAtributos);
         jComboBoxNombreTablas.setEnabled(false);
         setLocationRelativeTo(null);
     }
 
     //*********************************************  MODELO DE LA TABLA ********************************************
-    class ModeloTablaAtributos extends AbstractTableModel
-    {
+    class ModeloTablaAtributos extends AbstractTableModel {
+
         private String[] columnNames = {"No.",
-                                        "",
-                                        "Atributos"};
+            "",
+            "Atributos"};
         private Object data[][];
-        public ModeloTablaAtributos()
-        {
+
+        public ModeloTablaAtributos() {
             data = new Object[vectorNombreAtributos.size()][3];
             //System.out.println("*****  entra: ");
             //System.out.println("*****  tamaño de vector de vectores: "+vectorNombreAtributos.size());
-            if(vectorNombreAtributos.size()>0)
-            {
-              //System.out.println("*****  pos 0,0: "+vectorNombreAtributos.elementAt(0).elementAt(0));
-                for(int i=0; i<vectorNombreAtributos.size(); i++)
-                {
-                    for(int j=0; j<3; j++)
-                    {
-                        data[i][j]=vectorNombreAtributos.elementAt(i).elementAt(j);
+            if (vectorNombreAtributos.size() > 0) {
+                //System.out.println("*****  pos 0,0: "+vectorNombreAtributos.elementAt(0).elementAt(0));
+                for (int i = 0; i < vectorNombreAtributos.size(); i++) {
+                    for (int j = 0; j < 3; j++) {
+                        data[i][j] = vectorNombreAtributos.elementAt(i).elementAt(j);
                         //System.out.println("*****  vector: "+ data[i][j]);
                     }
                 }
             }
         }
+
         public int getColumnCount() {
             return columnNames.length;
         }
@@ -114,15 +112,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
          * Don't need to implement this method unless your table's
          * editable.
          */
+
         public boolean isCellEditable(int row, int col) {
             //Note that the data/cell address is constant,
             //no matter where the cell appears onscreen.
-            if (col == 1)
-            {
+            if (col == 1) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
@@ -136,30 +132,27 @@ public class ColmovilGUI extends javax.swing.JFrame {
             fireTableCellUpdated(row, col);
         }
 
-        public void seleccionarTodosLosAtributos()
-        {
-            for(int i=0; i<vectorNombreAtributos.size(); i++)
-            {
+        public void seleccionarTodosLosAtributos() {
+            for (int i = 0; i < vectorNombreAtributos.size(); i++) {
                 //System.out.println("data: "+data[i][1]);
-                data[i][1]=true;
+                data[i][1] = true;
             }
-            fireTableRowsUpdated(0, vectorNombreAtributos.size()-1);
+            fireTableRowsUpdated(0, vectorNombreAtributos.size() - 1);
         }
-        public void DeseleccionarTodosLosAtributos()
-        {
-            for(int i=0; i<vectorNombreAtributos.size(); i++)
-            {
+
+        public void DeseleccionarTodosLosAtributos() {
+            for (int i = 0; i < vectorNombreAtributos.size(); i++) {
                 //System.out.println("data: "+data[i][1]);
-                data[i][1]=false;
+                data[i][1] = false;
             }
-            fireTableRowsUpdated(0, vectorNombreAtributos.size()-1);
+            fireTableRowsUpdated(0, vectorNombreAtributos.size() - 1);
         }
     }
- //**************************************************************************** FIN MODELO DE LA TABLA  **************
+    //**************************************************************************** FIN MODELO DE LA TABLA  **************
 
     public void actualizarTabla() {
         //jTableAtributos.setModel(new DefaultTableModel(vectorNombreAtributos, vectorNombreColumnaTablaAtributos));
-        modeloTablaAtributos= new ModeloTablaAtributos();
+        modeloTablaAtributos = new ModeloTablaAtributos();
         jTableAtributos.setModel(modeloTablaAtributos);
         jTableAtributos.getColumnModel().getColumn(0).setPreferredWidth(20);
         jTableAtributos.getColumnModel().getColumn(1).setPreferredWidth(30);
@@ -737,7 +730,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jLabel10.setText("Perfil");
 
-        seleccionPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nímero llamadas por destino", "Promedio duración llamadas por destino", "Planes de voz por sexo y edad", "Planea de datos por sexo y edad", "Modalidad servicio por sexo y edad", "Numero de recargas por medio por dia", "Valor promedio por recargas por medio por dia", "Causa retiro por sexo y edad", "Causa retiro por sexo, edad por mes" }));
+        seleccionPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil", "Modalidad servicio por sexo y edad", "Modalidad servicio por sexo, edad y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
+        seleccionPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionPerfilActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Mes: Aplica sólo para recargas y llamadas");
 
@@ -962,10 +960,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
         vectorNombreAtributos.clear();
         llenarTablaAtributos(nombreTabla);
         actualizarTabla();
-        ConsultaNulos objConsultaNulos= new ConsultaNulos();
-        int porcentajeNulosTabla=0;
-        porcentajeNulosTabla=objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
-        jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla)+"%");
+        ConsultaNulos objConsultaNulos = new ConsultaNulos();
+        int porcentajeNulosTabla = 0;
+        porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
+        jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
     }//GEN-LAST:event_jComboBoxNombreTablasActionPerformed
 
     private void jTextFieldDistintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDistintoActionPerformed
@@ -982,53 +980,77 @@ public class ColmovilGUI extends javax.swing.JFrame {
         String vistaLlamadas = "llamada" + seleccionMes.getValue().toString();
         String vistaRecargas = "recarga" + seleccionMes.getValue().toString();
         //Boolean binarizar = false;
-        String discriminador = "";
+        //String discriminador = "";
 
         switch (seleccionPerfil.getSelectedIndex()) {
             //Casos 0 a 5 con la tabla llamadas
             case 0:
-                consulta = "select HOUR(fecha_inicio), count(*) as total from " + vistaLlamadas + " group by HOUR(fecha_inicio)";
+                consulta = "select HOUR(fecha_inicio) as hora, count(*) as total from " + vistaLlamadas + " group by HOUR(fecha_inicio)";
                 break;
             case 1:
-                consulta = "select HOUR(fecha_inicio), AVG(duracion_segundos) from " + vistaLlamadas + " group by HOUR(fecha_inicio)";
+                consulta = "select HOUR(fecha_inicio), AVG(duracion_segundos) as promedio_llamada from " + vistaLlamadas + " group by HOUR(fecha_inicio)";
                 break;
             case 2:
                 consulta = "select DAY(fecha_inicio), count(*) as total from " + vistaLlamadas + " group by DAY(fecha_inicio)";
                 break;
             case 3:
-                consulta = "select DAY(fecha_inicio), SUM(duracion_segundos) from " + vistaLlamadas + " group by DAY(fecha_inicio)";
+                consulta = "select DAY(fecha_inicio), SUM(duracion_segundos) as duracion_total from " + vistaLlamadas + " group by DAY(fecha_inicio)";
                 break;
             case 4:
-                consulta = "select pais_destino, count(*) from " + vistaLlamadas + " group by pais_destino";
+                consulta = "select d1.hora, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora";
                 break;
             case 5:
-                consulta = "select pais_destino, AVG(duracion_segundos) from " + vistaLlamadas + " group by pais_destino";
+                consulta = "select d1.hora, d1.genero, d1.edad, d1.estado_civil, AVG(duracion_segundos) as promedio_llamada from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora";
                 break;
-            //Casos 6 a 8 casos con planes y contrato
             case 6:
-                consulta = "select d1.genero, d1.edad, d1.nombre, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by genero, edad;";
+                consulta = "select d1.dia, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select DAY(t1.fecha_inicio) as dia, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, dia";
                 break;
             case 7:
-                consulta = "select d1.genero, d1.edad, d1.nombre, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_datos as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_datos=t3.id_plan_datos) as d1 group by genero, edad;";
+                consulta = "select d1.dia, d1.genero, d1.edad, d1.estado_civil, SUM(d1.duracion_segundos) as total_segundos from (select DAY(t1.fecha_inicio) as dia, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, dia";
                 break;
-            //Caso 8 modalidad por servicio
             case 8:
+                consulta = "select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil";
+                break;
+            case 9:
+                consulta = "select d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil";
+                break;
+            case 10:
+                consulta = "select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil";
+                break;
+            case 11:
+                consulta = "select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from " + vistaLlamadas + " as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil";
+                break;
+            //Casos 8 a 9 casos con planes y contrato
+            case 12:
+                consulta = "select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by genero, edad, estado_civil;";
+                break;
+            case 13:
+                consulta = "select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_datos as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_datos=t3.id_plan_datos) as d1 group by genero, edad, estado_civil;";
+                break;
+            //Caso 10 y 11 modalidad por servicio
+            case 14:
                 consulta = "select d1.genero, d1.edad, d1.tipo_plan, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan;";
                 break;
-            //Casos 9 y 10 recargas
-            case 9:
+            case 15:
+                consulta = "select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil;";
+                break;
+            //Casos 12 y 13 recargas
+            case 16:
                 consulta = "select medio_recarga, DAY(fecha_recarga) as dia, count(*) as total from " + vistaRecargas + " group by medio_recarga, DAY(fecha_recarga)";
                 break;
 
-            case 10:
+            case 17:
                 consulta = "select medio_recarga, DAY(fecha_recarga) as dia, AVG(valor_recarga) from " + vistaRecargas + " group by medio_recarga, DAY(fecha_recarga)";
                 break;
-            //Casos 11 y 12 retiros
-            case 11:
-                consulta = "select d1.genero, d1.edad, d1.causa, count(*) as total from (select YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by genero, edad;";
+            //Casos 14 y 15 retiros
+            case 18:
+                consulta = "select d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by genero, edad, causa, estado_civil;";
                 break;
-            case 12:
-                consulta = "select d1.fecha, d1.genero, d1.edad, d1.causa, count(*) as total from (select DATE_FORMAT(t1.fecha, '%Y-%m') as fecha, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fecha;";
+            case 19:
+                consulta = "select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil;";
+                break;
+            case 20:
+                consulta = "select d1.fechaY, d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(t1.fecha) as fechaY, MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, fechaY, causa, estado_civil;";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");
@@ -1053,6 +1075,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         modeloTablaAtributos.DeseleccionarTodosLosAtributos();
     }//GEN-LAST:event_jButtonNingunoActionPerformed
+
+    private void seleccionPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionPerfilActionPerformed
     /**
      * @param args the command line arguments
      */

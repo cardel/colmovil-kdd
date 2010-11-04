@@ -908,23 +908,34 @@
             <Component class="javax.swing.JComboBox" name="seleccionPerfil">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="13">
+                  <StringArray count="21">
                     <StringItem index="0" value="N&#xf9;mero llamadas por hora"/>
                     <StringItem index="1" value="Promedio duracion llamadas por hora"/>
                     <StringItem index="2" value="Numero llamadas por dia"/>
                     <StringItem index="3" value="Uso de la red por dia"/>
-                    <StringItem index="4" value="N&#xed;mero llamadas por destino"/>
-                    <StringItem index="5" value="Promedio duraci&#xf3;n llamadas por destino"/>
-                    <StringItem index="6" value="Planes de voz por sexo y edad"/>
-                    <StringItem index="7" value="Planea de datos por sexo y edad"/>
-                    <StringItem index="8" value="Modalidad servicio por sexo y edad"/>
-                    <StringItem index="9" value="Numero de recargas por medio por dia"/>
-                    <StringItem index="10" value="Valor promedio por recargas por medio por dia"/>
-                    <StringItem index="11" value="Causa retiro por sexo y edad"/>
-                    <StringItem index="12" value="Causa retiro por sexo, edad por mes"/>
+                    <StringItem index="4" value="N&#xf9;mero llamadas por hora por sexo, edad y estado civil"/>
+                    <StringItem index="5" value="Promedio duracion llamadas por hora por sexo, edad y estado civil"/>
+                    <StringItem index="6" value="Numero llamadas por dia por sexo, edad y estado civil"/>
+                    <StringItem index="7" value="Uso de la red por dia por sexo, edad y estado civil"/>
+                    <StringItem index="8" value="N&#xfa;mero llamadas por sexo, edad y estado civil"/>
+                    <StringItem index="9" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil"/>
+                    <StringItem index="10" value="N&#xfa;mero llamadas por sexo, edad y estado civil a destino"/>
+                    <StringItem index="11" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil a destino"/>
+                    <StringItem index="12" value="Planes de voz por sexo, edad y estado civil"/>
+                    <StringItem index="13" value="Planes de datos por sexo, edad y estado civil"/>
+                    <StringItem index="14" value="Modalidad servicio por sexo y edad"/>
+                    <StringItem index="15" value="Modalidad servicio por sexo, edad y estado civil"/>
+                    <StringItem index="16" value="Numero de recargas por medio por d&#xed;a"/>
+                    <StringItem index="17" value="Valor promedio por recargas por medio por d&#xed;a"/>
+                    <StringItem index="18" value="Causa retiro por sexo, edad y estado civil"/>
+                    <StringItem index="19" value="Causa retiro por sexo, edad y estado civil por mes en todos los a&#xf1;os"/>
+                    <StringItem index="20" value="Causa retiro por sexo, edad y estado civil por mes en cada a&#xf1;o"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seleccionPerfilActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
