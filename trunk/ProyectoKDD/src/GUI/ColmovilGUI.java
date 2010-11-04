@@ -1006,14 +1006,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 break;
             //Casos 6 a 8 casos con planes y contrato
             case 6:
-                consulta = "select d1.genero, d1.edad, d1.nombre, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from cliente as t1, contrato as t2, plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by nombre, genero, edad;";
+                consulta = "select d1.genero, d1.edad, d1.nombre, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by genero, edad;";
                 break;
             case 7:
-                consulta = "select d1.genero, d1.edad, d1.nombre, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from cliente as t1, contrato as t2, plan_datos as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_datos=t3.id_plan_datos) as d1 group by nombre, genero, edad;";
+                consulta = "select d1.genero, d1.edad, d1.nombre, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_datos as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_datos=t3.id_plan_datos) as d1 group by genero, edad;";
                 break;
             //Caso 8 modalidad por servicio
             case 8:
-                consulta = "select d1.genero, d1.edad, d1.tipo_plan, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan from cliente as t1, contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan;";
+                consulta = "select d1.genero, d1.edad, d1.tipo_plan, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan;";
                 break;
             //Casos 9 y 10 recargas
             case 9:
@@ -1025,10 +1025,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 break;
             //Casos 11 y 12 retiros
             case 11:
-                consulta = "select d1.genero, d1.edad, d1.causa, count(*) as total from (select YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t1.causa from retiro as t1, contrato as t2, cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by causa;";
+                consulta = "select d1.genero, d1.edad, d1.causa, count(*) as total from (select YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by genero, edad;";
                 break;
             case 12:
-                consulta = "select d1.fecha, d1.genero, d1.edad, d1.causa, count(*) as total from (select DATE_FORMAT(t1.fecha, '%Y-%m') as fecha, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t1.causa from retiro as t1, contrato as t2, cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fecha, causa;";
+                consulta = "select d1.fecha, d1.genero, d1.edad, d1.causa, count(*) as total from (select DATE_FORMAT(t1.fecha, '%Y-%m') as fecha, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fecha;";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");
