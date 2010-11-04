@@ -332,6 +332,7 @@ public class Controladora
             sqlEstadisticas = "SELECT MAX("+nombreAtributo+"), MIN("+nombreAtributo+"), AVG("+nombreAtributo+"), STD("+nombreAtributo+"), COUNT(DISTINCT "+nombreAtributo +")" +
                              " FROM " + nombreTabla;
             ResultSet tabla = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sqlEstadisticas);
+            
             // System.out.println("consulta ESTADISTICAS");
             //
             while (tabla.next()) {
@@ -350,6 +351,14 @@ public class Controladora
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
         return vectorestadisticas;
+    }
+
+    public void eliminarAtributosSeleccionados(Vector<String> vectorAtributosNoSeleccionados, String nombreVista)
+    {
+        ConsultasVistas objConsultasVistas= new ConsultasVistas();
+        objConsultasVistas.borrarUnaVista(nombreVista);
+        objConsultasVistas.crearUnaVistaConVectorAtributos(nombreVista, vectorAtributosNoSeleccionados);
+        System.out.println("eliminando");
     }
 
 
