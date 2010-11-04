@@ -4,6 +4,7 @@
  */
 package Principal;
 
+import Control.ConsultasVistas;
 import Control.Controladora;
 import FiltrosYAlgortimos.QuitaAtributos;
 import java.util.logging.Level;
@@ -26,7 +27,10 @@ public class Main {
             } catch (UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
+            ConsultasVistas objConsultasVistas= new ConsultasVistas();
+            objConsultasVistas= new ConsultasVistas();
+            objConsultasVistas.borrarVistas();
+            objConsultasVistas.crearVistas();
             Controladora objControladora = new Controladora();
             objControladora.mostrarGUI();
             //objControladora.unirConsultaEstadisticas("estrato", "cliente");

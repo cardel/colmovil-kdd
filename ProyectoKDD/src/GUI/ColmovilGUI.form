@@ -121,27 +121,31 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="373" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                  <Component id="jButtonEliminar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="185" max="32767" attributes="0"/>
-                                  <Component id="jButtonLimpiar" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="383" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                  <Component id="jButtonSeleccionarTodo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="153" max="32767" attributes="0"/>
-                                  <Component id="jButtonNinguno" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButtonSeleccionarTodo" max="32767" attributes="1"/>
+                                      <Component id="jButtonEliminarAtributos" alignment="0" max="32767" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButtonLimpiar" max="32767" attributes="1"/>
+                                      <Component id="jButtonNinguno" alignment="0" max="32767" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jButtonDeshacer" max="32767" attributes="1"/>
+                                      <Component id="jButtonDiscretizar" alignment="1" max="32767" attributes="1"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -153,11 +157,13 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButtonSeleccionarTodo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonNinguno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonDeshacer" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButtonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEliminarAtributos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonDiscretizar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -229,15 +235,31 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButtonEliminar">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Eliminar"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JButton" name="jButtonLimpiar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonEliminarAtributos">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar Atributos"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarAtributosActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonDiscretizar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Discretizar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonDeshacer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Deshacer"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeshacerActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -587,7 +609,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelGraficoDispersion" alignment="0" pref="393" max="32767" attributes="0"/>
+                      <Component id="jLabelGraficoDispersion" alignment="0" pref="403" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">

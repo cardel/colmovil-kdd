@@ -10,8 +10,10 @@
  */
 package GUI;
 
+
 import Clustering.AplicarClustering;
 import Control.ConsultaNulos;
+import Control.ConsultasVistas;
 import Control.Controladora;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -36,6 +38,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     Vector<String> vectorNombreColumnaTablaEstadisticas;
     String nombreTabla;
     ModeloTablaAtributos modeloTablaAtributos;
+    ConsultasVistas objConsultasVistas;
     /*
      * INICIO CLUSTERING
      */
@@ -45,7 +48,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
      */
 
     /** Creates new form ColmovilGUI */
-    public ColmovilGUI() {
+    public ColmovilGUI() 
+    {
+//        objConsultasVistas= new ConsultasVistas();
+//        objConsultasVistas.borrarVistas();
+//        objConsultasVistas.crearVistas();
         vectorNombreAtributos = new Vector<Vector>();
         vectorEstadidticas = new Vector<Vector>();
         //vectorNombreColumnaTablaEstadisticas= new Vector<String>();
@@ -212,7 +219,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 //        {
 //            jComboBoxNombreTablas.addItem(vector.elementAt(i));
 //        }
-
+        
     }
 
     public void llenarTablaEstadisticasDatoNumerico(String nombreAtributo, String nombreTabla) {
@@ -260,8 +267,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jButtonNinguno = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAtributos = new javax.swing.JTable();
-        jButtonEliminar = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
+        jButtonEliminarAtributos = new javax.swing.JButton();
+        jButtonDiscretizar = new javax.swing.JButton();
+        jButtonDeshacer = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButtonAbrir = new javax.swing.JButton();
         jButtonConexionBD = new javax.swing.JButton();
@@ -368,31 +377,47 @@ public class ColmovilGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableAtributos);
 
-        jButtonEliminar.setText("Eliminar");
-
         jButtonLimpiar.setText("Limpiar");
+
+        jButtonEliminarAtributos.setText("Eliminar Atributos");
+        jButtonEliminarAtributos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarAtributosActionPerformed(evt);
+            }
+        });
+
+        jButtonDiscretizar.setText("Discretizar");
+
+        jButtonDeshacer.setText("Deshacer");
+        jButtonDeshacer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeshacerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButtonEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
-                        .addComponent(jButtonLimpiar))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jButtonSeleccionarTodo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                        .addComponent(jButtonNinguno)))
-                .addGap(27, 27, 27))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonSeleccionarTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEliminarAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonNinguno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonDeshacer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonDiscretizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,11 +426,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSeleccionarTodo)
-                    .addComponent(jButtonNinguno))
+                    .addComponent(jButtonNinguno)
+                    .addComponent(jButtonDeshacer))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEliminar)
-                    .addComponent(jButtonLimpiar))
+                    .addComponent(jButtonLimpiar)
+                    .addComponent(jButtonEliminarAtributos)
+                    .addComponent(jButtonDiscretizar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -606,7 +633,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelGraficoDispersion.setLayout(jPanelGraficoDispersionLayout);
         jPanelGraficoDispersionLayout.setHorizontalGroup(
             jPanelGraficoDispersionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
         );
         jPanelGraficoDispersionLayout.setVerticalGroup(
             jPanelGraficoDispersionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -964,6 +991,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         int porcentajeNulosTabla = 0;
         porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
         jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
+
     }//GEN-LAST:event_jComboBoxNombreTablasActionPerformed
 
     private void jTextFieldDistintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDistintoActionPerformed
@@ -1079,6 +1107,58 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void seleccionPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_seleccionPerfilActionPerformed
+
+    private void jButtonEliminarAtributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAtributosActionPerformed
+        // TODO add your handling code here:
+        String nombreVista="vista_"+nombreTabla;
+        boolean estaSeleccionado=false;
+        String atributoSeleccionado;
+        String atributoNoSeleccionado;
+        Vector<String> vectorAtributosSeleccionados=new Vector<String>();
+        Vector<String> vectorAtributosNoSeleccionados= new Vector<String>();
+        int opcion=JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar los Atributos Seleccionados?", "Eliiminar Atributos" , JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(opcion==0)
+        {
+            for(int i=0; i<vectorNombreAtributos.size();i++)
+            {
+                estaSeleccionado=Boolean.parseBoolean(jTableAtributos.getValueAt(i, 1).toString());
+                if(estaSeleccionado==true)
+                {
+                    atributoSeleccionado=jTableAtributos.getValueAt(i, 2).toString();
+                    vectorAtributosSeleccionados.addElement(atributoSeleccionado);
+                }
+                else
+                {
+                    atributoNoSeleccionado=atributoSeleccionado=jTableAtributos.getValueAt(i, 2).toString();
+                    vectorAtributosNoSeleccionados.addElement(atributoNoSeleccionado);
+                }
+            }
+            Controladora objControladora= new Controladora();
+            objControladora.eliminarAtributosSeleccionados(vectorAtributosNoSeleccionados, nombreVista);
+            //************ actualizar JTable con la vista
+            vectorNombreAtributos.clear();
+            llenarTablaAtributos(nombreVista);
+            actualizarTabla();
+            //*************** actualizar porcentaje de la vista
+            ConsultaNulos objConsultaNulos = new ConsultaNulos();
+            int porcentajeNulosTabla = 0;
+            porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreVista);
+            jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
+        }
+        
+    }//GEN-LAST:event_jButtonEliminarAtributosActionPerformed
+
+    private void jButtonDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeshacerActionPerformed
+        // TODO add your handling code here:
+        vectorNombreAtributos.clear();
+        llenarTablaAtributos(nombreTabla);
+        actualizarTabla();
+        //*************** actualizar porcentaje de la vista
+        ConsultaNulos objConsultaNulos = new ConsultaNulos();
+        int porcentajeNulosTabla = 0;
+        porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
+        jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
+    }//GEN-LAST:event_jButtonDeshacerActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1098,7 +1178,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAbrir;
     private javax.swing.JButton jButtonConexionBD;
-    private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonDeshacer;
+    private javax.swing.JButton jButtonDiscretizar;
+    private javax.swing.JButton jButtonEliminarAtributos;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonLimpiar;
     private javax.swing.JButton jButtonNinguno;
