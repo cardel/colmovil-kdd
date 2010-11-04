@@ -70,7 +70,7 @@ public class ConsultasPredefinidas {
                     break;
                 //Caso 10 y 11 modalidad por servicio
                 case 14:
-                    consulta = "select d1.genero, d1.edad, d1.tipo_plan,d1.estrato,count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan,estrato;";
+                    consulta = "select d1.genero, d1.edad, d1.tipo_plan, d1.estrato,count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan,estrato;";
                     break;
                 case 15:
                     consulta = "select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil,d1.estrato, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil, estrato;";
