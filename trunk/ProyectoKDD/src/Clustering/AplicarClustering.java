@@ -5,9 +5,11 @@
 package Clustering;
 
 import Persistencia.FachadaBDConWeka;
+import java.util.Enumeration;
 import javax.swing.JOptionPane;
 import weka.core.Instances;
 import weka.clusterers.SimpleKMeans;
+import weka.clusterers.DBScan;
 
 /**
  *
@@ -47,7 +49,7 @@ public class AplicarClustering {
                 salida = algortimoKMeans(instanciaInterna, numberKMeans);
                 break;
             case 1:
-                JOptionPane.showMessageDialog(null, "Se encuentra en construccion");
+                salida = aplicarDBScan(instanciaInterna);
                 break;
             default:
                 break;
@@ -63,12 +65,11 @@ public class AplicarClustering {
             means.setMaxIterations(10);
             means.setNumClusters(numeroClusters);
             means.buildClusterer(instanciaInterna);
-            salida = "RESULTADOS CLUTERING";
+            salida = "RESULTADOS CLUTERING K-MEANS";
             salida += "\n" + instanciaInterna.toString();
             salida += "\n" + means.toString();
-            for(int i=0; i< means.getClusterSizes().length; i++)
-            {
-               salida += "\n Cluster "+ i +" total: "+ means.getClusterSizes()[i] + " Porcentaje "+ (double)means.getClusterSizes()[i]*100/(double)instanciaInterna.numInstances();
+            for (int i = 0; i < means.getClusterSizes().length; i++) {
+                salida += "\n Cluster " + i + " total: " + means.getClusterSizes()[i] + " Porcentaje " + (double) means.getClusterSizes()[i] * 100 / (double) instanciaInterna.numInstances();
             }
             salida += "\n";
             salida += "\n";
@@ -78,15 +79,23 @@ public class AplicarClustering {
         return salida;
     }
 
-    public void aplicarPreprocesamiento(int procedimiento, String argumentos[])
-    {
-        switch(procedimiento)
-        {
-            case 1:
-                //Binarizar
-                BinarizacionAtributos binarizacionAtributos = new BinarizacionAtributos();
-                instancia=binarizacionAtributos.binarizar(instancia, Integer.parseInt(argumentos[0]), argumentos[1]);
-                break;
+    public String aplicarDBScan(Instances instanciaInterna) {
+        String salida = "";
+        try {
+            DBScan dBScan = new DBScan();
+            dBScan.buildClusterer(instanciaInterna);
+            salida += "Clustering con DBScan";
+            Enumeration v = instanciaInterna.enumerateAttributes();
+            salida += "\nAtributos entrada";
+            for (Enumeration e = v; e.hasMoreElements();) {
+                 salida += "\n"+e.nextElement();
+
+            }
+            salida += "\n";
+            salida += dBScan.toString();
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
+        return salida;
     }
 }
