@@ -653,7 +653,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="191" max="32767" attributes="0"/>
+                      <EmptySpace pref="189" max="32767" attributes="0"/>
                       <Component id="jLabelTituloAsoc" min="-2" pref="436" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
@@ -691,12 +691,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane3" alignment="0" pref="486" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" alignment="0" pref="476" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane3" alignment="0" pref="345" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" alignment="0" pref="351" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -956,7 +956,7 @@
                           <Component id="jButtonEjecutarAsoc" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonLimpiarAsoc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="62" max="32767" attributes="0"/>
+                          <EmptySpace pref="68" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
