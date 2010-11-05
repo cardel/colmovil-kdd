@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Asociacion;
 
 import Clustering.RecortarDatosEntrada;
@@ -10,7 +9,6 @@ import Persistencia.FachadaBDConWeka;
 import javax.swing.JOptionPane;
 import weka.core.Instances;
 import weka.associations.Apriori;
-import weka.associations.FPGrowth;
 
 /**
  *
@@ -20,10 +18,10 @@ public class AplicarAsociacion {
 
     Instances instancia;
 
-    public AplicarAsociacion()
-    {
+    public AplicarAsociacion() {
         instancia = null;
     }
+
     public void realizarConsultaABaseDeDatosTipoWekaInstances(String consulta) {
         try {
             FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
@@ -36,30 +34,31 @@ public class AplicarAsociacion {
 
     }
 
-    public String aplicarAprioriWeka(int algoritmo, int porcentaje)
-    {
+    public String aplicarAprioriWeka(int algoritmo, int porcentaje) {
         String salida = "";
-        Instances instanciaInterna= instancia;
+        Instances instanciaInterna = instancia;
 
-        if (porcentaje < 100)
-        {
+        if (porcentaje < 100) {
             RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();
             instanciaInterna = recortarDatosEntrada.recontrarEntrada(instancia, porcentaje);
         }
 
-        switch(algoritmo)
-        {
-            case 0: salida = algoritmoApriori(instanciaInterna); break;
-            case 1: salida = algoritmoFPGrowth(instanciaInterna); break;
-            default: break;
+        switch (algoritmo) {
+            case 0:
+                salida = algoritmoApriori(instanciaInterna);
+                break;
+            case 1:
+                salida = algoritmoFPGrowth(instanciaInterna);
+                break;
+            default:
+                break;
 
         }
 
         return salida;
     }
 
-    public String algoritmoApriori(Instances instancia)
-    {
+    public String algoritmoApriori(Instances instancia) {
         String salida = "";
 
         Apriori objApriori = new Apriori();
@@ -71,29 +70,23 @@ public class AplicarAsociacion {
             salida = "RESULTADOS ASOCIACIÓN CON APRIORI";
             salida += "\n" + instancia.toString();
             salida += "\n" + objApriori.toString();
-            for (int i = 0; i < objApriori.getNumRules(); i++) {
-                salida += "Regla"+i+ objApriori.getAllTheRules()[i];
+            salida += "\n--------------------------\n";
+            for (int i = 0; i < objApriori.getAllTheRules().length; i++) {
+                salida += "Regla" + i +" "+objApriori.getInstancesNoClass().instance(i).toString() + "\n";
             }
             salida += "\n";
             salida += "\n";
-            System.out.println(salida);
-
-
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
 
         return salida;
     }
 
-    public String algoritmoFPGrowth(Instances instancia)
-    {
+    public String algoritmoFPGrowth(Instances instancia) {
         String salida = "";
 
         return salida;
 
     }
-
 }
