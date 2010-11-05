@@ -324,6 +324,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jSpinnerPorcentajeAsoc = new javax.swing.JSpinner();
         jButtonEjecutarAsoc = new javax.swing.JButton();
         jButtonLimpiarAsoc = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        confianzaMinima = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -725,11 +727,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelSalidaAsoc.setLayout(jPanelSalidaAsocLayout);
         jPanelSalidaAsocLayout.setHorizontalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
         );
         jPanelSalidaAsocLayout.setVerticalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
         );
 
         jPanelCargaDatosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carga de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -808,7 +810,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabelTituloAsoc.setText("Procesamiento de datos utilizando Asociación");
 
         jPanelParametrosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parámetros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -835,6 +837,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("Confianza minima");
+
+        confianzaMinima.setModel(new javax.swing.SpinnerNumberModel(0.5d, 0.1d, 1.0d, 0.05d));
+
         javax.swing.GroupLayout jPanelParametrosAsocLayout = new javax.swing.GroupLayout(jPanelParametrosAsoc);
         jPanelParametrosAsoc.setLayout(jPanelParametrosAsocLayout);
         jPanelParametrosAsocLayout.setHorizontalGroup(
@@ -849,11 +855,18 @@ public class ColmovilGUI extends javax.swing.JFrame {
                             .addComponent(jComboBoxAlgoritmoAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelPorcentajeAsoc)))
                     .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14))
+                    .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEjecutarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonEjecutarAsoc)
+                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))))
+                .addContainerGap(90, Short.MAX_VALUE))
+            .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(confianzaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanelParametrosAsocLayout.setVerticalGroup(
             jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -866,11 +879,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jLabelPorcentajeAsoc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSpinnerPorcentajeAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(confianzaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addComponent(jButtonEjecutarAsoc)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonLimpiarAsoc)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -887,7 +904,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addComponent(jLabelTituloAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(148, 148, 148))
         );
@@ -920,7 +937,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel3.setText("Procesamiento de datos utilizando clustering");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -937,7 +954,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         areaMostrarResultados.setRows(5);
         jScrollPane4.setViewportView(areaMostrarResultados);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel5.setText("Parámetros");
 
         jLabel6.setText("Seleccione algortimo clustering");
@@ -1299,7 +1316,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonEjecutarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarAsocActionPerformed
         // TODO add your handling code here:
-        jTextAreaAsoc.append(aplicarAsociacion.aplicarAprioriWeka(comboAlgortimo.getSelectedIndex(), Integer.parseInt(porcentajeDatos.getValue().toString())));
+        jTextAreaAsoc.append(aplicarAsociacion.aplicarAprioriWeka(comboAlgortimo.getSelectedIndex(), Integer.parseInt(porcentajeDatos.getValue().toString()), Double.parseDouble(confianzaMinima.getValue().toString())));
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
     private void jButtonCargarPerfilAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilAsocActionPerformed
@@ -1341,6 +1358,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JButton botonEjecutar;
     private javax.swing.JButton botonLimpiarArea;
     private javax.swing.JComboBox comboAlgortimo;
+    private javax.swing.JSpinner confianzaMinima;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAbrir;
     private javax.swing.JButton jButtonCargarPerfilAsoc;
@@ -1363,6 +1381,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
