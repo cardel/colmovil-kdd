@@ -58,6 +58,7 @@ public class AplicarAsociacion {
         return salida;
     }
 
+    
     public String algoritmoApriori(Instances instancia) {
         String salida = "";
 
