@@ -11,6 +11,7 @@
 package GUI;
 
 
+import Asociacion.AplicarAsociacion;
 import Clustering.AplicarClustering;
 import Control.ConsultaNulos;
 import Control.ConsultasPredefinidas;
@@ -46,6 +47,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
     AplicarClustering aplicarClustering = new AplicarClustering();
     /*
      * FINAL CLUSTERING
+     */
+    /*
+     * INICIO ASOCIACION
+     */
+    AplicarAsociacion aplicarAsociacion= new AplicarAsociacion();
+    /*
+     * FINAL ASOCIACION
      */
 
     /** Creates new form ColmovilGUI */
@@ -296,6 +304,26 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelGraficoDispersion = new javax.swing.JPanel();
         jLabelGraficoDispersion = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jPanelSalidaAsoc = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaAsoc = new javax.swing.JTextArea();
+        jPanelCargaDatosAsoc = new javax.swing.JPanel();
+        jLabelPerfilAsoc = new javax.swing.JLabel();
+        jComboBoxPerfilAsoc = new javax.swing.JComboBox();
+        jLabelMesAsoc = new javax.swing.JLabel();
+        jSpinnerMesAsoc = new javax.swing.JSpinner();
+        jButtonCargarPerfilAsoc = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldConsultaSQLAsoc = new javax.swing.JTextField();
+        jButtonConsultaSqlAsoc = new javax.swing.JButton();
+        jLabelTituloAsoc = new javax.swing.JLabel();
+        jPanelParametrosAsoc = new javax.swing.JPanel();
+        jLabelAlgoritmoAsoc = new javax.swing.JLabel();
+        jComboBoxAlgoritmoAsoc = new javax.swing.JComboBox();
+        jLabelPorcentajeAsoc = new javax.swing.JLabel();
+        jSpinnerPorcentajeAsoc = new javax.swing.JSpinner();
+        jButtonEjecutarAsoc = new javax.swing.JButton();
+        jButtonLimpiarAsoc = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -379,6 +407,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAtributos);
 
         jButtonLimpiar.setText("Limpiar");
+        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarAtributos.setText("Eliminar Atributos");
         jButtonEliminarAtributos.addActionListener(new java.awt.event.ActionListener() {
@@ -682,15 +715,194 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Preprocesamiento", jPanel1);
 
+        jPanelSalidaAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        jTextAreaAsoc.setColumns(20);
+        jTextAreaAsoc.setRows(5);
+        jScrollPane3.setViewportView(jTextAreaAsoc);
+
+        javax.swing.GroupLayout jPanelSalidaAsocLayout = new javax.swing.GroupLayout(jPanelSalidaAsoc);
+        jPanelSalidaAsoc.setLayout(jPanelSalidaAsocLayout);
+        jPanelSalidaAsocLayout.setHorizontalGroup(
+            jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+        );
+        jPanelSalidaAsocLayout.setVerticalGroup(
+            jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+        );
+
+        jPanelCargaDatosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carga de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        jLabelPerfilAsoc.setText("Perfil");
+
+        jComboBoxPerfilAsoc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
+
+        jLabelMesAsoc.setText("Mes");
+
+        jSpinnerMesAsoc.setModel(new javax.swing.SpinnerListModel(new String[] {"012008", "022008", "032008", "042008", "052008", "062008", "072008", "082008", "092008", "102008", "112008", "122008", "012009", "022009", "032009", "042009", "052009", "062009", "072009", "082009", "092009", "102009", "112009", "122009"}));
+
+        jButtonCargarPerfilAsoc.setText("Cargar Perfil");
+        jButtonCargarPerfilAsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCargarPerfilAsocActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Consulta Personalizada");
+
+        jTextFieldConsultaSQLAsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldConsultaSQLAsocActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultaSqlAsoc.setText("Consulta SQL");
+        jButtonConsultaSqlAsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultaSqlAsocActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelCargaDatosAsocLayout = new javax.swing.GroupLayout(jPanelCargaDatosAsoc);
+        jPanelCargaDatosAsoc.setLayout(jPanelCargaDatosAsocLayout);
+        jPanelCargaDatosAsocLayout.setHorizontalGroup(
+            jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldConsultaSQLAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonConsultaSqlAsoc))
+                    .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
+                        .addComponent(jLabelPerfilAsoc)
+                        .addGap(10, 10, 10)
+                        .addComponent(jComboBoxPerfilAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(jButtonCargarPerfilAsoc))
+                    .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
+                        .addComponent(jLabelMesAsoc)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSpinnerMesAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanelCargaDatosAsocLayout.setVerticalGroup(
+            jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
+                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxPerfilAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPerfilAsoc)
+                    .addComponent(jButtonCargarPerfilAsoc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMesAsoc)
+                    .addComponent(jSpinnerMesAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextFieldConsultaSQLAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultaSqlAsoc))
+                .addContainerGap())
+        );
+
+        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelTituloAsoc.setText("Procesamiento de datos utilizando Asociación");
+
+        jPanelParametrosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parámetros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        jLabelAlgoritmoAsoc.setText("Seleccione Algoritmo");
+
+        jComboBoxAlgoritmoAsoc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "APriori", "FPGrowth" }));
+
+        jLabelPorcentajeAsoc.setText("Porcentaje Datos");
+
+        jSpinnerPorcentajeAsoc.setModel(new javax.swing.SpinnerNumberModel(10, 10, 100, 10));
+
+        jButtonEjecutarAsoc.setText("Ejecutar");
+        jButtonEjecutarAsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEjecutarAsocActionPerformed(evt);
+            }
+        });
+
+        jButtonLimpiarAsoc.setText("Limpiar");
+        jButtonLimpiarAsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarAsocActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelParametrosAsocLayout = new javax.swing.GroupLayout(jPanelParametrosAsoc);
+        jPanelParametrosAsoc.setLayout(jPanelParametrosAsocLayout);
+        jPanelParametrosAsocLayout.setHorizontalGroup(
+            jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinnerPorcentajeAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAlgoritmoAsoc)
+                            .addComponent(jComboBoxAlgoritmoAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPorcentajeAsoc)))
+                    .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEjecutarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+        jPanelParametrosAsocLayout.setVerticalGroup(
+            jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelAlgoritmoAsoc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxAlgoritmoAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelPorcentajeAsoc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSpinnerPorcentajeAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(jButtonEjecutarAsoc)
+                .addGap(31, 31, 31)
+                .addComponent(jButtonLimpiarAsoc)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelCargaDatosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(189, Short.MAX_VALUE)
+                .addComponent(jLabelTituloAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelTituloAsoc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelCargaDatosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Asociación", jPanel3);
@@ -708,7 +920,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Procesamiento de datos utilizando clustering");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
@@ -725,7 +937,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         areaMostrarResultados.setRows(5);
         jScrollPane4.setViewportView(areaMostrarResultados);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Parámetros");
 
         jLabel6.setText("Seleccione algortimo clustering");
@@ -1080,6 +1292,37 @@ public class ColmovilGUI extends javax.swing.JFrame {
         porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
         jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
     }//GEN-LAST:event_jButtonDeshacerActionPerformed
+
+    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jButtonEjecutarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarAsocActionPerformed
+        // TODO add your handling code here:
+        jTextAreaAsoc.append(aplicarAsociacion.aplicarAprioriWeka(comboAlgortimo.getSelectedIndex(), Integer.parseInt(porcentajeDatos.getValue().toString())));
+    }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
+
+    private void jButtonCargarPerfilAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilAsocActionPerformed
+        // TODO add your handling code here:
+        String consulta = "";
+        ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
+        consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
+        aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
+    }//GEN-LAST:event_jButtonCargarPerfilAsocActionPerformed
+
+    private void jTextFieldConsultaSQLAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConsultaSQLAsocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldConsultaSQLAsocActionPerformed
+
+    private void jButtonLimpiarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarAsocActionPerformed
+        // TODO add your handling code here:
+        jTextAreaAsoc.setText("");
+    }//GEN-LAST:event_jButtonLimpiarAsocActionPerformed
+
+    private void jButtonConsultaSqlAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaSqlAsocActionPerformed
+        // TODO add your handling code here:
+        aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(jTextFieldConsultaSQLAsoc.getText());
+    }//GEN-LAST:event_jButtonConsultaSqlAsocActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1098,19 +1341,26 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox comboAlgortimo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAbrir;
+    private javax.swing.JButton jButtonCargarPerfilAsoc;
     private javax.swing.JButton jButtonConexionBD;
+    private javax.swing.JButton jButtonConsultaSqlAsoc;
     private javax.swing.JButton jButtonDeshacer;
     private javax.swing.JButton jButtonDiscretizar;
+    private javax.swing.JButton jButtonEjecutarAsoc;
     private javax.swing.JButton jButtonEliminarAtributos;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonLimpiar;
+    private javax.swing.JButton jButtonLimpiarAsoc;
     private javax.swing.JButton jButtonNinguno;
     private javax.swing.JButton jButtonSeleccionarTodo;
+    private javax.swing.JComboBox jComboBoxAlgoritmoAsoc;
     private javax.swing.JComboBox jComboBoxNombreTablas;
+    private javax.swing.JComboBox jComboBoxPerfilAsoc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1119,11 +1369,16 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAlgoritmoAsoc;
     private javax.swing.JLabel jLabelDistinto;
     private javax.swing.JLabel jLabelGraficoDispersion;
+    private javax.swing.JLabel jLabelMesAsoc;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNulos;
+    private javax.swing.JLabel jLabelPerfilAsoc;
+    private javax.swing.JLabel jLabelPorcentajeAsoc;
     private javax.swing.JLabel jLabelTipo;
+    private javax.swing.JLabel jLabelTituloAsoc;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1132,14 +1387,22 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanelCargaDatosAsoc;
     private javax.swing.JPanel jPanelGraficoBarras;
     private javax.swing.JPanel jPanelGraficoDispersion;
+    private javax.swing.JPanel jPanelParametrosAsoc;
+    private javax.swing.JPanel jPanelSalidaAsoc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSpinner jSpinnerMesAsoc;
+    private javax.swing.JSpinner jSpinnerPorcentajeAsoc;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableAtributos;
     private javax.swing.JTable jTableEstadistica;
+    private javax.swing.JTextArea jTextAreaAsoc;
+    private javax.swing.JTextField jTextFieldConsultaSQLAsoc;
     private javax.swing.JTextField jTextFieldDistinto;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldNulos;

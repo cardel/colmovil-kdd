@@ -26,7 +26,7 @@ public class ConsultasVistas {
 
         nombreVistas= new Vector<String>();
         nombreVistas.addElement("vista_contrato");
-        nombreVistas.addElement("vista_cliente");
+        //nombreVistas.addElement("vista_cliente");
         nombreVistas.addElement("vista_equipo_celular");
         nombreVistas.addElement("vista_localizacion");
         nombreVistas.addElement("vista_oficina");
@@ -81,10 +81,21 @@ public class ConsultasVistas {
         catch(Exception e){ System.out.println(e); }
      }
 
-    public void crearUnaVista(String nombreVista)
+     public void borrarVistaCliente()
     {
-        String tablaOriginal=nombreVista.substring(6);
-        String consulta_sql="CREATE VIEW "+ nombreVista +" AS SELECT * FROM "+tablaOriginal +";";
+        String consulta_sql="DROP VIEW IF EXISTS "+"vista_cliente" +";";
+        try{
+            ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
+            System.out.println("***********************  drop Una vista: " );
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+     }
+    public void crearVistaCliente()
+    {
+        //String tablaOriginal=nombreVista.substring(6);
+        //String consulta_sql="CREATE VIEW "+ nombreVista +" AS SELECT * FROM "+tablaOriginal +";";
+        String consulta_sql= "CREATE VIEW "+ "vista_cliente" +" AS SELECT idcliente, tipo_identificacion, numero_identificacion, nombre, apellido, direccion_residencia, estrato, email, YEAR(Curdate())-YEAR(fecha_nacimiento) as edad, fecha_nacimiento, genero, estado_civil FROM "+ "cliente"+";";
         try{
             ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
             System.out.println("***********************  crear vista: " );

@@ -30,7 +30,9 @@ public class Main {
             ConsultasVistas objConsultasVistas= new ConsultasVistas();
             objConsultasVistas= new ConsultasVistas();
             objConsultasVistas.borrarVistas();
+            objConsultasVistas.borrarVistaCliente();
             objConsultasVistas.crearVistas();
+            objConsultasVistas.crearVistaCliente();
             Controladora objControladora = new Controladora();
             objControladora.mostrarGUI();
             //objControladora.unirConsultaEstadisticas("estrato", "cliente");
