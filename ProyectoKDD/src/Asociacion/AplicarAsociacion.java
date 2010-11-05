@@ -9,6 +9,7 @@ import Persistencia.FachadaBDConWeka;
 import javax.swing.JOptionPane;
 import weka.core.Instances;
 import weka.associations.Apriori;
+import weka.core.FastVector;
 
 /**
  *
@@ -34,7 +35,7 @@ public class AplicarAsociacion {
 
     }
 
-    public String aplicarAprioriWeka(int algoritmo, int porcentaje) {
+    public String aplicarAprioriWeka(int algoritmo, int porcentaje, Double confianzaMinima) {
         String salida = "";
         Instances instanciaInterna = instancia;
 
@@ -45,7 +46,7 @@ public class AplicarAsociacion {
 
         switch (algoritmo) {
             case 0:
-                salida = algoritmoApriori(instanciaInterna);
+                salida = algoritmoApriori(instanciaInterna, confianzaMinima);
                 break;
             case 1:
                 salida = algoritmoFPGrowth(instanciaInterna);
@@ -58,23 +59,20 @@ public class AplicarAsociacion {
         return salida;
     }
 
-    
-    public String algoritmoApriori(Instances instancia) {
+    public String algoritmoApriori(Instances instanciaInterna, Double confianzaMinima) {
         String salida = "";
 
         Apriori objApriori = new Apriori();
+        objApriori.setMinMetric(confianzaMinima);
 
         try {
-
-            objApriori.buildAssociations(instancia);
+            objApriori.buildAssociations(instanciaInterna);
 
             salida = "RESULTADOS ASOCIACIÓN CON APRIORI";
-            salida += "\n" + instancia.toString();
+            salida += "\n" + instanciaInterna.toString();
+            salida += "\n" + objApriori.outputItemSetsTipText();
             salida += "\n" + objApriori.toString();
             salida += "\n--------------------------\n";
-            for (int i = 0; i < objApriori.getAllTheRules().length; i++) {
-                salida += "Regla" + i +" "+objApriori.getInstancesNoClass().instance(i).toString() + "\n";
-            }
             salida += "\n";
             salida += "\n";
         } catch (Exception e) {
