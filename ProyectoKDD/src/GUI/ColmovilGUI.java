@@ -1306,7 +1306,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String consulta = "";
         ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
-        consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
+        //consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
+       consulta = consultasPredefinidas.retornarConsultaSinDiscretizacion(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
+
         aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
     }//GEN-LAST:event_jButtonCargarPerfilAsocActionPerformed
 
