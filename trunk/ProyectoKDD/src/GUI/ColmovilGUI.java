@@ -17,13 +17,18 @@ import Control.ConsultaNulos;
 import Control.ConsultasPredefinidas;
 import Control.ConsultasVistas;
 import Control.Controladora;
+import Discretizacion.DiscretizeCardel;
+import Persistencia.FachadaBDConWeka;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
+import weka.core.Instances;
 
 /**
  *
@@ -39,6 +44,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     Vector<Vector> vectorEstadidticas = new Vector<Vector>();
     Vector<String> vectorNombreColumnaTablaEstadisticas;
     String nombreTabla;
+    String consultaAsociacion;
     ModeloTablaAtributos modeloTablaAtributos;
     ConsultasVistas objConsultasVistas;
     /*
@@ -1316,17 +1322,25 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonEjecutarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarAsocActionPerformed
         // TODO add your handling code here:
-        jTextAreaAsoc.append(aplicarAsociacion.aplicarAprioriWeka(comboAlgortimo.getSelectedIndex(), Integer.parseInt(porcentajeDatos.getValue().toString()), Double.parseDouble(confianzaMinima.getValue().toString())));
+        jTextAreaAsoc.append(consultaAsociacion);
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
     private void jButtonCargarPerfilAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilAsocActionPerformed
         // TODO add your handling code here:
         String consulta = "";
+        DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
         ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
         //consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
-       consulta = consultasPredefinidas.retornarConsultaSinDiscretizacion(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
-
-        aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
+       consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
+       FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+        try {
+            Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
+            Instances salida=objDiscretizeCardel.discretizar(instancia, 10);
+            consultaAsociacion = aplicarAsociacion.algoritmoApriori(salida,Double.parseDouble(confianzaMinima.getValue().toString()) );
+        } catch (Exception ex) {
+            Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
     }//GEN-LAST:event_jButtonCargarPerfilAsocActionPerformed
 
     private void jTextFieldConsultaSQLAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConsultaSQLAsocActionPerformed
