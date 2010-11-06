@@ -958,10 +958,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Asociación", jPanel3);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel15.setText("Procesamiento de datos utilizando clasificación");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel16.setText("Carga de datos");
 
         botonConsultaSQL1.setText("Consulta SQL");
@@ -1043,7 +1043,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                                     .addComponent(cargarPerfilClasificacion))
                                 .addGroup(jPanel9Layout.createSequentialGroup()
                                     .addComponent(textoConsultaSQLClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(52, 52, 52)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(botonConsultaSQL1))
                                 .addGroup(jPanel9Layout.createSequentialGroup()
                                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1147,10 +1147,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel3.setText("Procesamiento de datos utilizando clustering");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel4.setText("Carga de datos");
 
         botonConsultaSQL.setText("Consulta SQL");
