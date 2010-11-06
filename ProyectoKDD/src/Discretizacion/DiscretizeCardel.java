@@ -36,7 +36,7 @@ public class DiscretizeCardel {
     public static void main(String args[]) {
         try {
 
-            int numeroConsulta = 20;
+            int numeroConsulta = 13;
             ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
             String consulta = consultasPredefinidas.retornarConsulta(numeroConsulta, null);
             FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
