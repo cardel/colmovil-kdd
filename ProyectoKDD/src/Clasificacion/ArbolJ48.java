@@ -17,9 +17,13 @@ import weka.core.Instances;
 import weka.filters.unsupervised.attribute.Discretize;
 import weka.filters.Filter;
 
+
+
+
 import java.io.FileReader;
 import weka.filters.Filter;
 import weka.core.Instances;
+
 
  import weka.experiment.InstanceQuery;
 
@@ -39,7 +43,7 @@ public class ArbolJ48 {
 
 
 
-     
+
         String nombre;
         String password;
         InstanceQuery query;
@@ -56,7 +60,7 @@ public class ArbolJ48 {
         query.setPassword(password);
         query.connectToDatabase();
         //PROMEDIO DURACION LLAMADAS POR HORA, POR SEXO, EDAD Y ESTADO CIVIL
-        Instances data = query.retrieveInstances("select d1.hora, d1.genero, d1.edad, d1.estado_civil, AVG(duracion_segundos) as promedio_llamada from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora");
+       // Instances data = query.retrieveInstances("select d1.hora, d1.genero, d1.edad, d1.estado_civil, AVG(duracion_segundos) as promedio_llamada from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora");
         //NUMERO DE LLAMADAS POR HORA, POR SEXO, POR EDAD Y ESTADO CIVIL
         // Instances data = query.retrieveInstances("select d1.hora, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora")
         //NUMERO DE LLAMADAS POR DIAS , POR SEXO, EDAD Y ESTADO CIVIL.
@@ -66,14 +70,25 @@ public class ArbolJ48 {
         //PROMEDIO DURACION LLAMADA POR SEXO, EDAD Y ESTADO CIVIL.
 
         //DESDE AQUI SE UTILIZALAS OPCIONES CON EL INDICE DE ATRIBUTO 5
-        //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
+        Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
         //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
         // NUMERO DE LLAMADAS POR SEXO EDAD ESTADO CIVIL A DESTINO
       //nota st arbol sisal muy gran entoncs lo dejo aqui por si algo con el zoom de j48 vsi se puede ver
-        //  Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
+         // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
       // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
 
         //PROMEDIO DURACION LLAMADAS POR SEXO,EDAD,ESTADO CIVIL A DESTINO
+        //este ARBOL TAMBIEN ES GRANDE PERO CON EL ZOMM DE J48 SE VE BIEN
+        //ESTE SE UTILIZA EL FILTRO 3
+       // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
+      // PLANES DE VOZ POR SEXO EDAD Y ESTADO CIVIL
+        //filtro 1
+       // Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by genero, edad, estado_civil");
+       //PLANES DE DATOS POR SEXO EDAD Y ESTADO CIVIL
+       //ESTE TAMBIEN ES GRANDECITO FILTRO 1;
+        //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_datos as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_datos=t3.id_plan_datos) as d1 group by genero, edad, estado_civil");
+        //MOALIDAD SERVICIO POR SEXO ESTRATO Y EDAD
+        //FILTRO 1
 
 
         //Instances instanciaSalida = new Instances(instanciaInterna);
@@ -90,8 +105,9 @@ public class ArbolJ48 {
 
         try {
             discretize.setInputFormat(data);
-            discretize.setOptions(new String[]{"-R","5","-B","2","-V","false"});
-            //discretize.setOptions(new String[]{"-R","4","-B","2","-V","false"});
+           // discretize.setOptions(new String[]{"-R","5","-B","2","-V","false"});
+            discretize.setOptions(new String[]{"-R","4","-B","2","-V","false"});
+           // discretize.setOptions(new String[]{"-R","5","-B","2","-V","true"});
 
 
             instanciaSalida=Filter.useFilter(instanciaSalida, discretize);

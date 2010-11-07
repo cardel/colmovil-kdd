@@ -47,6 +47,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     String consultaAsociacion;
     ModeloTablaAtributos modeloTablaAtributos;
     ConsultasVistas objConsultasVistas;
+    int indice;
     /*
      * INICIO CLUSTERING
      */
@@ -761,11 +762,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelSalidaAsoc.setLayout(jPanelSalidaAsocLayout);
         jPanelSalidaAsocLayout.setHorizontalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
         );
         jPanelSalidaAsocLayout.setVerticalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
         );
 
         jPanelCargaDatosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carga de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -895,12 +896,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonEjecutarAsoc)
-                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))))
+                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
                 .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(confianzaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         jPanelParametrosAsocLayout.setVerticalGroup(
             jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -921,7 +922,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jButtonEjecutarAsoc)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonLimpiarAsoc)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -982,7 +983,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         comboAlgortimoClasificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "J48" }));
 
-        jLabel19.setText("Porcentaje datos");
+        jLabel19.setText("Rango Discretizacion");
 
         porcentajeDatosClasificacion.setModel(new javax.swing.SpinnerNumberModel(100, 1, 100, 1));
 
@@ -1325,7 +1326,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clustering", jPanel8);
@@ -1564,7 +1565,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void botonEjecutarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarClasificacionActionPerformed
         // TODO add your handling code here:
-        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString())));
+           System.out.println("llegooooooooooooooooooo comboAlgortimoClasificacion");
+        indice=comboAlgortimoClasificacion.getSelectedIndex();
+        System.out.println("llegooooooooooooooooooo comboAlgortimoClasificacion");
+        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()),4));
     }//GEN-LAST:event_botonEjecutarClasificacionActionPerformed
 
     private void botonLimpiarAreaClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAreaClasificacionActionPerformed
