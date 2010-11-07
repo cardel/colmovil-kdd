@@ -35,9 +35,10 @@ public class ArbolJ48ConInterfaz {
 
     }
 
-    public String construirArbolJ48(int porcentaje) {
+    public String construirArbolJ48(int porcentaje, int indiceCombobox) {
 
         String salida = "";
+        System.out.println("inice "+indiceCombobox);
         Instances instanciaSalida = new Instances(instancia);
         Discretize discretize = new Discretize();
 
@@ -47,9 +48,30 @@ public class ArbolJ48ConInterfaz {
                 RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();
                 instanciaSalida = recortarDatosEntrada.recontrarEntrada(instancia, porcentaje);
             }
+             discretize.setInputFormat(instancia);
 
-            discretize.setInputFormat(instancia);
-            discretize.setOptions(new String[]{"-B", "5", "-V", "false"});
+            if(indiceCombobox==4 || indiceCombobox==5 || indiceCombobox==6 || indiceCombobox==7)
+            {
+                //FILTRO 1
+                discretize.setOptions(new String[]{"-R","5","-B","2S","-V","false"});
+                System.out.println("llegooooooooooooooooooo filtro uno");
+            }
+             else
+                 if(indiceCombobox==8 || indiceCombobox==9)
+                 {
+                      System.out.println("llegooooooooooooooooooo filtro dos");
+                     //FILTRO 2
+                     discretize.setOptions(new String[]{"-R","4","-B","2","-V","false"});
+                 }else
+                     if(false)
+                     {
+                          System.out.println("llegooooooooooooooooooo filtro tres");
+                      //FILTRO 3
+                      discretize.setOptions(new String[]{"-R","5","-B","2","-V","true"});
+                     }
+
+           
+            //discretize.setOptions(new String[]{"-B", "5", "-V", "false"});
             instanciaSalida = Filter.useFilter(instanciaSalida, discretize);
             weka.filters.unsupervised.attribute.NumericToNominal prueba = new weka.filters.unsupervised.attribute.NumericToNominal();
             Filter fil = new weka.filters.unsupervised.attribute.NumericToNominal();
