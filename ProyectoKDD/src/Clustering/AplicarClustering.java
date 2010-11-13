@@ -23,21 +23,9 @@ public class AplicarClustering {
         instancia = null;
     }
 
-    public void realizarConsultaABaseDeDatosTipoWekaInstances(String consulta) {
-        try {
-            FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
-            instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
-            JOptionPane.showMessageDialog(null, "Datos cargados exitosamente");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Problema al cargar los datos, favor verifque su consulta");
-            System.out.println(e.toString());
-        }
-
-    }
-
-    public String aplicarClustering(int algoritmo, int numberKMeans, int porcentaje) {
+    public String aplicarClustering(int algoritmo, int numberKMeans, int porcentaje, Instances instanciaGeneral) {
         String salida = "";
-        Instances instanciaInterna = instancia;
+        Instances instanciaInterna = instanciaGeneral;
 
         if (porcentaje < 100) {
             RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();

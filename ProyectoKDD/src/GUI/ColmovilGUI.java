@@ -70,6 +70,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
     /*
      * FIN CLASIFICACION
      */
+    /*
+     * Instancia general
+     */
+    Instances instanciaGeneral;
     /** Creates new form ColmovilGUI */
     public ColmovilGUI() {
 //        objConsultasVistas= new ConsultasVistas();
@@ -87,6 +91,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jTableAtributos.setModel(modeloTablaAtributos);
         jComboBoxNombreTablas.setEnabled(false);
         setLocationRelativeTo(null);
+        /*
+         * Instancia general
+         */
+        instanciaGeneral = null;
     }
 
     //*********************************************  MODELO DE LA TABLA ********************************************
@@ -775,7 +783,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addContainerGap(397, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -817,7 +825,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabelTituloAsoc.setText("Procesamiento de datos utilizando Asociación");
 
         jPanelParametrosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parámetros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -908,7 +916,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(412, 412, 412))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
+                .addContainerGap(225, Short.MAX_VALUE)
                 .addComponent(jLabelTituloAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(554, 554, 554))
         );
@@ -919,14 +927,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jLabelTituloAsoc)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelSalidaAsoc, 0, 382, Short.MAX_VALUE)
+                    .addComponent(jPanelSalidaAsoc, 0, 385, Short.MAX_VALUE)
                     .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addContainerGap(518, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Asociación", jPanel3);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel15.setText("Procesamiento de datos utilizando clasificación");
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parametros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -1062,12 +1070,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(512, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel3.setText("Procesamiento de datos utilizando clustering");
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parametros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -1331,7 +1339,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLimpiarAreaActionPerformed
 
     private void botonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarActionPerformed
-        areaMostrarResultados.append(aplicarClustering.aplicarClustering(comboAlgortimo.getSelectedIndex(), Integer.parseInt(seleccionNumeroClusters.getValue().toString()), Integer.parseInt(porcentajeDatos.getValue().toString())));
+        areaMostrarResultados.append(aplicarClustering.aplicarClustering(comboAlgortimo.getSelectedIndex(), Integer.parseInt(seleccionNumeroClusters.getValue().toString()), Integer.parseInt(porcentajeDatos.getValue().toString()),instanciaGeneral));
     }//GEN-LAST:event_botonEjecutarActionPerformed
 
     private void jButtonNingunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNingunoActionPerformed
@@ -1398,10 +1406,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void botonEjecutarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarClasificacionActionPerformed
         // TODO add your handling code here:
-           System.out.println("llegooooooooooooooooooo comboAlgortimoClasificacion");
         indice=comboAlgortimoClasificacion.getSelectedIndex();
-        System.out.println("llegooooooooooooooooooo comboAlgortimoClasificacion");
-        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()),4));
+        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()),4, instanciaGeneral));
     }//GEN-LAST:event_botonEjecutarClasificacionActionPerformed
 
     private void botonLimpiarAreaClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAreaClasificacionActionPerformed
@@ -1425,7 +1431,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
         try {
             Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
             Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
-            consultaAsociacion = aplicarAsociacion.algoritmoApriori(salida, Double.parseDouble(confianzaMinima.getValue().toString()));
+            //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
+            instanciaGeneral = new Instances(salida);
+            System.out.println(instanciaGeneral);
+            consultaAsociacion = aplicarAsociacion.algoritmoApriori( instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
