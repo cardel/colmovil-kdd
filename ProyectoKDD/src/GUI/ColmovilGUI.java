@@ -74,6 +74,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
      * Instancia general
      */
     Instances instanciaGeneral;
+
     /** Creates new form ColmovilGUI */
     public ColmovilGUI() {
 //        objConsultasVistas= new ConsultasVistas();
@@ -220,7 +221,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     public void llenarTablaAtributos(String nombreTabla) {
         //vectorNombreAtributos.clear();
-        String nombreVista="vista_"+nombreTabla;
+        String nombreVista = "vista_" + nombreTabla;
         Vector<String> vectorAtributo = new Vector<String>();
         Controladora objControladora = new Controladora();
         //System.out.println(objControladora.consultaNombreAtributos());
@@ -255,7 +256,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     public void llenarTablaEstadisticasDatoNumerico(String nombreAtributo, String nombreTabla) {
         Vector<String> vectorNombreEstadisticas = new Vector<String>();
-        String nombreVista="vista_"+nombreTabla;
+        String nombreVista = "vista_" + nombreTabla;
         //se crea el vector de la columna de nombres de la tabla estadisticas
         vectorNombreEstadisticas.add("Maximo");
         vectorNombreEstadisticas.add("Minimo");
@@ -1261,7 +1262,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jTableAtributosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAtributosMouseClicked
         // TODO add your handling code here:
-        String nombreVista="vista_"+nombreTabla;
+        String nombreVista = "vista_" + nombreTabla;
         int fila = jTableAtributos.getSelectedRow();
         int porcentajeNulosPorAtributo = 0;
         //int porcentajeNulosPorRegistro = 0;
@@ -1319,7 +1320,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jComboBoxNombreTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNombreTablasActionPerformed
         // TODO add your handling code here:
         nombreTabla = jComboBoxNombreTablas.getSelectedItem().toString();
-        String nombreVista="vista_"+nombreTabla;
+        String nombreVista = "vista_" + nombreTabla;
         vectorNombreAtributos.clear();
         llenarTablaAtributos(nombreTabla);
         actualizarTabla();
@@ -1339,7 +1340,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLimpiarAreaActionPerformed
 
     private void botonEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarActionPerformed
-        areaMostrarResultados.append(aplicarClustering.aplicarClustering(comboAlgortimo.getSelectedIndex(), Integer.parseInt(seleccionNumeroClusters.getValue().toString()), Integer.parseInt(porcentajeDatos.getValue().toString()),instanciaGeneral));
+        areaMostrarResultados.append(aplicarClustering.aplicarClustering(comboAlgortimo.getSelectedIndex(), Integer.parseInt(seleccionNumeroClusters.getValue().toString()), Integer.parseInt(porcentajeDatos.getValue().toString()), instanciaGeneral));
     }//GEN-LAST:event_botonEjecutarActionPerformed
 
     private void jButtonNingunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNingunoActionPerformed
@@ -1406,8 +1407,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void botonEjecutarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarClasificacionActionPerformed
         // TODO add your handling code here:
-        indice=comboAlgortimoClasificacion.getSelectedIndex();
-        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()),4, instanciaGeneral));
+        indice = comboAlgortimoClasificacion.getSelectedIndex();
+        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()), 4, instanciaGeneral));
     }//GEN-LAST:event_botonEjecutarClasificacionActionPerformed
 
     private void botonLimpiarAreaClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAreaClasificacionActionPerformed
@@ -1418,6 +1419,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jButtonConsultaSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaSQLActionPerformed
         // TODO add your handling code here:
         aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(jTextFieldConsultaSQLPreproc.getText());
+        //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
+        //----->instanciaGeneral = new Instances(salida);
     }//GEN-LAST:event_jButtonConsultaSQLActionPerformed
 
     private void jButtonCargarPerfilPreprocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilPreprocActionPerformed
@@ -1433,8 +1436,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
             Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
             //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
             instanciaGeneral = new Instances(salida);
-            System.out.println(instanciaGeneral);
-            consultaAsociacion = aplicarAsociacion.algoritmoApriori( instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
+            consultaAsociacion = aplicarAsociacion.algoritmoApriori(instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
