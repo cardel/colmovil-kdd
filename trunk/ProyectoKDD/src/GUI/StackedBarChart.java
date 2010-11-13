@@ -68,7 +68,7 @@ public class StackedBarChart {
        render.setBaseItemLabelsVisible(true);
 //       plot.getRenderer().setSeriesPaint(0, new Color(30, 100, 175));
 //       plot.getRenderer().setSeriesPaint(1, new Color(90, 190, 110));
-       BufferedImage imagenGrafico= chart.createBufferedImage(340, 210);
+       BufferedImage imagenGrafico= chart.createBufferedImage(348, 206);
        return imagenGrafico;
    }
 

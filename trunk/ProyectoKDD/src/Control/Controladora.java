@@ -361,47 +361,7 @@ public class Controladora
         System.out.println("eliminando");
     }
 
-    public void consultaPrueba()
-    {
-//       try {
-//            String sqlConsultaPrueba = "SELECT * FROM vista_cliente";
-//            ResultSet tabla = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sqlConsultaPrueba);
-//           // System.out.println("Atributos");
-//            while (tabla.next()) {
-//                //System.out.println("Codigo: " + tabla.getString(1));
-//
-//                vectorNombreAtributos.addElement(tabla.getString(1).toString());
-//            }
-//            //        for(int j=0; j<vectorNombreAtributos.size(); j++)
-//            //        {
-//            //                System.out.println("vector: " + vectorNombreAtributos.elementAt(j));
-//            //        }
-//
-//        } catch (Exception ex) {
-//            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    public void insertarRegistro(String nombreTabla, Vector<Object> registros)
-    {
-//       try {
-//            String sqlConsultaPrueba = "INSERT INTO "+nombreTabla+" VALUES('";
-//            ResultSet tabla = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sqlConsultaPrueba);
-//           // System.out.println("Atributos");
-//            while (tabla.next()) {
-//                //System.out.println("Codigo: " + tabla.getString(1));
-//
-//                vectorNombreAtributos.addElement(tabla.getString(1).toString());
-//            }
-//            //        for(int j=0; j<vectorNombreAtributos.size(); j++)
-//            //        {
-//            //                System.out.println("vector: " + vectorNombreAtributos.elementAt(j));
-//            //        }
-//
-//        } catch (Exception ex) {
-//            Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
 
 
+    
 }

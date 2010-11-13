@@ -52,7 +52,7 @@ public class GraficoDispersion {
                                                         false, //leyenda
                                                         false, //tooltips
                                                         false); //URL
-        BufferedImage imagenGrafico= chart.createBufferedImage(329, 204);
+        BufferedImage imagenGrafico= chart.createBufferedImage(405, 211);
         return imagenGrafico;
 
     }

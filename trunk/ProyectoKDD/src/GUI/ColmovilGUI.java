@@ -212,10 +212,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     public void llenarTablaAtributos(String nombreTabla) {
         //vectorNombreAtributos.clear();
+        String nombreVista="vista_"+nombreTabla;
         Vector<String> vectorAtributo = new Vector<String>();
         Controladora objControladora = new Controladora();
         //System.out.println(objControladora.consultaNombreAtributos());
-        vectorAtributo = objControladora.consultaNombreAtributos(nombreTabla);
+        vectorAtributo = objControladora.consultaNombreAtributos(nombreVista);
 
         for (int i = 0; i < vectorAtributo.size(); i++) {
             Vector<Object> nuevoVector = new Vector<Object>();
@@ -246,6 +247,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     public void llenarTablaEstadisticasDatoNumerico(String nombreAtributo, String nombreTabla) {
         Vector<String> vectorNombreEstadisticas = new Vector<String>();
+        String nombreVista="vista_"+nombreTabla;
         //se crea el vector de la columna de nombres de la tabla estadisticas
         vectorNombreEstadisticas.add("Maximo");
         vectorNombreEstadisticas.add("Minimo");
@@ -255,7 +257,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         Vector<String> valoresEstadisticas = new Vector<String>();
         Vector<String> vectorTotalEstadisticas = new Vector<String>();
         Controladora objControladora = new Controladora();
-        vectorTotalEstadisticas = objControladora.unirConsultaEstadisticas(nombreAtributo, nombreTabla);// se unió todas las consultas en una sola
+        vectorTotalEstadisticas = objControladora.unirConsultaEstadisticas(nombreAtributo, nombreVista);// se unió todas las consultas en una sola
         //se crea el vector con los valores de las estadisitcas
         valoresEstadisticas.add(vectorTotalEstadisticas.elementAt(0));// en la posicion 0 esta en maximo
         valoresEstadisticas.add(vectorTotalEstadisticas.elementAt(1));// en la pos 1 esta el minimo
@@ -282,6 +284,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPanePrincipal = new javax.swing.JScrollPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -289,14 +292,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jButtonNinguno = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAtributos = new javax.swing.JTable();
-        jButtonLimpiar = new javax.swing.JButton();
         jButtonEliminarAtributos = new javax.swing.JButton();
         jButtonDiscretizar = new javax.swing.JButton();
         jButtonDeshacer = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButtonAbrir = new javax.swing.JButton();
         jButtonConexionBD = new javax.swing.JButton();
-        jButtonGuardar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableEstadistica = new javax.swing.JTable();
@@ -316,19 +317,19 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jComboBoxNombreTablas = new javax.swing.JComboBox();
         jPanelGraficoDispersion = new javax.swing.JPanel();
         jLabelGraficoDispersion = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabelPerfilPreproc = new javax.swing.JLabel();
+        jSpinnerMesPreproc = new javax.swing.JSpinner();
+        jLabelMesPreproc = new javax.swing.JLabel();
+        jComboBoxPerfilPreproc = new javax.swing.JComboBox();
+        jButtonCargarPerfilPreproc = new javax.swing.JButton();
+        jLabelConsPersonPreproc = new javax.swing.JLabel();
+        jTextFieldConsultaSQLPreproc = new javax.swing.JTextField();
+        jButtonConsultaSQL = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanelSalidaAsoc = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaAsoc = new javax.swing.JTextArea();
-        jPanelCargaDatosAsoc = new javax.swing.JPanel();
-        jLabelPerfilAsoc = new javax.swing.JLabel();
-        jComboBoxPerfilAsoc = new javax.swing.JComboBox();
-        jLabelMesAsoc = new javax.swing.JLabel();
-        jSpinnerMesAsoc = new javax.swing.JSpinner();
-        jButtonCargarPerfilAsoc = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jTextFieldConsultaSQLAsoc = new javax.swing.JTextField();
-        jButtonConsultaSqlAsoc = new javax.swing.JButton();
         jLabelTituloAsoc = new javax.swing.JLabel();
         jPanelParametrosAsoc = new javax.swing.JPanel();
         jLabelAlgoritmoAsoc = new javax.swing.JLabel();
@@ -342,50 +343,34 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        textoConsultaSQLClasificacion = new javax.swing.JTextField();
-        botonConsultaSQL1 = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        areaMostrarResultadosAsociacion = new javax.swing.JTextArea();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        comboAlgortimoClasificacion = new javax.swing.JComboBox();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        botonLimpiarAreaClasificacion = new javax.swing.JButton();
+        botonEjecutarClasificacion = new javax.swing.JButton();
         porcentajeDatosClasificacion = new javax.swing.JSpinner();
         jLabel20 = new javax.swing.JLabel();
-        botonEjecutarClasificacion = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        botonLimpiarAreaClasificacion = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        seleccionPerfilClasificacion = new javax.swing.JComboBox();
-        jLabel24 = new javax.swing.JLabel();
-        seleccionMesClasificacion = new javax.swing.JSpinner();
-        cargarPerfilClasificacion = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        comboAlgortimoClasificacion = new javax.swing.JComboBox();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        areaMostrarResultadosAsociacion = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        textoConsultaSQL = new javax.swing.JTextField();
-        botonConsultaSQL = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        comboAlgortimo = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        botonLimpiarArea = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        botonEjecutar = new javax.swing.JButton();
+        seleccionNumeroClusters = new javax.swing.JSpinner();
+        porcentajeDatos = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         areaMostrarResultados = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        comboAlgortimo = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        porcentajeDatos = new javax.swing.JSpinner();
-        jLabel8 = new javax.swing.JLabel();
-        botonEjecutar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        botonLimpiarArea = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        seleccionPerfil = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
-        seleccionMes = new javax.swing.JSpinner();
-        botonCargarDatosClustering = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        seleccionNumeroClusters = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -443,13 +428,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableAtributos);
 
-        jButtonLimpiar.setText("Limpiar");
-        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimpiarActionPerformed(evt);
-            }
-        });
-
         jButtonEliminarAtributos.setText("Eliminar Atributos");
         jButtonEliminarAtributos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,6 +436,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         });
 
         jButtonDiscretizar.setText("Discretizar");
+        jButtonDiscretizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDiscretizarActionPerformed(evt);
+            }
+        });
 
         jButtonDeshacer.setText("Deshacer");
         jButtonDeshacer.addActionListener(new java.awt.event.ActionListener() {
@@ -465,6 +448,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 jButtonDeshacerActionPerformed(evt);
             }
         });
+
+        jButton1.setText("Limpiar Nulos");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -474,15 +459,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonSeleccionarTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonEliminarAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonNinguno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(32, 32, 32)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -501,18 +486,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addComponent(jButtonDeshacer))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonLimpiar)
                     .addComponent(jButtonEliminarAtributos)
-                    .addComponent(jButtonDiscretizar))
+                    .addComponent(jButtonDiscretizar)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jButtonAbrir.setText("Abrir");
-        jButtonAbrir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAbrirActionPerformed(evt);
-            }
-        });
 
         jButtonConexionBD.setText("Conexion BD");
         jButtonConexionBD.addActionListener(new java.awt.event.ActionListener() {
@@ -521,29 +499,20 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonGuardar.setText("Guardar");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAbrir)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(jButtonConexionBD)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonGuardar)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(96, 96, 96))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAbrir)
-                    .addComponent(jButtonConexionBD)
-                    .addComponent(jButtonGuardar)))
+                .addComponent(jButtonConexionBD))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -599,10 +568,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -626,6 +591,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jTextFieldNulosTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -653,9 +622,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldNulosTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         jPanelGraficoBarras.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -664,7 +633,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelGraficoBarras.setLayout(jPanelGraficoBarrasLayout);
         jPanelGraficoBarrasLayout.setHorizontalGroup(
             jPanelGraficoBarrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+            .addComponent(labelGrafico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
         jPanelGraficoBarrasLayout.setVerticalGroup(
             jPanelGraficoBarrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -704,11 +673,83 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelGraficoDispersion.setLayout(jPanelGraficoDispersionLayout);
         jPanelGraficoDispersionLayout.setHorizontalGroup(
             jPanelGraficoDispersionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
         jPanelGraficoDispersionLayout.setVerticalGroup(
             jPanelGraficoDispersionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jLabelGraficoDispersion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+        );
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carga de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        jLabelPerfilPreproc.setText("Perfil");
+
+        jSpinnerMesPreproc.setModel(new javax.swing.SpinnerListModel(new String[] {"012008", "022008", "032008", "042008", "052008", "062008", "072008", "082008", "092008", "102008", "112008", "122008", "012009", "022009", "032009", "042009", "052009", "062009", "072009", "082009", "092009", "102009", "112009", "122009"}));
+
+        jLabelMesPreproc.setText("Mes");
+
+        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
+
+        jButtonCargarPerfilPreproc.setText("Cargar Perfil");
+        jButtonCargarPerfilPreproc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCargarPerfilPreprocActionPerformed(evt);
+            }
+        });
+
+        jLabelConsPersonPreproc.setText("Consulta Personalizada");
+
+        jButtonConsultaSQL.setText("Consulta SQL");
+        jButtonConsultaSQL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultaSQLActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPerfilPreproc)
+                            .addComponent(jLabelMesPreproc))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jComboBoxPerfilPreproc, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addComponent(jButtonCargarPerfilPreproc))
+                            .addComponent(jSpinnerMesPreproc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabelConsPersonPreproc)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextFieldConsultaSQLPreproc, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonConsultaSQL)
+                .addGap(91, 91, 91))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPerfilPreproc)
+                    .addComponent(jComboBoxPerfilPreproc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCargarPerfilPreproc))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSpinnerMesPreproc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMesPreproc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldConsultaSQLPreproc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonConsultaSQL))
+                    .addComponent(jLabelConsPersonPreproc))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -717,42 +758,47 @@ public class ColmovilGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelGraficoDispersion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanelGraficoDispersion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelGraficoDispersion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(342, 342, 342))
         );
 
         jTabbedPane1.addTab("Preprocesamiento", jPanel1);
 
-        jPanelSalidaAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanelSalidaAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jTextAreaAsoc.setColumns(20);
         jTextAreaAsoc.setRows(5);
@@ -762,93 +808,19 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelSalidaAsoc.setLayout(jPanelSalidaAsocLayout);
         jPanelSalidaAsocLayout.setHorizontalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
         );
         jPanelSalidaAsocLayout.setVerticalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+            .addGroup(jPanelSalidaAsocLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelCargaDatosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carga de Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-
-        jLabelPerfilAsoc.setText("Perfil");
-
-        jComboBoxPerfilAsoc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
-
-        jLabelMesAsoc.setText("Mes");
-
-        jSpinnerMesAsoc.setModel(new javax.swing.SpinnerListModel(new String[] {"012008", "022008", "032008", "042008", "052008", "062008", "072008", "082008", "092008", "102008", "112008", "122008", "012009", "022009", "032009", "042009", "052009", "062009", "072009", "082009", "092009", "102009", "112009", "122009"}));
-
-        jButtonCargarPerfilAsoc.setText("Cargar Perfil");
-        jButtonCargarPerfilAsoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCargarPerfilAsocActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Consulta Personalizada");
-
-        jTextFieldConsultaSQLAsoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldConsultaSQLAsocActionPerformed(evt);
-            }
-        });
-
-        jButtonConsultaSqlAsoc.setText("Consulta SQL");
-        jButtonConsultaSqlAsoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultaSqlAsocActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelCargaDatosAsocLayout = new javax.swing.GroupLayout(jPanelCargaDatosAsoc);
-        jPanelCargaDatosAsoc.setLayout(jPanelCargaDatosAsocLayout);
-        jPanelCargaDatosAsocLayout.setHorizontalGroup(
-            jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldConsultaSQLAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonConsultaSqlAsoc))
-                    .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
-                        .addComponent(jLabelPerfilAsoc)
-                        .addGap(10, 10, 10)
-                        .addComponent(jComboBoxPerfilAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(jButtonCargarPerfilAsoc))
-                    .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
-                        .addComponent(jLabelMesAsoc)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinnerMesAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        jPanelCargaDatosAsocLayout.setVerticalGroup(
-            jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCargaDatosAsocLayout.createSequentialGroup()
-                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxPerfilAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPerfilAsoc)
-                    .addComponent(jButtonCargarPerfilAsoc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMesAsoc)
-                    .addComponent(jSpinnerMesAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelCargaDatosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextFieldConsultaSQLAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonConsultaSqlAsoc))
-                .addContainerGap())
-        );
-
-        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabelTituloAsoc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabelTituloAsoc.setText("Procesamiento de datos utilizando Asociación");
 
-        jPanelParametrosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parámetros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanelParametrosAsoc.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parámetros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jLabelAlgoritmoAsoc.setText("Seleccione Algoritmo");
 
@@ -896,8 +868,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonEjecutarAsoc)
-                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                            .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))))
+                .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(confianzaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -922,7 +894,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jButtonEjecutarAsoc)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonLimpiarAsoc)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -930,73 +902,38 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelCargaDatosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(24, 24, 24)
+                .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(412, 412, 412))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+                .addContainerGap(217, Short.MAX_VALUE)
                 .addComponent(jLabelTituloAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148))
+                .addGap(554, 554, 554))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jLabelTituloAsoc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelCargaDatosAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelSalidaAsoc, 0, 382, Short.MAX_VALUE)
                     .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(515, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Asociación", jPanel3);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setText("Procesamiento de datos utilizando clasificación");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel16.setText("Carga de datos");
-
-        botonConsultaSQL1.setText("Consulta SQL");
-        botonConsultaSQL1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConsultaSQL1ActionPerformed(evt);
-            }
-        });
-
-        areaMostrarResultadosAsociacion.setColumns(20);
-        areaMostrarResultadosAsociacion.setRows(5);
-        jScrollPane5.setViewportView(areaMostrarResultadosAsociacion);
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel17.setText("Parámetros");
-
-        jLabel18.setText("Seleccione algortimo clustering");
-
-        comboAlgortimoClasificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "J48" }));
-
-        jLabel19.setText("Rango Discretizacion");
-
-        porcentajeDatosClasificacion.setModel(new javax.swing.SpinnerNumberModel(100, 1, 100, 1));
-
-        jLabel20.setText("Ejecutar algortimo");
-
-        botonEjecutarClasificacion.setText("Ejecutar");
-        botonEjecutarClasificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEjecutarClasificacionActionPerformed(evt);
-            }
-        });
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parametros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jLabel21.setText("Limpiar area de texto");
+
+        jLabel19.setText("Rango Discretizacion");
 
         botonLimpiarAreaClasificacion.setText("Limpiar");
         botonLimpiarAreaClasificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -1005,27 +942,84 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel22.setText("Consulta personalizada");
-
-        jLabel23.setText("Perfil");
-
-        seleccionPerfilClasificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
-        seleccionPerfilClasificacion.addActionListener(new java.awt.event.ActionListener() {
+        botonEjecutarClasificacion.setText("Ejecutar");
+        botonEjecutarClasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionPerfilClasificacionActionPerformed(evt);
+                botonEjecutarClasificacionActionPerformed(evt);
             }
         });
 
-        jLabel24.setText("Mes: Aplica sólo para recargas y llamadas");
+        porcentajeDatosClasificacion.setModel(new javax.swing.SpinnerNumberModel(100, 1, 100, 1));
 
-        seleccionMesClasificacion.setModel(new javax.swing.SpinnerListModel(new String[] {"012008", "022008", "032008", "042008", "052008", "062008", "072008", "082008", "092008", "102008", "112008", "122008", "012009", "022009", "032009", "042009", "052009", "062009", "072009", "082009", "092009", "102009", "112009", "122009"}));
+        jLabel20.setText("Ejecutar algortimo");
 
-        cargarPerfilClasificacion.setText("Cargar perfil");
-        cargarPerfilClasificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarPerfilClasificacionActionPerformed(evt);
-            }
-        });
+        jLabel18.setText("Seleccione algortimo clustering");
+
+        comboAlgortimoClasificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "J48" }));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboAlgortimoClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(porcentajeDatosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel20)
+                        .addComponent(jLabel19)))
+                .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonLimpiarAreaClasificacion)
+                    .addComponent(botonEjecutarClasificacion))
+                .addGap(78, 78, 78))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboAlgortimoClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(porcentajeDatosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel20)
+                .addGap(18, 18, 18)
+                .addComponent(botonEjecutarClasificacion)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel21)
+                .addGap(28, 28, 28)
+                .addComponent(botonLimpiarAreaClasificacion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        areaMostrarResultadosAsociacion.setColumns(20);
+        areaMostrarResultadosAsociacion.setRows(5);
+        jScrollPane5.setViewportView(areaMostrarResultadosAsociacion);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1034,100 +1028,24 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel9Layout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cargarPerfilClasificacion))
-                                .addGroup(jPanel9Layout.createSequentialGroup()
-                                    .addComponent(textoConsultaSQLClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonConsultaSQL1))
-                                .addGroup(jPanel9Layout.createSequentialGroup()
-                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel9Layout.createSequentialGroup()
-                                            .addGap(85, 85, 85)
-                                            .addComponent(jLabel17))
-                                        .addComponent(comboAlgortimoClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel18)
-                                            .addComponent(botonLimpiarAreaClasificacion)
-                                            .addComponent(botonEjecutarClasificacion))
-                                        .addComponent(jLabel21)
-                                        .addComponent(jLabel19)
-                                        .addComponent(porcentajeDatosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel20))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                    .addComponent(seleccionPerfilClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(seleccionMesClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                    .addComponent(jLabel23)
-                                    .addGap(253, 253, 253)
-                                    .addComponent(jLabel24)))))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
-                        .addComponent(jLabel15)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel15)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel24))
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(seleccionPerfilClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(seleccionMesClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(9, 9, 9)
-                        .addComponent(textoConsultaSQLClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(cargarPerfilClasificacion)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonConsultaSQL1)))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel17)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboAlgortimoClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(porcentajeDatosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel20)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonEjecutarClasificacion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel21)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonLimpiarAreaClasificacion))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -1137,55 +1055,26 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(401, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Procesamiento de datos utilizando clustering");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel4.setText("Carga de datos");
-
-        botonConsultaSQL.setText("Consulta SQL");
-        botonConsultaSQL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConsultaSQLActionPerformed(evt);
-            }
-        });
-
-        areaMostrarResultados.setColumns(20);
-        areaMostrarResultados.setRows(5);
-        jScrollPane4.setViewportView(areaMostrarResultados);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14));
-        jLabel5.setText("Parámetros");
-
-        jLabel6.setText("Seleccione algortimo clustering");
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parametros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         comboAlgortimo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "K-Means", "DBScan" }));
 
-        jLabel7.setText("Porcentaje datos");
-
-        porcentajeDatos.setModel(new javax.swing.SpinnerNumberModel(100, 1, 100, 1));
-
         jLabel8.setText("Ejecutar algortimo");
-
-        botonEjecutar.setText("Ejecutar");
-        botonEjecutar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEjecutarActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("Limpiar area de texto");
 
         botonLimpiarArea.setText("Limpiar");
         botonLimpiarArea.addActionListener(new java.awt.event.ActionListener() {
@@ -1194,31 +1083,112 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Consulta personalizada");
-
-        jLabel10.setText("Perfil");
-
-        seleccionPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
-        seleccionPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionPerfilActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Mes: Aplica sólo para recargas y llamadas");
-
-        seleccionMes.setModel(new javax.swing.SpinnerListModel(new String[] {"012008", "022008", "032008", "042008", "052008", "062008", "072008", "082008", "092008", "102008", "112008", "122008", "012009", "022009", "032009", "042009", "052009", "062009", "072009", "082009", "092009", "102009", "112009", "122009"}));
-
-        botonCargarDatosClustering.setText("Cargar perfil");
-        botonCargarDatosClustering.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCargarDatosClusteringActionPerformed(evt);
-            }
-        });
-
         jLabel12.setText("Número de clusters (Sólo K-Means)");
 
+        jLabel9.setText("Limpiar area de texto");
+
+        jLabel6.setText("Seleccione algortimo clustering");
+
+        botonEjecutar.setText("Ejecutar");
+        botonEjecutar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEjecutarActionPerformed(evt);
+            }
+        });
+
         seleccionNumeroClusters.setModel(new javax.swing.SpinnerNumberModel(4, 2, 50, 1));
+
+        porcentajeDatos.setModel(new javax.swing.SpinnerNumberModel(100, 1, 100, 1));
+
+        jLabel7.setText("Porcentaje datos");
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboAlgortimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(seleccionNumeroClusters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(139, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(porcentajeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(174, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonLimpiarArea)
+                    .addComponent(botonEjecutar))
+                .addGap(71, 71, 71))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(comboAlgortimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(seleccionNumeroClusters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(porcentajeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonEjecutar)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(botonLimpiarArea)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salida", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+
+        areaMostrarResultados.setColumns(20);
+        areaMostrarResultados.setRows(5);
+        jScrollPane4.setViewportView(areaMostrarResultados);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1227,132 +1197,47 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonCargarDatosClustering))
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addComponent(textoConsultaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(52, 52, 52)
-                                    .addComponent(botonConsultaSQL))
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel8Layout.createSequentialGroup()
-                                            .addGap(85, 85, 85)
-                                            .addComponent(jLabel5))
-                                        .addComponent(comboAlgortimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(botonLimpiarArea)
-                                            .addComponent(botonEjecutar))
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel8)
-                                        .addComponent(porcentajeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel12)
-                                        .addComponent(seleccionNumeroClusters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(seleccionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(seleccionMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addGap(253, 253, 253)
-                                    .addComponent(jLabel11)))))
+                        .addGap(28, 28, 28)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel3)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(404, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(seleccionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(seleccionMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(9, 9, 9)
-                        .addComponent(textoConsultaSQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(botonCargarDatosClustering)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonConsultaSQL)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel5)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboAlgortimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(seleccionNumeroClusters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(porcentajeDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonEjecutar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonLimpiarArea))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(527, 527, 527))
         );
 
         jTabbedPane1.addTab("Clustering", jPanel8);
+
+        jScrollPanePrincipal.setViewportView(jTabbedPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jScrollPanePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAbrirActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_jButtonAbrirActionPerformed
 
     private void jButtonSeleccionarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarTodoActionPerformed
         // TODO add your handling code here:
@@ -1368,6 +1253,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jTableAtributosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAtributosMouseClicked
         // TODO add your handling code here:
+        String nombreVista="vista_"+nombreTabla;
         int fila = jTableAtributos.getSelectedRow();
         int porcentajeNulosPorAtributo = 0;
         //int porcentajeNulosPorRegistro = 0;
@@ -1377,17 +1263,17 @@ public class ColmovilGUI extends javax.swing.JFrame {
         Vector<String> tipoAtributo = new Vector<String>();
         Vector<String> distinto = new Vector<String>();
         Vector<Integer> vectorDatosNumericos = new Vector<Integer>();
-        tipoAtributo = objControladora.consultaTipoAtributo(nombreAtributo, nombreTabla);
-        distinto = objControladora.consultaDistintos(nombreAtributo, nombreTabla);
-        porcentajeNulosPorAtributo = objConsultaNulos.porcentajeValoresNulosPorAtributo(nombreTabla, nombreAtributo);
+        tipoAtributo = objControladora.consultaTipoAtributo(nombreAtributo, nombreVista);
+        distinto = objControladora.consultaDistintos(nombreAtributo, nombreVista);
+        porcentajeNulosPorAtributo = objConsultaNulos.porcentajeValoresNulosPorAtributo(nombreVista, nombreAtributo);
         //porcentajeNulosPorRegistro = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
         //JOptionPane.showMessageDialog(null, "fila No.: "+fila);
         jTextFieldNombre.setText(nombreAtributo);
         jTextFieldDistinto.setText(distinto.elementAt(0));
         jTextFieldNulos.setText(Integer.toString(porcentajeNulosPorAtributo) + "%");
         //jTextField1.setText(Integer.toString(porcentajeNulosPorRegistro) + "%");
-        int cantidadNulos = objConsultaNulos.contarValoresNulosPorAtributo(nombreTabla, nombreAtributo);
-        int cantidadRegistros = objConsultaNulos.totalRegistros(nombreTabla);
+        int cantidadNulos = objConsultaNulos.contarValoresNulosPorAtributo(nombreVista, nombreAtributo);
+        int cantidadRegistros = objConsultaNulos.totalRegistros(nombreVista);
         //*********************  mostrar grafico de barras
         StackedBarChart grafico = new StackedBarChart();
         imagenDelGrafico = grafico.createStackedBarChart(cantidadNulos, cantidadRegistros);
@@ -1402,7 +1288,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
             actualizarTablaEstadisticas();
             //***************************  mostrar Grafico de Dispersion
             GraficoDispersion objGraficoDispersion = new GraficoDispersion();
-            vectorDatosNumericos = objControladora.consultaGraficoDispersion(nombreAtributo, nombreTabla);
+            vectorDatosNumericos = objControladora.consultaGraficoDispersion(nombreAtributo, nombreVista);
             imagenDelGraficoDispersion = objGraficoDispersion.crearGraficodispersion(vectorDatosNumericos, nombreAtributo);
             jLabelGraficoDispersion.setIcon(new ImageIcon(imagenDelGraficoDispersion));
 
@@ -1412,7 +1298,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 //***********  llenar tabla de estadísitcas para atributos nominales
                 inicializarNombreColumnasTablaEstaditicasDatoNominal();
                 vectorEstadidticas.clear();
-                vectorEstadidticas = objControladora.consultaTablaEstadisticasAtributoNominal(nombreAtributo, nombreTabla);
+                vectorEstadidticas = objControladora.consultaTablaEstadisticasAtributoNominal(nombreAtributo, nombreVista);
                 actualizarTablaEstadisticas();
 
             } else {
@@ -1425,12 +1311,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jComboBoxNombreTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNombreTablasActionPerformed
         // TODO add your handling code here:
         nombreTabla = jComboBoxNombreTablas.getSelectedItem().toString();
+        String nombreVista="vista_"+nombreTabla;
         vectorNombreAtributos.clear();
         llenarTablaAtributos(nombreTabla);
         actualizarTabla();
         ConsultaNulos objConsultaNulos = new ConsultaNulos();
         int porcentajeNulosTabla = 0;
-        porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
+        porcentajeNulosTabla = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreVista);
         jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
 
     }//GEN-LAST:event_jComboBoxNombreTablasActionPerformed
@@ -1438,19 +1325,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jTextFieldDistintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDistintoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDistintoActionPerformed
-
-    private void botonConsultaSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultaSQLActionPerformed
-        // TODO add your handling code here:
-        aplicarClustering.realizarConsultaABaseDeDatosTipoWekaInstances(textoConsultaSQL.getText());
-    }//GEN-LAST:event_botonConsultaSQLActionPerformed
-
-    private void botonCargarDatosClusteringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarDatosClusteringActionPerformed
-        String consulta = "";
-        ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
-        consulta = consultasPredefinidas.retornarConsulta(seleccionPerfil.getSelectedIndex(), seleccionMes.getValue().toString());
-        aplicarClustering.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
-
-    }//GEN-LAST:event_botonCargarDatosClusteringActionPerformed
 
     private void botonLimpiarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAreaActionPerformed
         areaMostrarResultados.setText("");
@@ -1464,10 +1338,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         modeloTablaAtributos.DeseleccionarTodosLosAtributos();
     }//GEN-LAST:event_jButtonNingunoActionPerformed
-
-    private void seleccionPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionPerfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_seleccionPerfilActionPerformed
 
     private void jButtonEliminarAtributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAtributosActionPerformed
         // TODO add your handling code here:
@@ -1493,7 +1363,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
             objControladora.eliminarAtributosSeleccionados(vectorAtributosNoSeleccionados, nombreVista);
             //************ actualizar JTable con la vista
             vectorNombreAtributos.clear();
-            llenarTablaAtributos(nombreVista);
+            llenarTablaAtributos(nombreTabla);
             actualizarTabla();
             //*************** actualizar porcentaje de la vista
             ConsultaNulos objConsultaNulos = new ConsultaNulos();
@@ -1516,52 +1386,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jTextFieldNulosTabla.setText(Integer.toString(porcentajeNulosTabla) + "%");
     }//GEN-LAST:event_jButtonDeshacerActionPerformed
 
-    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLimpiarActionPerformed
-
     private void jButtonEjecutarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarAsocActionPerformed
         // TODO add your handling code here:
         jTextAreaAsoc.append(consultaAsociacion);
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
-    private void jButtonCargarPerfilAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilAsocActionPerformed
-        // TODO add your handling code here:
-        String consulta = "";
-        DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
-        ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
-        //consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
-        consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
-        FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
-        try {
-            Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
-            Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
-            consultaAsociacion = aplicarAsociacion.algoritmoApriori(salida, Double.parseDouble(confianzaMinima.getValue().toString()));
-        } catch (Exception ex) {
-            Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
-    }//GEN-LAST:event_jButtonCargarPerfilAsocActionPerformed
-
-    private void jTextFieldConsultaSQLAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldConsultaSQLAsocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldConsultaSQLAsocActionPerformed
-
     private void jButtonLimpiarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarAsocActionPerformed
         // TODO add your handling code here:
         jTextAreaAsoc.setText("");
     }//GEN-LAST:event_jButtonLimpiarAsocActionPerformed
-
-    private void jButtonConsultaSqlAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaSqlAsocActionPerformed
-        // TODO add your handling code here:
-        aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(jTextFieldConsultaSQLAsoc.getText());
-    }//GEN-LAST:event_jButtonConsultaSqlAsocActionPerformed
-
-    private void botonConsultaSQL1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultaSQL1ActionPerformed
-        // TODO add your handling code here:
-
-        arbolJ48ConInterfaz.cargarConsulta(textoConsultaSQLClasificacion.getText());
-    }//GEN-LAST:event_botonConsultaSQL1ActionPerformed
 
     private void botonEjecutarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarClasificacionActionPerformed
         // TODO add your handling code here:
@@ -1576,17 +1409,31 @@ public class ColmovilGUI extends javax.swing.JFrame {
         areaMostrarResultadosAsociacion.setText("");
     }//GEN-LAST:event_botonLimpiarAreaClasificacionActionPerformed
 
-    private void seleccionPerfilClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionPerfilClasificacionActionPerformed
+    private void jButtonConsultaSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaSQLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_seleccionPerfilClasificacionActionPerformed
+        aplicarAsociacion.realizarConsultaABaseDeDatosTipoWekaInstances(jTextFieldConsultaSQLPreproc.getText());
+    }//GEN-LAST:event_jButtonConsultaSQLActionPerformed
 
-    private void cargarPerfilClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarPerfilClasificacionActionPerformed
+    private void jButtonCargarPerfilPreprocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilPreprocActionPerformed
         // TODO add your handling code here:
         String consulta = "";
+        DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
         ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
-        consulta = consultasPredefinidas.retornarConsulta(seleccionPerfilClasificacion.getSelectedIndex(), seleccionMesClasificacion.getValue().toString());
-        arbolJ48ConInterfaz.cargarConsulta(consulta);
-    }//GEN-LAST:event_cargarPerfilClasificacionActionPerformed
+        //consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
+        consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilPreproc.getSelectedIndex(), jSpinnerMesPreproc.getValue().toString());
+        FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
+        try {
+            Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
+            Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
+            consultaAsociacion = aplicarAsociacion.algoritmoApriori(salida, Double.parseDouble(confianzaMinima.getValue().toString()));
+        } catch (Exception ex) {
+            Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCargarPerfilPreprocActionPerformed
+
+    private void jButtonDiscretizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiscretizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDiscretizarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1600,68 +1447,57 @@ public class ColmovilGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaMostrarResultados;
     private javax.swing.JTextArea areaMostrarResultadosAsociacion;
-    private javax.swing.JButton botonCargarDatosClustering;
-    private javax.swing.JButton botonConsultaSQL;
-    private javax.swing.JButton botonConsultaSQL1;
     private javax.swing.JButton botonEjecutar;
     private javax.swing.JButton botonEjecutarClasificacion;
     private javax.swing.JButton botonLimpiarArea;
     private javax.swing.JButton botonLimpiarAreaClasificacion;
-    private javax.swing.JButton cargarPerfilClasificacion;
     private javax.swing.JComboBox comboAlgortimo;
     private javax.swing.JComboBox comboAlgortimoClasificacion;
     private javax.swing.JSpinner confianzaMinima;
-    private javax.swing.JButton jButtonAbrir;
-    private javax.swing.JButton jButtonCargarPerfilAsoc;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCargarPerfilPreproc;
     private javax.swing.JButton jButtonConexionBD;
-    private javax.swing.JButton jButtonConsultaSqlAsoc;
+    private javax.swing.JButton jButtonConsultaSQL;
     private javax.swing.JButton jButtonDeshacer;
     private javax.swing.JButton jButtonDiscretizar;
     private javax.swing.JButton jButtonEjecutarAsoc;
     private javax.swing.JButton jButtonEliminarAtributos;
-    private javax.swing.JButton jButtonGuardar;
-    private javax.swing.JButton jButtonLimpiar;
     private javax.swing.JButton jButtonLimpiarAsoc;
     private javax.swing.JButton jButtonNinguno;
     private javax.swing.JButton jButtonSeleccionarTodo;
     private javax.swing.JComboBox jComboBoxAlgoritmoAsoc;
     private javax.swing.JComboBox jComboBoxNombreTablas;
-    private javax.swing.JComboBox jComboBoxPerfilAsoc;
+    private javax.swing.JComboBox jComboBoxPerfilPreproc;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelAlgoritmoAsoc;
+    private javax.swing.JLabel jLabelConsPersonPreproc;
     private javax.swing.JLabel jLabelDistinto;
     private javax.swing.JLabel jLabelGraficoDispersion;
-    private javax.swing.JLabel jLabelMesAsoc;
+    private javax.swing.JLabel jLabelMesPreproc;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNulos;
-    private javax.swing.JLabel jLabelPerfilAsoc;
+    private javax.swing.JLabel jLabelPerfilPreproc;
     private javax.swing.JLabel jLabelPorcentajeAsoc;
     private javax.swing.JLabel jLabelTipo;
     private javax.swing.JLabel jLabelTituloAsoc;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1670,7 +1506,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel jPanelCargaDatosAsoc;
     private javax.swing.JPanel jPanelGraficoBarras;
     private javax.swing.JPanel jPanelGraficoDispersion;
     private javax.swing.JPanel jPanelParametrosAsoc;
@@ -1680,13 +1515,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSpinner jSpinnerMesAsoc;
+    private javax.swing.JScrollPane jScrollPanePrincipal;
+    private javax.swing.JSpinner jSpinnerMesPreproc;
     private javax.swing.JSpinner jSpinnerPorcentajeAsoc;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableAtributos;
     private javax.swing.JTable jTableEstadistica;
     private javax.swing.JTextArea jTextAreaAsoc;
-    private javax.swing.JTextField jTextFieldConsultaSQLAsoc;
+    private javax.swing.JTextField jTextFieldConsultaSQLPreproc;
     private javax.swing.JTextField jTextFieldDistinto;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldNulos;
@@ -1695,12 +1531,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelGrafico;
     private javax.swing.JSpinner porcentajeDatos;
     private javax.swing.JSpinner porcentajeDatosClasificacion;
-    private javax.swing.JSpinner seleccionMes;
-    private javax.swing.JSpinner seleccionMesClasificacion;
     private javax.swing.JSpinner seleccionNumeroClusters;
-    private javax.swing.JComboBox seleccionPerfil;
-    private javax.swing.JComboBox seleccionPerfilClasificacion;
-    private javax.swing.JTextField textoConsultaSQL;
-    private javax.swing.JTextField textoConsultaSQLClasificacion;
     // End of variables declaration//GEN-END:variables
 }
