@@ -8,6 +8,7 @@ import Clustering.RecortarDatosEntrada;
 import Persistencia.FachadaBDConWeka;
 import java.awt.BorderLayout;
 import weka.classifiers.trees.J48;
+import weka.core.Instance;
 import weka.core.Instances;
 import weka.filters.unsupervised.attribute.Discretize;
 import weka.gui.treevisualizer.PlaceNode2;
@@ -20,30 +21,23 @@ import weka.filters.Filter;
  */
 public class ArbolJ48ConInterfaz {
 
-    Instances instancia;
+
 
     public ArbolJ48ConInterfaz() {
-        instancia = null;
-    }
-
-    public void cargarConsulta(String consulta) {
-        try {
-            Persistencia.FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
-            instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
-        } catch (Exception e) {
-        }
 
     }
 
-    public String construirArbolJ48(int porcentaje, int indiceCombobox) {
 
+    public String construirArbolJ48(int porcentaje, int indiceCombobox, Instances instanciaGeneral) {
+
+        Instances instancia=instanciaGeneral;
+        Instances instanciaSalida = new Instances(instancia);
         String salida = "";
         System.out.println("inice "+indiceCombobox);
-        Instances instanciaSalida = new Instances(instancia);
-        Discretize discretize = new Discretize();
+        //Discretize discretize = new Discretize();
 
         try {
-
+/*
             if (porcentaje < 100) {
                 RecortarDatosEntrada recortarDatosEntrada = new RecortarDatosEntrada();
                 instanciaSalida = recortarDatosEntrada.recontrarEntrada(instancia, porcentaje);
@@ -72,7 +66,7 @@ public class ArbolJ48ConInterfaz {
 
            
             //discretize.setOptions(new String[]{"-B", "5", "-V", "false"});
-            instanciaSalida = Filter.useFilter(instanciaSalida, discretize);
+            instanciaSalida = Filter.useFilter(instanciaSalida, discretize);*/
             weka.filters.unsupervised.attribute.NumericToNominal prueba = new weka.filters.unsupervised.attribute.NumericToNominal();
             Filter fil = new weka.filters.unsupervised.attribute.NumericToNominal();
             prueba.setInputFormat(instanciaSalida);
