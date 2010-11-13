@@ -111,7 +111,14 @@ public class ConsultasVistas {
         String consulta_sql="CREATE VIEW "+ nombreVista+" AS SELECT ";
         for(int i=0; i<atributos.size()-1; i++)
         {
-            consulta_sql+=atributos.elementAt(i)+"," ;
+            if(atributos.elementAt(i).equals("edad"))
+            {
+                consulta_sql+="YEAR(Curdate())-YEAR(fecha_nacimiento) as "+atributos.elementAt(i)+"," ;
+            }
+            else
+            {
+                consulta_sql+=atributos.elementAt(i)+"," ;
+            }
             
         }
         consulta_sql+=atributos.elementAt(atributos.size()-1);
