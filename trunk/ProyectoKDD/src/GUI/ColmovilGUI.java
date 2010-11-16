@@ -26,6 +26,8 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import weka.core.Instances;
@@ -47,7 +49,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
     String consultaAsociacion;
     ModeloTablaAtributos modeloTablaAtributos;
     ConsultasVistas objConsultasVistas;
+    DiscretizarGUI objDiscretizarGUI;
     int indice;
+    int valorIntervaloDiscretizacion;// este es el rango de discretizacion
     /*
      * INICIO CLUSTERING
      */
@@ -74,6 +78,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
      * Instancia general
      */
     Instances instanciaGeneral;
+    Instances instanciaSinDiscretizar;// esta instancia la usa heberth
 
     /** Creates new form ColmovilGUI */
     public ColmovilGUI() {
@@ -92,10 +97,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jTableAtributos.setModel(modeloTablaAtributos);
         jComboBoxNombreTablas.setEnabled(false);
         setLocationRelativeTo(null);
+        objDiscretizarGUI= new DiscretizarGUI();
+
         /*
          * Instancia general
          */
         instanciaGeneral = null;
+        valorIntervaloDiscretizacion=0;
     }
 
     //*********************************************  MODELO DE LA TABLA ********************************************
@@ -198,6 +206,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     }
 
     public void actualizarComboBox() {
+        vectorNombreTablas.remove("llamada");
         jComboBoxNombreTablas.setModel(new DefaultComboBoxModel(vectorNombreTablas));
     }
 
@@ -247,6 +256,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     public void llenarComboBoxNombreTablas() {
         Controladora objControladora = new Controladora();
         vectorNombreTablas = objControladora.consultaNombreTablas();
+        System.out.println("********* entra");
 //        for(int i=0; i<vector.size(); i++)
 //        {
 //            jComboBoxNombreTablas.addItem(vector.elementAt(i));
@@ -1320,7 +1330,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jComboBoxNombreTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNombreTablasActionPerformed
         // TODO add your handling code here:
         nombreTabla = jComboBoxNombreTablas.getSelectedItem().toString();
-        String nombreVista = "vista_" + nombreTabla;
+        String nombreVista="";
+        if(nombreTabla.substring(0,7).equals("llamada"))
+        {
+            nombreVista=nombreTabla;
+        }
+        else
+        {
+            nombreVista = "vista_" + nombreTabla;
+        }
         vectorNombreAtributos.clear();
         llenarTablaAtributos(nombreTabla);
         actualizarTabla();
@@ -1350,7 +1368,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonEliminarAtributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAtributosActionPerformed
         // TODO add your handling code here:
-        String nombreVista = "vista_" + nombreTabla;
+        String nombreVista = "";
+        if(nombreTabla.substring(0,7).equals("llamada"))
+        {
+            nombreVista=nombreTabla;
+        }
+        else
+        {
+            nombreVista = "vista_" + nombreTabla;
+        }
         boolean estaSeleccionado = false;
         String atributoSeleccionado;
         String atributoNoSeleccionado;
@@ -1425,6 +1451,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonCargarPerfilPreprocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilPreprocActionPerformed
         // TODO add your handling code here:
+        valorIntervaloDiscretizacion=objDiscretizarGUI.getValorIntervalo();
+        System.out.println("valor Disc: "+valorIntervaloDiscretizacion);
         String consulta = "";
         DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
         ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
@@ -1433,10 +1461,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
         FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
         try {
             Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
-            Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
+            instanciaSinDiscretizar= new Instances(instancia);// instancia que utiliza heberth
+            //Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
+            Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
             //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
             instanciaGeneral = new Instances(salida);
             consultaAsociacion = aplicarAsociacion.algoritmoApriori(instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
+            System.out.println(consultaAsociacion);
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1444,6 +1475,26 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonDiscretizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiscretizarActionPerformed
         // TODO add your handling code here:
+         int opcion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de Discretizar los Atributos Numéricos?", "Discretizar Atributos", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+         if(opcion==0)
+         {
+             try {
+                    try {
+                        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    } catch (IllegalAccessException ex) {
+                        Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    objDiscretizarGUI= new DiscretizarGUI();
+                    objDiscretizarGUI.setVisible(true);
+
+            } catch (Exception ex) {
+                Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+         }
     }//GEN-LAST:event_jButtonDiscretizarActionPerformed
     /**
      * @param args the command line arguments
