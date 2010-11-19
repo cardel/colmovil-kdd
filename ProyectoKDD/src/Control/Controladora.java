@@ -103,11 +103,11 @@ public class Controladora
                 vectorTipoAtributo.addElement(tabla.getString(1).toString());
             }
             //conexion.close();
-            //System.out.println("Conexion cerrada");
-            //        for(int j=0; j<vectorTipoAtributo.size(); j++)
-            //        {
-            //                System.out.println("vector: " + vectorTipoAtributo.elementAt(j));
-            //        }
+//            System.out.println("Conexion cerrada");
+//                    for(int j=0; j<vectorTipoAtributo.size(); j++)
+//                    {
+//                            System.out.println(" ++++++++++  vector tipo de atributo: " + vectorTipoAtributo.elementAt(j));
+//                    }
         } catch (Exception ex) {
             Logger.getLogger(Controladora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -361,7 +361,12 @@ public class Controladora
         System.out.println("eliminando");
     }
 
-
+    public void eliminarOutliers(String nombreVista, String nombreAtributo)
+    {
+        //ConsultasVistas objConsultasVistas= new ConsultasVistas();
+        //objConsultasVistas.borrarUnaVista(nombreVista);
+        
+    }
 
     
 }
