@@ -11,6 +11,8 @@
 
 package GUI;
 
+import Control.Controladora;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,11 +22,20 @@ import javax.swing.JOptionPane;
 public class LimpiarOutliersGUI extends javax.swing.JFrame {
     int minimo;
     int maximo;
+    String nombreTabla;
+    Vector<String> vectorTodosAtributos;
+    Vector<String> vectorAtributoSeleccionado;
 
     /** Creates new form LimpiarOutliersGUI */
-    public LimpiarOutliersGUI() {
+    public LimpiarOutliersGUI(String nombreTabla, Vector<String> vectorAtributo, Vector<String> atributoSeleccionado) {
         initComponents();
         setLocationRelativeTo(null);
+        nombreTabla=nombreTabla;
+        vectorTodosAtributos= new Vector<String>();
+        vectorTodosAtributos=vectorAtributo;
+
+        vectorAtributoSeleccionado= new Vector<String>();
+        vectorAtributoSeleccionado=atributoSeleccionado;
     }
 
     /** This method is called from within the constructor to
@@ -140,6 +151,18 @@ public class LimpiarOutliersGUI extends javax.swing.JFrame {
             System.out.print("Maximo Outliers: "+maximo);
             this.show(false);
         }
+
+       
+       String nombreVista= "vista_"+nombreTabla;
+       String atributoLimpiarOutliers="";
+       Controladora objControladora= new Controladora();
+      
+       System.out.println("tamano Vector :"+ vectorAtributoSeleccionado.size());
+       atributoLimpiarOutliers=vectorAtributoSeleccionado.elementAt(0);
+       //objControladora.eliminarOutliers(nombreVista, atributoLimpiarOutliers, vectorAtributosNoSeleccionados);
+       objControladora.eliminarOutliers(nombreVista, atributoLimpiarOutliers,vectorTodosAtributos, minimo, maximo);
+       
+       
         
     }//GEN-LAST:event_jButtonEliminarOutActionPerformed
 
@@ -162,18 +185,19 @@ public class LimpiarOutliersGUI extends javax.swing.JFrame {
         {
             evt.consume();
         }
+
     }//GEN-LAST:event_jTextFieldMinimoLimpiarOutKeyTyped
 
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LimpiarOutliersGUI().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new LimpiarOutliersGUI().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEliminarOut;

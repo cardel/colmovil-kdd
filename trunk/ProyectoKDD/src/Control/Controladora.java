@@ -361,11 +361,19 @@ public class Controladora
         System.out.println("eliminando");
     }
 
-    public void eliminarOutliers(String nombreVista, String nombreAtributo)
+    public void eliminarOutliers(String nombreVista, String nombreAtributoLimpiarOutliers,Vector<String> restoAtributos, int minimo, int maximo)
     {
-        //ConsultasVistas objConsultasVistas= new ConsultasVistas();
+        ConsultasVistas objConsultasVistas= new ConsultasVistas();
         //objConsultasVistas.borrarUnaVista(nombreVista);
-        
+        //if(nombreVista.equals("vista_cliente"))
+        //{
+            objConsultasVistas.crearVistaClienteSinOutliers(nombreVista, nombreAtributoLimpiarOutliers,restoAtributos, minimo, maximo);
+        //}
+        //else
+        //{
+            //objConsultasVistas.crearVistaSinOutliers(nombreVista, nombreAtributoLimpiarOutliers, restoAtributos);
+        //}
+            
     }
 
     

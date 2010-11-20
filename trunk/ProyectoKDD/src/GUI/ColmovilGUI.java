@@ -45,6 +45,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
     Vector<String> vectorNombreTablas = new Vector<String>();
     Vector<Vector> vectorEstadidticas = new Vector<Vector>();
     Vector<String> vectorNombreColumnaTablaEstadisticas;
+    Vector<String> vectorAtributo;
+    Vector<String> vectorAtributosSeleccionados;
     String nombreTabla;
     String consultaAsociacion;
     ModeloTablaAtributos modeloTablaAtributos;
@@ -97,8 +99,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
         modeloTablaAtributos = new ModeloTablaAtributos();
         jTableAtributos.setModel(modeloTablaAtributos);
         jComboBoxNombreTablas.setEnabled(false);
-        jButtonLimpiarNulos.setEnabled(false);
-        jButtonCargarPerfilPreproc.setEnabled(false);
+        //jButtonLimpiarNulos.setEnabled(false);
+        //jButtonCargarPerfilPreproc.setEnabled(false);
         setLocationRelativeTo(null);
         objDiscretizarGUI= new DiscretizarGUI();
 
@@ -244,7 +246,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
         {
             nombreVista = "vista_" + nombreTabla;
         }
-        Vector<String> vectorAtributo = new Vector<String>();
+        
+        vectorAtributo = new Vector<String>();
         Controladora objControladora = new Controladora();
         //System.out.println(objControladora.consultaNombreAtributos());
         vectorAtributo = objControladora.consultaNombreAtributos(nombreVista);
@@ -1445,7 +1448,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     atributoSeleccionado = jTableAtributos.getValueAt(i, 2).toString();
                     vectorAtributosSeleccionados.addElement(atributoSeleccionado);
                 } else {
-                    atributoNoSeleccionado = atributoSeleccionado = jTableAtributos.getValueAt(i, 2).toString();
+                    //atributoNoSeleccionado = atributoSeleccionado = jTableAtributos.getValueAt(i, 2).toString();
+                    atributoNoSeleccionado = jTableAtributos.getValueAt(i, 2).toString();
                     vectorAtributosNoSeleccionados.addElement(atributoNoSeleccionado);
                 }
             }
@@ -1463,6 +1467,46 @@ public class ColmovilGUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonEliminarAtributosActionPerformed
+
+   public Vector<String> retornarAtributosNoSeleccionados()
+   {
+       String atributoNoSeleccionado;
+       boolean estaSeleccionado=false;
+       Vector<String> vectorAtributosNoseleccionados= new Vector<String>();
+       for(int i=0; i< vectorNombreAtributos.size(); i++)
+       {
+           estaSeleccionado = Boolean.parseBoolean(jTableAtributos.getValueAt(i, 1).toString());
+           if(estaSeleccionado==false)
+           {
+                atributoNoSeleccionado = jTableAtributos.getValueAt(i, 2).toString();
+                vectorAtributosNoseleccionados.addElement(atributoNoSeleccionado);
+           }
+       }
+
+       return vectorAtributosNoseleccionados;
+   }
+
+
+   public void retornarAtributosSeleccionados()
+   {
+       String atributoSeleccionado;
+       boolean estaSeleccionado=false;
+       vectorAtributosSeleccionados= new Vector<String>();
+       for(int i=0; i< vectorNombreAtributos.size(); i++)
+       {
+           estaSeleccionado = Boolean.parseBoolean(jTableAtributos.getValueAt(i, 1).toString());
+           //System.out.println("esta seleccionado: "+estaSeleccionado);
+           if(estaSeleccionado==true)
+           {
+                atributoSeleccionado = jTableAtributos.getValueAt(i, 2).toString();
+                vectorAtributosSeleccionados.addElement(atributoSeleccionado);
+           }
+       }
+//       for(int i=0; i< vectorAtributosSeleccionados.size(); i++)
+//       {
+//           System.out.println("atibuto seleccionado: "+vectorAtributosSeleccionados.elementAt(i));
+//       }
+   }
 
     private void jButtonDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeshacerActionPerformed
         // TODO add your handling code here:
@@ -1586,9 +1630,17 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     } catch (UnsupportedLookAndFeelException ex) {
                         Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    retornarAtributosSeleccionados();
+                    if(vectorAtributosSeleccionados.size()>1)
+                    {
+                        JOptionPane.showMessageDialog(null, "Seleccione un solo atributo", "Un atributo", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else
+                    {
+                        objLimpiarOutliersGUI= new LimpiarOutliersGUI(nombreTabla, vectorAtributo, vectorAtributosSeleccionados);
+                        objLimpiarOutliersGUI.setVisible(true);
+                    }
 
-                    objLimpiarOutliersGUI= new LimpiarOutliersGUI();
-                    objLimpiarOutliersGUI.setVisible(true);
 
             } catch (Exception ex) {
                 Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
