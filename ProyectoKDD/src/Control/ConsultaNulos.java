@@ -57,7 +57,7 @@ public class ConsultaNulos
         int cantidadRegistrosTabla=0;
         String cantidadRegistros;
         int filas;
-        String sql_select_n= "SELECT * FROM "+nombreTabla+";";
+        String sql_select_n= "SELECT COUNT(*) FROM "+nombreTabla+";";
         //System.out.println("nombre de la tabla "+nombreTabla);
             try
             {
@@ -67,16 +67,16 @@ public class ConsultaNulos
 
                 while(cantDatos.next()){
                   cantidadRegistros = cantDatos.getString(1);
-                  //System.out.println("Cantidad de registros "+cantidadRegistros);
+                  System.out.println("Cantidad de registros "+cantidadRegistros);
                   cantidadRegistrosTabla= Integer.parseInt(cantidadRegistros);
-                 // System.out.println(cantidadRegistrosTabla);
+                  
                 }
                 //conn.close();
 
             } catch (SQLException e) {
-                System.out.println(e);
+                System.out.println("hola1: "+e);
             }
-            catch(Exception e){ System.out.println(e); }
+            catch(Exception e){ System.out.println("hola2: "+e); }
         //System.out.println("cantidad  de reg: "+cantidadRegistrosTabla);
         return cantidadRegistrosTabla;
 
