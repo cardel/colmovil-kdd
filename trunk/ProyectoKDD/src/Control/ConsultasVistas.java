@@ -135,73 +135,99 @@ public class ConsultasVistas {
         
    }
 
-   public void crearVistaSinOutliers(String nombreVista, String nombreAtributoLimpiarOutliers, Vector<String> restoAtributos)
-    {
-//        String tablaOriginal=nombreVista.substring(6);
-//        String consulta_sql="CREATE VIEW "+ nombreVista+" AS SELECT ";
-//        for(int i=0; i<atributos.size()-1; i++)
-//        {
-//            if(atributos.elementAt(i).equals("edad"))
-//            {
-//                consulta_sql+="YEAR(Curdate())-YEAR(fecha_nacimiento) as "+atributos.elementAt(i)+"," ;
-//            }
-//            else
-//            {
-//                consulta_sql+=atributos.elementAt(i)+"," ;
-//            }
-//
-//        }
-//        consulta_sql+=atributos.elementAt(atributos.size()-1);
-//        consulta_sql+=" FROM "+tablaOriginal +";";
-//        System.out.println("consulta completa :"+consulta_sql);
-//        try{
-//                ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
-//                System.out.println("***********************  crear vista: " );
-//            }
-//             catch(SQLException e){ System.out.println(e); }
-//             catch(Exception e){ System.out.println(e); }
 
-    }
-
-   public void crearVistaClienteSinOutliers(String nombreVista, String nombreAtributoLimpiarOutliers, Vector<String> todosAtributos, int minimo, int maximo)
+   public void crearVistaClienteSinOutliers(String atributoParaLimpiar,int minimo, int maximo)
    {
        // se crea una vista temporal de la vista cliente donde se quitan los outliers
        borrarUnaVista("vista_cliente");
-        String consulta_sql= "CREATE VIEW "+ "vista_cliente" +" AS SELECT idcliente, tipo_identificacion,numero_identificacion,nombre,apellido,direccion_residencia, estrato, email,YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad, fecha_nacimiento, genero, estado_civil  FROM cliente WHERE YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) BETWEEN "+ minimo +" AND "+ maximo +";";
-        try{
+       String consulta_sql="";
+       if(atributoParaLimpiar.equals("edad"))
+       {
+            consulta_sql= "CREATE VIEW "+ "vista_cliente" +" AS SELECT idcliente, tipo_identificacion,numero_identificacion,nombre,apellido,direccion_residencia, estrato, email,YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad, fecha_nacimiento, genero, estado_civil  FROM cliente WHERE YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) BETWEEN "+ minimo +" AND "+ maximo +";";
+            try{
             ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
             System.out.println("***********************  crear vista cliente sin outliers: " );
-        }
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e); }
+            }
+            catch(SQLException e){ System.out.println(e); }
+            catch(Exception e){ System.out.println(e); }
+       }
+       else
+       {
+           consulta_sql= "CREATE VIEW "+ "vista_cliente" +" AS SELECT idcliente, tipo_identificacion,numero_identificacion,nombre,apellido,direccion_residencia, estrato, email,YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad, fecha_nacimiento, genero, estado_civil  FROM cliente WHERE "+ atributoParaLimpiar +" BETWEEN "+ minimo +" AND "+ maximo +";";
+            try{
+            ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
+            System.out.println("***********************  crear vista cliente sin outliers: " );
+            }
+            catch(SQLException e){ System.out.println(e); }
+            catch(Exception e){ System.out.println(e); }
+       }
+        
 
+    }
 
-         //eliminamos la viasta_temporal
-         //borrarUnaVista("vista_temporal");
-//        String tablaOriginal=nombreVista.substring(6);
-//        String consulta_sql="CREATE VIEW "+ nombreVista+" AS SELECT ";
-//        for(int i=0; i<atributos.size()-1; i++)
-//        {
-//            if(atributos.elementAt(i).equals("edad"))
-//            {
-//                consulta_sql+="YEAR(Curdate())-YEAR(fecha_nacimiento) as "+atributos.elementAt(i)+"," ;
-//            }
-//            else
-//            {
-//                consulta_sql+=atributos.elementAt(i)+"," ;
-//            }
-//
-//        }
-//        consulta_sql+=atributos.elementAt(atributos.size()-1);
-//        consulta_sql+=" FROM "+tablaOriginal +";";
-//        System.out.println("consulta completa :"+consulta_sql);
-//        try{
-//                ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
-//                System.out.println("***********************  crear vista: " );
-//            }
-//             catch(SQLException e){ System.out.println(e); }
-//             catch(Exception e){ System.out.println(e); }
+   public void crearVistaLLamadasSinOutliers(String nombreVista,String atributoParaLimpiar,int minimo, int maximo)
+   {
+       // se crea una vista temporal de la vista cliente donde se quitan los outliers
+       String consulta_sql="";
+       borrarUnaVista(nombreVista);
+       if(atributoParaLimpiar.equals("duracion_segundos"))
+       {
+            consulta_sql= "CREATE VIEW "+ nombreVista +" AS SELECT DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S') as fecha_inicio, DATE_FORMAT(fecha_finalizacion, '%Y-%m-%d %H:%i:%S') as fecha_finalizacion, TIME_TO_SEC(TIMEDIFF(DATE_FORMAT(fecha_finalizacion, '%Y-%m-%d %H:%i:%S'), DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S'))) as duracion_segundos, id_contrato, numero_origen, id_operador_destino, numero_destino, pais_destino, utilizo_roaming, operador_roaming from llamada WHERE TIME_TO_SEC(TIMEDIFF(DATE_FORMAT(fecha_finalizacion, '%Y-%m-%d %H:%i:%S'), DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S')))  BETWEEN "+ minimo +" AND "+ maximo +";";
+            try{
+                ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
+                System.out.println("***********************  crear vista cliente sin outliers: " );
+            }
+             catch(SQLException e){ System.out.println(e); }
+             catch(Exception e){ System.out.println(e); }
 
+       }
+       else
+       {
+            consulta_sql= "CREATE VIEW "+ nombreVista +" AS SELECT DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S') as fecha_inicio, DATE_FORMAT(fecha_finalizacion, '%Y-%m-%d %H:%i:%S') as fecha_finalizacion, TIME_TO_SEC(TIMEDIFF(DATE_FORMAT(fecha_finalizacion, '%Y-%m-%d %H:%i:%S'), DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S'))) as duracion_segundos, id_contrato, numero_origen, id_operador_destino, numero_destino, pais_destino, utilizo_roaming, operador_roaming from llamada WHERE"+ atributoParaLimpiar  +" BETWEEN "+ minimo +" AND "+ maximo +";";
+            try{
+                ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
+                System.out.println("***********************  crear vista cliente sin outliers: " );
+            }
+             catch(SQLException e){ System.out.println(e); }
+             catch(Exception e){ System.out.println(e); }
+           }
+
+    }
+
+   public void crearVistaSinOutliers(String nombreVista, String nombreAtributoLimpiarOutliers, Vector<String> todosAtributos, int minimo, int maximo)
+   {
+       if(nombreVista.equals("vista_cliente"))
+       {
+           crearVistaClienteSinOutliers(nombreAtributoLimpiarOutliers,minimo, maximo);
+       }
+
+       else
+       {
+            if(nombreVista.substring(0,7).equals("llamada"))
+           {
+               crearVistaLLamadasSinOutliers(nombreVista,nombreAtributoLimpiarOutliers,minimo, maximo);
+           }
+           else
+           {
+                borrarUnaVista(nombreVista);
+                String tablaOriginal=nombreVista.substring(6);
+                String consulta_sql="CREATE VIEW "+ nombreVista+" AS SELECT ";
+                for(int i=0; i<todosAtributos.size()-1; i++)
+                {
+                    consulta_sql+=todosAtributos.elementAt(i)+"," ;
+                }
+                consulta_sql+=todosAtributos.elementAt(todosAtributos.size()-1);
+                consulta_sql+=" FROM "+tablaOriginal +" WHERE "+nombreAtributoLimpiarOutliers+" BETWEEN "+minimo+" AND "+maximo+";";
+                System.out.println("consulta completa :"+consulta_sql);
+                try{
+                        ResultSet consulta = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
+                        System.out.println("***********************  crear vista: " );
+                    }
+                     catch(SQLException e){ System.out.println(e); }
+                     catch(Exception e){ System.out.println(e); }
+           }
+       }
+        
     }
 }
          

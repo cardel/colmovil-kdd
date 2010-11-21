@@ -98,6 +98,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 //        jTableEstadistica.setModel(new DefaultTableModel(vectorEstadidticas, vectorNombreColumnaTablaEstadisticas));
         modeloTablaAtributos = new ModeloTablaAtributos();
         jTableAtributos.setModel(modeloTablaAtributos);
+        //jTableAtributos.removeColumnSelectionInterval(2, 2);
         jComboBoxNombreTablas.setEnabled(false);
         //jButtonLimpiarNulos.setEnabled(false);
         //jButtonCargarPerfilPreproc.setEnabled(false);
@@ -198,6 +199,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
             fireTableRowsUpdated(0, vectorNombreAtributos.size() - 1);
         }
+
+//        public void changeSelection(int rowIndex, int columnIndex, boolean toggle, boolean extend)
+//        {
+//                    if(columnIndex==0 || columnIndex==1)
+//                        return;
+//        }
     }
     //**************************************************************************** FIN MODELO DE LA TABLA  **************
 
@@ -238,7 +245,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         //String nombreVista = "vista_" + nombreTabla;
         String nombreVista="";
         //System.out.println("++++++++++++++  nombre tabla: "+nombreTabla.substring(0,7));
-        if(nombreTabla.substring(0,7).equals("llamada"))
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
         {
             nombreVista=nombreTabla;
         }
@@ -284,7 +291,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         Vector<String> vectorNombreEstadisticas = new Vector<String>();
         //String nombreVista = "vista_" + nombreTabla;
         String nombreVista="";
-        if(nombreTabla.substring(0,7).equals("llamada"))
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
         {
             nombreVista=nombreTabla;
         }
@@ -1322,7 +1329,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
        // String nombreVista = "vista_" + nombreTabla;
         String nombreVista="";
-        if(nombreTabla.substring(0,7).equals("llamada"))
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
         {
             nombreVista=nombreTabla;
         }
@@ -1331,56 +1338,62 @@ public class ColmovilGUI extends javax.swing.JFrame {
             nombreVista = "vista_" + nombreTabla;
         }
         int fila = jTableAtributos.getSelectedRow();
+        int columna=jTableAtributos.getSelectedColumn();
         int porcentajeNulosPorAtributo = 0;
         //int porcentajeNulosPorRegistro = 0;
-        Controladora objControladora = new Controladora();
-        ConsultaNulos objConsultaNulos = new ConsultaNulos();
-        String nombreAtributo = jTableAtributos.getValueAt(fila, 2).toString();
-        Vector<String> tipoAtributo = new Vector<String>();
-        Vector<String> distinto = new Vector<String>();
-        Vector<Integer> vectorDatosNumericos = new Vector<Integer>();
-        tipoAtributo = objControladora.consultaTipoAtributo(nombreAtributo, nombreVista);
-        distinto = objControladora.consultaDistintos(nombreAtributo, nombreVista);
-        porcentajeNulosPorAtributo = objConsultaNulos.porcentajeValoresNulosPorAtributo(nombreVista, nombreAtributo);
-        //porcentajeNulosPorRegistro = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
-        //JOptionPane.showMessageDialog(null, "fila No.: "+fila);
-        jTextFieldNombre.setText(nombreAtributo);
-        jTextFieldDistinto.setText(distinto.elementAt(0));
-        jTextFieldNulos.setText(Integer.toString(porcentajeNulosPorAtributo) + "%");
-        //jTextField1.setText(Integer.toString(porcentajeNulosPorRegistro) + "%");
-        int cantidadNulos = objConsultaNulos.contarValoresNulosPorAtributo(nombreVista, nombreAtributo);
-        int cantidadRegistros = objConsultaNulos.totalRegistros(nombreVista);
-        //*********************  mostrar grafico de barras
-        StackedBarChart grafico = new StackedBarChart();
-        imagenDelGrafico = grafico.createStackedBarChart(cantidadNulos, cantidadRegistros);
-        labelGrafico.setIcon(new ImageIcon(imagenDelGrafico));
-        //**********************************************************************
-        if (tipoAtributo.elementAt(0).equals("bigint") || tipoAtributo.elementAt(0).equals("int") || tipoAtributo.elementAt(0).equals("float")) {
-            jTextFieldTipo.setText("Numerico");
-            //**********  llenar tabla de estadísitcas para atributos numéricos
-            inicializarNombreColumnasTablaEstaditicasDatoNumerico();
-            vectorEstadidticas.clear();
-            llenarTablaEstadisticasDatoNumerico(nombreAtributo, nombreTabla);
-            //llenarTablaEstadisticasDatoNumerico(nombreAtributo, nombreVista);
-            actualizarTablaEstadisticas();
-            //***************************  mostrar Grafico de Dispersion
-            GraficoDispersion objGraficoDispersion = new GraficoDispersion();
-            vectorDatosNumericos = objControladora.consultaGraficoDispersion(nombreAtributo, nombreVista);
-            imagenDelGraficoDispersion = objGraficoDispersion.crearGraficodispersion(vectorDatosNumericos, nombreAtributo);
-            jLabelGraficoDispersion.setIcon(new ImageIcon(imagenDelGraficoDispersion));
-
-        } else {
-            if (tipoAtributo.elementAt(0).equals("varchar") || tipoAtributo.elementAt(0).equals("datetime") || tipoAtributo.elementAt(0).equals("date")) {
-                jTextFieldTipo.setText("Nominal");
-                //***********  llenar tabla de estadísitcas para atributos nominales
-                inicializarNombreColumnasTablaEstaditicasDatoNominal();
+        if(columna==2)
+        {
+            Controladora objControladora = new Controladora();
+            ConsultaNulos objConsultaNulos = new ConsultaNulos();
+            String nombreAtributo = jTableAtributos.getValueAt(fila, 2).toString();
+            Vector<String> tipoAtributo = new Vector<String>();
+            Vector<String> distinto = new Vector<String>();
+            Vector<Integer> vectorDatosNumericos = new Vector<Integer>();
+            tipoAtributo = objControladora.consultaTipoAtributo(nombreAtributo, nombreVista);
+            distinto = objControladora.consultaDistintos(nombreAtributo, nombreVista);
+            porcentajeNulosPorAtributo = objConsultaNulos.porcentajeValoresNulosPorAtributo(nombreVista, nombreAtributo);
+            //porcentajeNulosPorRegistro = objConsultaNulos.porcentajeValoresNulosPorRegistro(nombreTabla);
+            //JOptionPane.showMessageDialog(null, "fila No.: "+fila);
+            jTextFieldNombre.setText(nombreAtributo);
+            jTextFieldDistinto.setText(distinto.elementAt(0));
+            jTextFieldNulos.setText(Integer.toString(porcentajeNulosPorAtributo) + "%");
+            //jTextField1.setText(Integer.toString(porcentajeNulosPorRegistro) + "%");
+            int cantidadNulos = objConsultaNulos.contarValoresNulosPorAtributo(nombreVista, nombreAtributo);
+            int cantidadRegistros = objConsultaNulos.totalRegistros(nombreVista);
+            //*********************  mostrar grafico de barras
+            StackedBarChart grafico = new StackedBarChart();
+            imagenDelGrafico = grafico.createStackedBarChart(cantidadNulos, cantidadRegistros);
+            labelGrafico.setIcon(new ImageIcon(imagenDelGrafico));
+            //**********************************************************************
+            if (tipoAtributo.elementAt(0).equals("bigint") || tipoAtributo.elementAt(0).equals("int") || tipoAtributo.elementAt(0).equals("float"))
+            {
+                jTextFieldTipo.setText("Numerico");
+                //**********  llenar tabla de estadísitcas para atributos numéricos
+                inicializarNombreColumnasTablaEstaditicasDatoNumerico();
                 vectorEstadidticas.clear();
-                vectorEstadidticas = objControladora.consultaTablaEstadisticasAtributoNominal(nombreAtributo, nombreVista);
+                llenarTablaEstadisticasDatoNumerico(nombreAtributo, nombreTabla);
+                //llenarTablaEstadisticasDatoNumerico(nombreAtributo, nombreVista);
                 actualizarTablaEstadisticas();
+                //***************************  mostrar Grafico de Dispersion
+                GraficoDispersion objGraficoDispersion = new GraficoDispersion();
+                vectorDatosNumericos = objControladora.consultaGraficoDispersion(nombreAtributo, nombreVista);
+                imagenDelGraficoDispersion = objGraficoDispersion.crearGraficodispersion(vectorDatosNumericos, nombreAtributo);
+                jLabelGraficoDispersion.setIcon(new ImageIcon(imagenDelGraficoDispersion));
 
             } else {
-                jTextFieldTipo.setText(tipoAtributo.elementAt(0));
+                if (tipoAtributo.elementAt(0).equals("varchar") || tipoAtributo.elementAt(0).equals("datetime") || tipoAtributo.elementAt(0).equals("date")) {
+                    jTextFieldTipo.setText("Nominal");
+                    //***********  llenar tabla de estadísitcas para atributos nominales
+                    inicializarNombreColumnasTablaEstaditicasDatoNominal();
+                    vectorEstadidticas.clear();
+                    vectorEstadidticas = objControladora.consultaTablaEstadisticasAtributoNominal(nombreAtributo, nombreVista);
+                    actualizarTablaEstadisticas();
+
+                } else {
+                    jTextFieldTipo.setText(tipoAtributo.elementAt(0));
+                }
             }
+
         }
 
     }//GEN-LAST:event_jTableAtributosMouseClicked
@@ -1389,7 +1402,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         nombreTabla = jComboBoxNombreTablas.getSelectedItem().toString();
         String nombreVista="";
-        if(nombreTabla.substring(0,7).equals("llamada"))
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
         {
             nombreVista=nombreTabla;
         }
@@ -1427,7 +1440,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jButtonEliminarAtributosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAtributosActionPerformed
         // TODO add your handling code here:
         String nombreVista = "";
-        if(nombreTabla.substring(0,7).equals("llamada"))
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
         {
             nombreVista=nombreTabla;
         }
@@ -1511,7 +1524,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jButtonDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeshacerActionPerformed
         // TODO add your handling code here:
         String nombreVista="";
-        if(nombreTabla.substring(0,7).equals("llamada"))
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
         {
             nombreVista=nombreTabla;
         }
@@ -1579,7 +1592,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
             Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
             //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
             instanciaGeneral = new Instances(salida);
-            consultaAsociacion = aplicarAsociacion.algoritmoApriori(instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
+            //consultaAsociacion = aplicarAsociacion.algoritmoApriori(instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
             System.out.println(consultaAsociacion);
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1619,33 +1632,65 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonEliminarOutliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarOutliersActionPerformed
         // TODO add your handling code here:
-         int opcion = JOptionPane.showConfirmDialog(null, "Los registros cuyo atributo seleccionado se encuentren fuera del rango serán eliminados."+"\n" +"¿Esta seguro de eliminar?", "Eliminar Registros con Outliers", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-         if(opcion==0)
-         {
-             try {
-                    try {
-                        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    } catch (IllegalAccessException ex) {
-                        Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (UnsupportedLookAndFeelException ex) {
-                        Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    retornarAtributosSeleccionados();
-                    if(vectorAtributosSeleccionados.size()>1)
-                    {
-                        JOptionPane.showMessageDialog(null, "Seleccione un solo atributo", "Un atributo", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else
-                    {
-                        objLimpiarOutliersGUI= new LimpiarOutliersGUI(nombreTabla, vectorAtributo, vectorAtributosSeleccionados);
-                        objLimpiarOutliersGUI.setVisible(true);
-                    }
+        //String nombreVista="vista_"+nombreTabla;
+        String nombreVista="";
+        String tipoAtributo="";
+        Controladora objControladora= new Controladora();
+        if(nombreTabla.substring(0,7).equals("llamada") || nombreTabla.substring(0,7).equals("recarga"))
+        {
+            nombreVista=nombreTabla;
+        }
+        else
+        {
+            nombreVista = "vista_" + nombreTabla;
+        }
+        retornarAtributosSeleccionados();
+        if(vectorAtributosSeleccionados.size()>1 || vectorAtributosSeleccionados.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Seleccione un solo atributo", "Un atributo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+             tipoAtributo = objControladora.consultaTipoAtributo(vectorAtributosSeleccionados.firstElement(), nombreVista).firstElement();
+             if(tipoAtributo.equals("varchar") || tipoAtributo.equals("datetime") || tipoAtributo.equals("date"))
+             {
+                JOptionPane.showMessageDialog(null, "Solo para atributos numericos", "Error de Seleccion", JOptionPane.ERROR_MESSAGE);
+             }
+             else
+             {
+                 if(vectorAtributosSeleccionados.firstElement().substring(0, 3).equals("id_"))
+                 {
+                    JOptionPane.showMessageDialog(null, "No se pueden eliminar identificadores", "Error de Seleccion", JOptionPane.ERROR_MESSAGE);
+                 }
+                 else
+                 {
+                     int opcion = JOptionPane.showConfirmDialog(null, "Los registros cuyo atributo seleccionado se encuentren fuera del rango serán eliminados."+"\n" +"¿Esta seguro de eliminar?", "Eliminar Registros con Outliers", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+                     if(opcion==0)
+                     {
+                         try {
+                                try {
+                                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                                } catch (IllegalAccessException ex) {
+                                    Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (UnsupportedLookAndFeelException ex) {
+                                    Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+                                System.out.println("nombre Tabla :"+ nombreTabla);
+                                objLimpiarOutliersGUI= new LimpiarOutliersGUI(nombreVista, vectorAtributo, vectorAtributosSeleccionados);
+                                objLimpiarOutliersGUI.setVisible(true);
 
 
-            } catch (Exception ex) {
-                Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         }
+
+                        } catch (Exception ex) {
+                            Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                     }
+                 }
+             }
+             
+        }
+         
     }//GEN-LAST:event_jButtonEliminarOutliersActionPerformed
     /**
      * @param args the command line arguments
