@@ -27,10 +27,10 @@ public class LimpiarOutliersGUI extends javax.swing.JFrame {
     Vector<String> vectorAtributoSeleccionado;
 
     /** Creates new form LimpiarOutliersGUI */
-    public LimpiarOutliersGUI(String nombreTabla, Vector<String> vectorAtributo, Vector<String> atributoSeleccionado) {
+    public LimpiarOutliersGUI(String nombreTabla2, Vector<String> vectorAtributo, Vector<String> atributoSeleccionado) {
         initComponents();
         setLocationRelativeTo(null);
-        nombreTabla=nombreTabla;
+        nombreTabla=nombreTabla2;
         vectorTodosAtributos= new Vector<String>();
         vectorTodosAtributos=vectorAtributo;
 
@@ -149,21 +149,26 @@ public class LimpiarOutliersGUI extends javax.swing.JFrame {
             maximo=Integer.parseInt(jTextFieldMaximoLimpiarOut.getText());
             System.out.print("Minimo Outliers: "+minimo);
             System.out.print("Maximo Outliers: "+maximo);
-            this.show(false);
-        }
+            if(minimo>=maximo)
+            {
+                JOptionPane.showMessageDialog(null, "Valor minimo debe ser menor que valor maximo", "Intervalo incorrecto", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+               this.show(false);
+               String nombreVista= nombreTabla;
+               String atributoLimpiarOutliers="";
+               Controladora objControladora= new Controladora();
 
-       
-       String nombreVista= "vista_"+nombreTabla;
-       String atributoLimpiarOutliers="";
-       Controladora objControladora= new Controladora();
-      
-       System.out.println("tamano Vector :"+ vectorAtributoSeleccionado.size());
-       atributoLimpiarOutliers=vectorAtributoSeleccionado.elementAt(0);
-       //objControladora.eliminarOutliers(nombreVista, atributoLimpiarOutliers, vectorAtributosNoSeleccionados);
-       objControladora.eliminarOutliers(nombreVista, atributoLimpiarOutliers,vectorTodosAtributos, minimo, maximo);
-       
-       
-        
+               System.out.println("nombre Vista :"+ nombreVista);
+               System.out.println("tamano Vector :"+ vectorAtributoSeleccionado.size());
+               System.out.println("contenido Vector :"+ vectorAtributoSeleccionado.elementAt(0));
+               atributoLimpiarOutliers=vectorAtributoSeleccionado.elementAt(0);
+               //objControladora.eliminarOutliers(nombreVista, atributoLimpiarOutliers, vectorAtributosNoSeleccionados);
+               objControladora.eliminarOutliers(nombreVista, atributoLimpiarOutliers,vectorTodosAtributos, minimo, maximo);
+            }
+            
+        }        
     }//GEN-LAST:event_jButtonEliminarOutActionPerformed
 
     public int getValorMinimo()

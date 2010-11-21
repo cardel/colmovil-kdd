@@ -364,16 +364,7 @@ public class Controladora
     public void eliminarOutliers(String nombreVista, String nombreAtributoLimpiarOutliers,Vector<String> restoAtributos, int minimo, int maximo)
     {
         ConsultasVistas objConsultasVistas= new ConsultasVistas();
-        //objConsultasVistas.borrarUnaVista(nombreVista);
-        //if(nombreVista.equals("vista_cliente"))
-        //{
-            objConsultasVistas.crearVistaClienteSinOutliers(nombreVista, nombreAtributoLimpiarOutliers,restoAtributos, minimo, maximo);
-        //}
-        //else
-        //{
-            //objConsultasVistas.crearVistaSinOutliers(nombreVista, nombreAtributoLimpiarOutliers, restoAtributos);
-        //}
-            
+        objConsultasVistas.crearVistaSinOutliers(nombreVista, nombreAtributoLimpiarOutliers,restoAtributos, minimo, maximo);   
     }
 
     
