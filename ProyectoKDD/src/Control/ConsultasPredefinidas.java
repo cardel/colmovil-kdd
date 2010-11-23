@@ -90,6 +90,9 @@ public class ConsultasPredefinidas {
             case 20:
                 consulta = "select d1.fechaY, d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(t1.fecha) as fechaY, MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, fechaY, causa, estado_civil;";
                 break;
+            case 21:
+                consulta = "select d1.estrato,d1.genero ,d1.estado_civil from (select t3.genero, t3.estado_civil,t3.estrato from  vista_contrato as t2, vista_cliente as t3 where t2.id_cliente=t3.idcliente and t2.tipo_plan = 'Prepago') as d1 group by estrato,genero, estado_civil";
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");
                 return null;
@@ -172,6 +175,9 @@ public class ConsultasPredefinidas {
                 break;
             case 20:
                 consulta = "select d1.genero, d1.estado_civil, d1.causa from (select YEAR(t1.fecha) as fechaY, MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, fechaY, causa, estado_civil;";
+                break;
+            case 21:
+                consulta = "select d1.genero, d1.edad, d1.estado_civil,d1.estrato, d1.tipo_plan from (select t3.edad, t3.genero, t3.estado_civil,t3.estrato, t2.tipo_plan from  vista_contrato as t2, vista_cliente as t3 where t2.id_cliente=t3.idcliente and t2.tipo_plan = 'Prepago') as d1 group by genero,edad, estado_civil, estrato, tipo_plan";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");

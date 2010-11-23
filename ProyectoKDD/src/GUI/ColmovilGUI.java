@@ -65,7 +65,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     /*
      * INICIO ASOCIACION
      */
-    AplicarAsociacion aplicarAsociacion = new AplicarAsociacion();
+    AplicarAsociacion aplicarAsociacion;
     /*
      * FINAL ASOCIACION
      */
@@ -738,7 +738,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jLabelMesPreproc.setText("Mes");
 
-        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año" }));
+        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año", "Perfil plan prepago" }));
+        jComboBoxPerfilPreproc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPerfilPreprocActionPerformed(evt);
+            }
+        });
 
         jButtonCargarPerfilPreproc.setText("Cargar Perfil");
         jButtonCargarPerfilPreproc.addActionListener(new java.awt.event.ActionListener() {
@@ -899,6 +904,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jLabelAlgoritmoAsoc.setText("Seleccione Algoritmo");
 
         jComboBoxAlgoritmoAsoc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "APriori", "FPGrowth" }));
+        jComboBoxAlgoritmoAsoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAlgoritmoAsocActionPerformed(evt);
+            }
+        });
 
         jLabelPorcentajeAsoc.setText("Porcentaje Datos");
 
@@ -1147,6 +1157,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parametros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         comboAlgortimo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "K-Means", "DBScan" }));
+        comboAlgortimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboAlgortimoActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Ejecutar algortimo");
 
@@ -1549,7 +1564,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonEjecutarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEjecutarAsocActionPerformed
         // TODO add your handling code here:
-        jTextAreaAsoc.append(consultaAsociacion);
+        aplicarAsociacion = new AplicarAsociacion();
+        System.out.println("Algoritmo seleccionado "+jComboBoxAlgoritmoAsoc.getSelectedIndex());
+        
+        jTextAreaAsoc.append(aplicarAsociacion.aplicarAsociacionWeka(instanciaGeneral, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString())));
+        
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
     private void jButtonLimpiarAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarAsocActionPerformed
@@ -1582,6 +1601,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         String consulta = "";
         DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
         ConsultasPredefinidas consultasPredefinidas = new ConsultasPredefinidas();
+        System.out.println("indice"+jComboBoxPerfilPreproc.getSelectedIndex());
         //consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilAsoc.getSelectedIndex(), jSpinnerMesAsoc.getValue().toString());
         consulta = consultasPredefinidas.retornarConsulta(jComboBoxPerfilPreproc.getSelectedIndex(), jSpinnerMesPreproc.getValue().toString());
         FachadaBDConWeka fachadaBDConWeka = new FachadaBDConWeka();
@@ -1592,8 +1612,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
             Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
             //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
             instanciaGeneral = new Instances(salida);
-            //consultaAsociacion = aplicarAsociacion.algoritmoApriori(instanciaGeneral, Double.parseDouble(confianzaMinima.getValue().toString()));
-            System.out.println(consultaAsociacion);
+          
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1692,6 +1711,18 @@ public class ColmovilGUI extends javax.swing.JFrame {
         }
          
     }//GEN-LAST:event_jButtonEliminarOutliersActionPerformed
+
+    private void jComboBoxPerfilPreprocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPerfilPreprocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPerfilPreprocActionPerformed
+
+    private void jComboBoxAlgoritmoAsocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlgoritmoAsocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAlgoritmoAsocActionPerformed
+
+    private void comboAlgortimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAlgortimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboAlgortimoActionPerformed
     /**
      * @param args the command line arguments
      */
