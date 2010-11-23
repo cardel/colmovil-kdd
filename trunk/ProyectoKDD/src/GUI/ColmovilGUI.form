@@ -738,7 +738,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxPerfilPreproc">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="21">
+                          <StringArray count="22">
                             <StringItem index="0" value="N&#xf9;mero llamadas por hora"/>
                             <StringItem index="1" value="Promedio duracion llamadas por hora"/>
                             <StringItem index="2" value="Numero llamadas por dia"/>
@@ -760,9 +760,13 @@
                             <StringItem index="18" value="Causa retiro por sexo, edad y estado civil"/>
                             <StringItem index="19" value="Causa retiro por sexo, edad y estado civil por mes en todos los a&#xf1;os"/>
                             <StringItem index="20" value="Causa retiro por sexo, edad y estado civil por mes en cada a&#xf1;o"/>
+                            <StringItem index="21" value="Perfil plan prepago"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxPerfilPreprocActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonCargarPerfilPreproc">
                       <Properties>
@@ -986,6 +990,9 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAlgoritmoAsocActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelPorcentajeAsoc">
                       <Properties>
@@ -1427,6 +1434,9 @@
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboAlgortimoActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
