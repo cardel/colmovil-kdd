@@ -1567,7 +1567,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         aplicarAsociacion = new AplicarAsociacion();
         System.out.println("Algoritmo seleccionado "+jComboBoxAlgoritmoAsoc.getSelectedIndex());
         
-        jTextAreaAsoc.append(aplicarAsociacion.aplicarAsociacionWeka(instanciaGeneral, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString())));
+        jTextAreaAsoc.append(aplicarAsociacion.aplicarAprioriWeka(instanciaGeneral, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString())));
         
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
