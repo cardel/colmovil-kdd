@@ -367,5 +367,12 @@ public class Controladora
         objConsultasVistas.crearVistaSinOutliers(nombreVista, nombreAtributoLimpiarOutliers,restoAtributos, minimo, maximo);   
     }
 
+    public void llenarAtributosConNull(String nombreVista, Vector<String> vectorAtributos)
+    {
+        ConsultasVistas objConsultasVistas= new ConsultasVistas();
+        objConsultasVistas.llenarConNull(nombreVista, vectorAtributos);
+
+    }
+
     
 }

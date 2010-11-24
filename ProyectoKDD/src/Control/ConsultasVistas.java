@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import weka.core.Instances;
 
 
 /**
@@ -21,6 +22,7 @@ public class ConsultasVistas {
     FachadaBDConWeka objFachadaBDConWeka;
     FachadaBD objFachadaBD;
     Vector<String> nombreVistas;
+    Instances instancia;
 
     public ConsultasVistas() {
         objFachadaBDConWeka= new FachadaBDConWeka();
@@ -229,20 +231,50 @@ public class ConsultasVistas {
        }
         
     }
+
+   public void llenarConNull(String nombreVista, Vector<String> vectorAtributosParaCambiar)
+    {
+       String consulta_sql="";
+       for(int i=0; i<vectorAtributosParaCambiar.size(); i++)
+       {
+           consulta_sql="UPDATE "+nombreVista+" SET "+vectorAtributosParaCambiar.elementAt(i)+"= NULL WHERE "+ vectorAtributosParaCambiar.elementAt(i)+"= \"\" ";
+           try{
+                Connection conn= objFachadaBD.abrirConexion();
+                Statement sentencia = conn.createStatement();
+                int filas = sentencia.executeUpdate(consulta_sql);
+            }
+             catch(SQLException e){ System.out.println(e); }
+             catch(Exception e){ System.out.println(e); }
+           System.out.println("consulta update: "+consulta_sql);
+       }
+    }
+   
+   public void discretizarEdadyEstrato()
+   {
+        String consulta_sql="CREATE VIEW vista_cliente AS SELECT idcliente, tipo_identificacion, numero_identificacion, nombre, apellido, direccion_residencia, estrato, CAST(estrato AS CHAR) AS estrato_nominal, email, YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad, ("
+                                    + " CASE WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=18 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <40 THEN 'joven'"
+                                    + " WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=40 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <65 THEN 'adulto'"
+                                    + " WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=65 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <100 THEN 'adulto_Mayor'"
+                                    + " END) AS edad_nominal, "
+                                    + " fecha_nacimiento, genero, estado_civil "
+                          + "FROM cliente";
+       
+        try{
+            ResultSet resultado = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(consulta_sql);
+            System.out.println("***********************  instancia " );
+
+        }
+         catch(SQLException e){ System.out.println(e); }
+         catch(Exception e){ System.out.println(e); }
+       
+   }
+
+   public Instances retornarInstancia()
+    {
+       //Instances nuevaInstancia= new Instances(instancia);
+       return instancia;
+
+    }
 }
          
          
-        
-    
-
-//CREATE VIEW vista_prueba AS SELECT nombre, YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad
-//FROM vista_cliente
-//WHERE edad
-//BETWEEN 18
-//AND 20
-
-
-//create view vista_temporal as
-//SELECT YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad
-//FROM cliente
-//WHERE YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <100
