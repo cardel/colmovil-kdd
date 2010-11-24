@@ -41,7 +41,7 @@ public class AplicarAsociacion {
 
     }
 
-    public String aplicarAprioriWeka(Instances instanciaInterna,int algoritmo, int porcentaje, Double confianzaMinima) {
+    public String aplicarAsociacionWeka(Instances instanciaInterna,int algoritmo, int porcentaje, Double confianzaMinima) {
         String salida = "";
         this.instancia = instanciaInterna;
         if (porcentaje < 100) {
