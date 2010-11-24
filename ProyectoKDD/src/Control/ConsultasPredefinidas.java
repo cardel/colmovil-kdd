@@ -93,6 +93,9 @@ public class ConsultasPredefinidas {
             case 21:
                 consulta = "select d1.estrato,d1.genero ,d1.estado_civil from (select t3.genero, t3.estado_civil,t3.estrato from  vista_contrato as t2, vista_cliente as t3 where t2.id_cliente=t3.idcliente and t2.tipo_plan = 'Prepago') as d1 group by estrato,genero, estado_civil";
                 break;
+            case 22:
+                consulta = "select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil;";
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");
                 return null;

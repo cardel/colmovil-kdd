@@ -72,14 +72,14 @@ public class ArbolJ48ConInterfaz {
             instanciaSalida = Filter.useFilter(instanciaSalida, discretize);*/
 
 
-
+            Instances data =instanciaGeneral;
 
             if(indiceCombobox==21)
             {
                 Remove remove;
                 remove = new Remove();
                // Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
-                Instances data =instanciaGeneral;
+                
 
               //  discretize.setOptions(new String[]{"-R","3","-B","4","-V","false"});
                 remove.setAttributeIndices("1,6");
@@ -95,6 +95,15 @@ public class ArbolJ48ConInterfaz {
                 discretize.setOptions(new String[]{"-R", "4", "-B", ""+porcentaje, "-V", "false"});
                 instanciaSalida = Filter.useFilter(instanciaSalida, discretize);
             }
+               // ESTA ES PARA SI LA CONSULTA ES PERSONALIZADA
+           /* if(personalizado=="si")
+            {
+
+                Discretize discretize = new Discretize();
+                discretize.setInputFormat(data);
+                discretize.setOptions(new String[]{"-R", ""+data.numAttributes(), "-B", ""+porcentaje, "-V", "false"});
+                instanciaSalida = Filter.useFilter(instanciaSalida, discretize);
+            }*/
 
            
 
