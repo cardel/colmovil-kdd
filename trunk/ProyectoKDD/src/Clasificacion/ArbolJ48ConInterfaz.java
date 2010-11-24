@@ -14,6 +14,7 @@ import weka.filters.unsupervised.attribute.Discretize;
 import weka.gui.treevisualizer.PlaceNode2;
 import weka.gui.treevisualizer.TreeVisualizer;
 import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.Remove;
 
 /**
  *
@@ -33,7 +34,9 @@ public class ArbolJ48ConInterfaz {
         Instances instancia=instanciaGeneral;
         Instances instanciaSalida = new Instances(instancia);
         String salida = "";
-        System.out.println("inice "+indiceCombobox);
+        System.out.println("inice "+ indiceCombobox);
+        System.out.println("porcentaje "+ indiceCombobox);
+        System.out.println("instanciaGeneral "+ instanciaGeneral);
         //Discretize discretize = new Discretize();
 
         try {
@@ -67,6 +70,43 @@ public class ArbolJ48ConInterfaz {
            
             //discretize.setOptions(new String[]{"-B", "5", "-V", "false"});
             instanciaSalida = Filter.useFilter(instanciaSalida, discretize);*/
+
+
+
+
+            if(indiceCombobox==21)
+            {
+                Remove remove;
+                remove = new Remove();
+               // Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
+                Instances data =instanciaGeneral;
+
+              //  discretize.setOptions(new String[]{"-R","3","-B","4","-V","false"});
+                remove.setAttributeIndices("1,6");
+                remove.setInvertSelection(new Boolean("false").booleanValue());
+                remove.setInputFormat(data);
+                data = Filter.useFilter(data, remove);
+                instanciaSalida = new Instances(data);
+
+
+
+                Discretize discretize = new Discretize();
+                discretize.setInputFormat(data);
+                discretize.setOptions(new String[]{"-R", "4", "-B", ""+porcentaje, "-V", "false"});
+                instanciaSalida = Filter.useFilter(instanciaSalida, discretize);
+            }
+
+           
+
+
+
+
+
+
+
+
+
+
             weka.filters.unsupervised.attribute.NumericToNominal prueba = new weka.filters.unsupervised.attribute.NumericToNominal();
             Filter fil = new weka.filters.unsupervised.attribute.NumericToNominal();
             prueba.setInputFormat(instanciaSalida);
@@ -101,9 +141,13 @@ public class ArbolJ48ConInterfaz {
 
             jf.setVisible(true);
             tv.fitToScreen();
+            
+
+
+
 
         } catch (Exception e) {
-            System.out.println(e.toString());
+            //System.out.println(e.toString());
         }
         return salida;
     }

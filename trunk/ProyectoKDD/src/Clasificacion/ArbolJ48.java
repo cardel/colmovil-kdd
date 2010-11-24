@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Clasificacion;
 
 /**
@@ -29,7 +28,7 @@ import weka.filters.Filter;
 import weka.core.Instances;
 
 
- import weka.experiment.InstanceQuery;
+import weka.experiment.InstanceQuery;
 
 import javax.swing.JFrame;
 
@@ -39,7 +38,8 @@ import weka.gui.treevisualizer.PlaceNode2;
 import weka.gui.treevisualizer.TreeVisualizer;
 
 public class ArbolJ48 {
-  public static void main(String args[]) throws Exception {
+
+    public static void main(String args[]) throws Exception {
 
 
 
@@ -64,7 +64,7 @@ public class ArbolJ48 {
         query.setPassword(password);
         query.connectToDatabase();
         //PROMEDIO DURACION LLAMADAS POR HORA, POR SEXO, EDAD Y ESTADO CIVIL
-       // Instances data = query.retrieveInstances("select d1.hora, d1.genero, d1.edad, d1.estado_civil, AVG(duracion_segundos) as promedio_llamada from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora");
+        // Instances data = query.retrieveInstances("select d1.hora, d1.genero, d1.edad, d1.estado_civil, AVG(duracion_segundos) as promedio_llamada from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora");
         //NUMERO DE LLAMADAS POR HORA, POR SEXO, POR EDAD Y ESTADO CIVIL
         // Instances data = query.retrieveInstances("select d1.hora, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select HOUR(t1.fecha_inicio) as hora, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil, hora")
         //NUMERO DE LLAMADAS POR DIAS , POR SEXO, EDAD Y ESTADO CIVIL.
@@ -74,79 +74,95 @@ public class ArbolJ48 {
         //PROMEDIO DURACION LLAMADA POR SEXO, EDAD Y ESTADO CIVIL.
 
         //DESDE AQUI SE UTILIZALAS OPCIONES CON EL INDICE DE ATRIBUTO 5
-      //  Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
+        //  Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
         //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
         // NUMERO DE LLAMADAS POR SEXO EDAD ESTADO CIVIL A DESTINO
-      //nota st arbol sisal muy gran entoncs lo dejo aqui por si algo con el zoom de j48 vsi se puede ver
-         // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
-      // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
+        //nota st arbol sisal muy gran entoncs lo dejo aqui por si algo con el zoom de j48 vsi se puede ver
+        // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
+        // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
 
         //PROMEDIO DURACION LLAMADAS POR SEXO,EDAD,ESTADO CIVIL A DESTINO
         //este ARBOL TAMBIEN ES GRANDE PERO CON EL ZOMM DE J48 SE VE BIEN
         //ESTE SE UTILIZA EL FILTRO 3
-       // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
-      // PLANES DE VOZ POR SEXO EDAD Y ESTADO CIVIL
+        // Instances data = query.retrieveInstances("select d1.pais_destino, d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t1.duracion_segundos, t1.pais_destino, t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by pais_destino, genero, edad, estado_civil");
+        // PLANES DE VOZ POR SEXO EDAD Y ESTADO CIVIL
         //filtro 1
-       // Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by genero, edad, estado_civil");
-       //PLANES DE DATOS POR SEXO EDAD Y ESTADO CIVIL
-       //ESTE TAMBIEN ES GRANDECITO FILTRO 1;
+        // Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_voz as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_voz=t3.id_plan_voz) as d1 group by genero, edad, estado_civil");
+        //PLANES DE DATOS POR SEXO EDAD Y ESTADO CIVIL
+        //ESTE TAMBIEN ES GRANDECITO FILTRO 1;
         //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.nombre, d1.estado_civil, count(*) as total from (select t1.genero, t1.estado_civil, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t3.nombre from vista_cliente as t1, vista_contrato as t2, vista_plan_datos as t3 where t1.idcliente=t2.id_cliente and t2.id_plan_datos=t3.id_plan_datos) as d1 group by genero, edad, estado_civil");
         //MOALIDAD SERVICIO POR SEXO ESTRATO Y EDAD
         //FILTRO 1
 
         ///SE VA O NO SE VA
         // Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by genero, edad, causa, estado_civil");
-         Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
-       //  Instances data = query.retrieveInstances("select d1.fechaY, d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(t1.fecha) as fechaY, MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, fechaY, causa, estado_civil");
+        //  Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
+        //  Instances data = query.retrieveInstances("select d1.fechaY, d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(t1.fecha) as fechaY, MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, fechaY, causa, estado_civil");
+
+
+
+        // ESTE ES EL VERDADERO SE VA O NO SE VA
+        // Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
+        // discretize.setOptions(new String[]{"-R","3","-B","4","-V","false"});
+        //remove.setAttributeIndices("1,6");
+
+
+        ///PERFIL PLANES
+
+        //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estrato,count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan,estrato");
+        //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil,d1.estrato, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil, estrato");
+        Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil  from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil, estrato");
+
         Remove remove;
         remove = new Remove();
-        remove.setAttributeIndices("1,6");
-         ///////////////////////////////////////////////////////////////
+       // remove.setAttributeIndices("5");
+        ///////////////////////////////////////////////////////////////
         remove.setInvertSelection(new Boolean("false").booleanValue());
         remove.setInputFormat(data);
-        data = Filter.useFilter(data,remove);
+        data = Filter.useFilter(data, remove);
         System.out.println(data);
 
         //Instances instanciaSalida = new Instances(instanciaInterna);
         Instances instanciaSalida = new Instances(data);
         Discretize discretize = new Discretize();
-    //   discretize.setBins(15);
-       //discretize.setAttributeIndicesArray(new int[]{2});
+        discretize.setInputFormat(data);
+        //   discretize.setBins(15);
+        //discretize.setAttributeIndicesArray(new int[]{2});
 
-     //   -B
+        //   -B
 
 
 
-       //discretize.setInvertSelection(true);
+        //discretize.setInvertSelection(true);
 
         try {
             discretize.setInputFormat(data);
-           // discretize.setOptions(new String[]{"-R","5","-B","2","-V","false"});
-            discretize.setOptions(new String[]{"-R","3","-B","4","-V","false"});
-           // discretize.setOptions(new String[]{"-R","5","-B","2","-V","true"});
+            // discretize.setOptions(new String[]{"-R","5","-B","2","-V","false"});
+            discretize.setOptions(new String[]{"-R", "4", "-B", "2", "-V", "false"});
+            // discretize.setOptions(new String[]{"-R","5","-B","2","-V","true"});
 
 
-            instanciaSalida=Filter.useFilter(instanciaSalida, discretize);
+            instanciaSalida = Filter.useFilter(instanciaSalida, discretize);
 
-            } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
-      //  return instanciaSalida;
+        //  return instanciaSalida;
 
 
 
 
 
 
-                weka.filters.unsupervised.attribute.NumericToNominal prueba= new weka.filters.unsupervised.attribute.NumericToNominal();
+        weka.filters.unsupervised.attribute.NumericToNominal prueba = new weka.filters.unsupervised.attribute.NumericToNominal();
 
 
 
-      //  System.out.println(data);
+        //  System.out.println(data);
 
 
 
-        Filter fil=new weka.filters.unsupervised.attribute.NumericToNominal();
+        Filter fil = new weka.filters.unsupervised.attribute.NumericToNominal();
         prueba.setInputFormat(instanciaSalida);
 
 
@@ -155,7 +171,7 @@ public class ArbolJ48 {
         //Q SERIA OUTLIERS Y VALORES EXTREMOS
         // prueba.setOptions(new String[]{"-R", "first-last","-O" ,"3.0","-E", "6.0","-P","-M","-E-as-O"});
 
-       prueba.setOptions(new String[]{"-R", "first-last"});
+        prueba.setOptions(new String[]{"-R", "first-last"});
 
 
         //ACA SE USA EL FILTRO
@@ -173,70 +189,70 @@ public class ArbolJ48 {
 
 
 
-    // train classifier
-    J48 cls = new J48();
-   // Instances data = new Instances(new BufferedReader(new FileReader("./datos/weather.arff")));
-    filteredData.setClassIndex(filteredData.numAttributes() - 1);
-    cls.buildClassifier(filteredData);
+        // train classifier
+        J48 cls = new J48();
+        // Instances data = new Instances(new BufferedReader(new FileReader("./datos/weather.arff")));
+        filteredData.setClassIndex(filteredData.numAttributes() - 1);
+        cls.buildClassifier(filteredData);
 
-    System.out.println(cls.binarySplitsTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.confidenceFactorTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.debugTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.getRevision());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.getTechnicalInformation().toString());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.getTechnicalInformation().getRevision());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.globalInfo());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-   // System.out.println(cls.graph());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.minNumObjTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.numFoldsTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-   // System.out.println(cls.prefix());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.reducedErrorPruningTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.saveInstanceDataTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.seedTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.subtreeRaisingTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.toString());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.toSummaryString());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.unprunedTipText());
-    System.out.println("///////////////////////////////////////////////////////////////////////////");
-    System.out.println(cls.useLaplaceTipText());
-
-
+        System.out.println(cls.binarySplitsTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.confidenceFactorTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.debugTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.getRevision());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.getTechnicalInformation().toString());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.getTechnicalInformation().getRevision());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.globalInfo());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        // System.out.println(cls.graph());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.minNumObjTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.numFoldsTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        // System.out.println(cls.prefix());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.reducedErrorPruningTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.saveInstanceDataTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.seedTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.subtreeRaisingTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.toString());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.toSummaryString());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.unprunedTipText());
+        System.out.println("///////////////////////////////////////////////////////////////////////////");
+        System.out.println(cls.useLaplaceTipText());
 
 
-    // display classifier
-    final javax.swing.JFrame jf =
-    new javax.swing.JFrame("VISUALIZADOR DE ARBOL WEKA J48");
-    jf.setSize(500,400);
-    jf.getContentPane().setLayout(new BorderLayout());
-    TreeVisualizer tv = new TreeVisualizer(null,
-        cls.graph(),
-        new PlaceNode2());
-    jf.getContentPane().add(tv, BorderLayout.CENTER);
-    jf.addWindowListener(new java.awt.event.WindowAdapter() {
-      public void windowClosing(java.awt.event.WindowEvent e) {
-        jf.dispose();
-      }
-    });
 
-    jf.setVisible(true);
-    tv.fitToScreen();
-  }
 
+        // display classifier
+        final javax.swing.JFrame jf =
+                new javax.swing.JFrame("VISUALIZADOR DE ARBOL WEKA J48");
+        jf.setSize(500, 400);
+        jf.getContentPane().setLayout(new BorderLayout());
+        TreeVisualizer tv = new TreeVisualizer(null,
+                cls.graph(),
+                new PlaceNode2());
+        jf.getContentPane().add(tv, BorderLayout.CENTER);
+        jf.addWindowListener(new java.awt.event.WindowAdapter() {
+
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                jf.dispose();
+            }
+        });
+
+        jf.setVisible(true);
+        tv.fitToScreen();
+    }
 }
