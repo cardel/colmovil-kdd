@@ -386,7 +386,7 @@
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldNulosTabla" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="39" max="32767" attributes="0"/>
+                              <EmptySpace pref="40" max="32767" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="92" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -524,7 +524,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelGrafico" alignment="0" pref="212" max="32767" attributes="0"/>
+                          <Component id="labelGrafico" alignment="0" pref="213" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -646,7 +646,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelConsPersonPreproc" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldConsultaSQLPreproc" pref="501" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldConsultaSQLPreproc" pref="505" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -732,29 +732,46 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxPerfilPreproc">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="22">
+                          <StringArray count="39">
                             <StringItem index="0" value="N&#xf9;mero llamadas por hora"/>
                             <StringItem index="1" value="Promedio duracion llamadas por hora"/>
                             <StringItem index="2" value="Numero llamadas por dia"/>
                             <StringItem index="3" value="Uso de la red por dia"/>
-                            <StringItem index="4" value="N&#xf9;mero llamadas por hora por sexo, edad y estado civil"/>
-                            <StringItem index="5" value="Promedio duracion llamadas por hora por sexo, edad y estado civil"/>
-                            <StringItem index="6" value="Numero llamadas por dia por sexo, edad y estado civil"/>
-                            <StringItem index="7" value="Uso de la red por dia por sexo, edad y estado civil"/>
-                            <StringItem index="8" value="N&#xfa;mero llamadas por sexo, edad y estado civil"/>
-                            <StringItem index="9" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil"/>
-                            <StringItem index="10" value="N&#xfa;mero llamadas por sexo, edad y estado civil a destino"/>
-                            <StringItem index="11" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil a destino"/>
-                            <StringItem index="12" value="Planes de voz por sexo, edad y estado civil"/>
-                            <StringItem index="13" value="Planes de datos por sexo, edad y estado civil "/>
-                            <StringItem index="14" value="Modalidad servicio por sexo, estrato y edad"/>
-                            <StringItem index="15" value="Modalidad servicio por sexo, edad, estrato y estado civil"/>
-                            <StringItem index="16" value="Numero de recargas por medio por d&#xed;a"/>
-                            <StringItem index="17" value="Valor promedio por recargas por medio por d&#xed;a"/>
-                            <StringItem index="18" value="Causa retiro por sexo, edad y estado civil"/>
-                            <StringItem index="19" value="Causa retiro por sexo, edad y estado civil por mes en todos los a&#xf1;os"/>
-                            <StringItem index="20" value="Causa retiro por sexo, edad y estado civil por mes en cada a&#xf1;o"/>
-                            <StringItem index="21" value="Perfil plan prepago"/>
+                            <StringItem index="4" value="N&#xf9;mero llamadas por hora por sexo"/>
+                            <StringItem index="5" value="edad y estado civil"/>
+                            <StringItem index="6" value="Promedio duracion llamadas por hora por sexo"/>
+                            <StringItem index="7" value="edad y estado civil"/>
+                            <StringItem index="8" value="Numero llamadas por dia por sexo"/>
+                            <StringItem index="9" value="edad y estado civil"/>
+                            <StringItem index="10" value="Uso de la red por dia por sexo"/>
+                            <StringItem index="11" value="edad y estado civil"/>
+                            <StringItem index="12" value="N&#xfa;mero llamadas por sexo"/>
+                            <StringItem index="13" value="edad y estado civil"/>
+                            <StringItem index="14" value="Promedio duraci&#xf3;n llamadas por sexo"/>
+                            <StringItem index="15" value="edad y estado civil"/>
+                            <StringItem index="16" value="N&#xfa;mero llamadas por sexo"/>
+                            <StringItem index="17" value="edad y estado civil a destino"/>
+                            <StringItem index="18" value="Promedio duraci&#xf3;n llamadas por sexo"/>
+                            <StringItem index="19" value="edad y estado civil a destino"/>
+                            <StringItem index="20" value="Planes de voz por sexo"/>
+                            <StringItem index="21" value="edad y estado civil"/>
+                            <StringItem index="22" value="Planes de datos por sexo"/>
+                            <StringItem index="23" value="edad y estado civil"/>
+                            <StringItem index="24" value="Modalidad servicio por sexo"/>
+                            <StringItem index="25" value="estrato y edad"/>
+                            <StringItem index="26" value="Modalidad servicio por sexo"/>
+                            <StringItem index="27" value="edad"/>
+                            <StringItem index="28" value="estrato y estado civil"/>
+                            <StringItem index="29" value="Numero de recargas por medio por d&#xed;a"/>
+                            <StringItem index="30" value="Valor promedio por recargas por medio por d&#xed;a"/>
+                            <StringItem index="31" value="Causa retiro por sexo"/>
+                            <StringItem index="32" value="edad y estado civil"/>
+                            <StringItem index="33" value="Causa retiro por sexo"/>
+                            <StringItem index="34" value="edad y estado civil por mes en todos los a&#xf1;os"/>
+                            <StringItem index="35" value="Causa retiro por sexo"/>
+                            <StringItem index="36" value="edad y estado civil por mes en cada a&#xf1;o"/>
+                            <StringItem index="37" value="Perfil plan prepago"/>
+                            <StringItem index="38" value="perfil de los que se van"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -825,7 +842,7 @@
                           <EmptySpace min="-2" pref="418" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="233" max="32767" attributes="0"/>
+                          <EmptySpace pref="239" max="32767" attributes="0"/>
                           <Component id="jLabelTituloAsoc" min="-2" pref="436" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="560" max="-2" attributes="0"/>
                       </Group>
@@ -861,7 +878,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" alignment="1" pref="487" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="1" pref="493" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -941,7 +958,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="confianzaMinima" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="167" max="32767" attributes="0"/>
+                              <EmptySpace pref="170" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -964,7 +981,7 @@
                               <Component id="jButtonEjecutarAsoc" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonLimpiarAsoc" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
+                              <EmptySpace pref="78" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1047,7 +1064,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="423" max="32767" attributes="0"/>
+                          <EmptySpace pref="427" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1056,7 +1073,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="527" max="32767" attributes="0"/>
+                          <EmptySpace pref="528" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1132,12 +1149,12 @@
                                           <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                                  <EmptySpace pref="57" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="99" max="32767" attributes="0"/>
+                                  <EmptySpace pref="101" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace pref="60" max="32767" attributes="0"/>
@@ -1298,7 +1315,7 @@
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="426" max="32767" attributes="0"/>
+                          <EmptySpace pref="430" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1343,42 +1360,42 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
+                              <EmptySpace pref="77" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="comboAlgortimo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="155" max="32767" attributes="0"/>
+                              <EmptySpace pref="156" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="54" max="32767" attributes="0"/>
+                              <EmptySpace pref="56" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="seleccionNumeroClusters" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="182" max="32767" attributes="0"/>
+                              <EmptySpace pref="187" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="139" max="32767" attributes="0"/>
+                              <EmptySpace pref="141" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="porcentajeDatos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="174" max="32767" attributes="0"/>
+                              <EmptySpace pref="179" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="134" max="32767" attributes="0"/>
+                              <EmptySpace pref="136" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="119" max="32767" attributes="0"/>
+                              <EmptySpace pref="121" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="87" max="32767" attributes="0"/>
@@ -1413,7 +1430,7 @@
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="botonLimpiarArea" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="49" max="32767" attributes="0"/>
+                              <EmptySpace pref="51" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1547,7 +1564,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1229" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1235" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">

@@ -102,7 +102,7 @@ public class ArbolJ48 {
 
 
         // ESTE ES EL VERDADERO SE VA O NO SE VA
-        // Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
+         Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
         // discretize.setOptions(new String[]{"-R","3","-B","4","-V","false"});
         //remove.setAttributeIndices("1,6");
 
@@ -111,11 +111,11 @@ public class ArbolJ48 {
 
         //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estrato,count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan,estrato");
         //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil,d1.estrato, count(*) as total from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil, estrato");
-        Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil  from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil, estrato");
+      //  Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.tipo_plan, d1.estado_civil  from (select t1.genero, YEAR(Curdate()) - YEAR(t1.fecha_nacimiento) as edad, t2.tipo_plan, t1.estado_civil,t1.estrato from  vista_cliente as t1, vista_contrato as t2 where t1.idcliente=t2.id_cliente) as d1 group by genero, edad, tipo_plan, estado_civil, estrato");
 
         Remove remove;
         remove = new Remove();
-       // remove.setAttributeIndices("5");
+        remove.setAttributeIndices("1,6");
         ///////////////////////////////////////////////////////////////
         remove.setInvertSelection(new Boolean("false").booleanValue());
         remove.setInputFormat(data);
@@ -138,7 +138,7 @@ public class ArbolJ48 {
         try {
             discretize.setInputFormat(data);
             // discretize.setOptions(new String[]{"-R","5","-B","2","-V","false"});
-            discretize.setOptions(new String[]{"-R", "4", "-B", "2", "-V", "false"});
+            discretize.setOptions(new String[]{"-R", "3", "-B", "4", "-V", "false"});
             // discretize.setOptions(new String[]{"-R","5","-B","2","-V","true"});
 
 
