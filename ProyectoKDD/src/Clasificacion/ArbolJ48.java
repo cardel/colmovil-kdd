@@ -19,6 +19,10 @@ import weka.filters.Filter;
 
 
 
+import weka.filters.unsupervised.attribute.Remove;
+
+
+
 
 import java.io.FileReader;
 import weka.filters.Filter;
@@ -70,7 +74,7 @@ public class ArbolJ48 {
         //PROMEDIO DURACION LLAMADA POR SEXO, EDAD Y ESTADO CIVIL.
 
         //DESDE AQUI SE UTILIZALAS OPCIONES CON EL INDICE DE ATRIBUTO 5
-        Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
+      //  Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, count(*) as total from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
         //Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, AVG(d1.duracion_segundos) as promedio_llamada from (select t3.genero, t3.estado_civil, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t1.duracion_segundos from llamada012008 as t1, vista_contrato t2, vista_cliente t3 where t1.id_contrato=t2.id_contrato and t3.idcliente=t2.id_cliente ) as d1 group by genero, edad, estado_civil");
         // NUMERO DE LLAMADAS POR SEXO EDAD ESTADO CIVIL A DESTINO
       //nota st arbol sisal muy gran entoncs lo dejo aqui por si algo con el zoom de j48 vsi se puede ver
@@ -90,6 +94,18 @@ public class ArbolJ48 {
         //MOALIDAD SERVICIO POR SEXO ESTRATO Y EDAD
         //FILTRO 1
 
+        ///SE VA O NO SE VA
+        // Instances data = query.retrieveInstances("select d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by genero, edad, causa, estado_civil");
+         Instances data = query.retrieveInstances("select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil");
+       //  Instances data = query.retrieveInstances("select d1.fechaY, d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select YEAR(t1.fecha) as fechaY, MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, fechaY, causa, estado_civil");
+        Remove remove;
+        remove = new Remove();
+        remove.setAttributeIndices("1,6");
+         ///////////////////////////////////////////////////////////////
+        remove.setInvertSelection(new Boolean("false").booleanValue());
+        remove.setInputFormat(data);
+        data = Filter.useFilter(data,remove);
+        System.out.println(data);
 
         //Instances instanciaSalida = new Instances(instanciaInterna);
         Instances instanciaSalida = new Instances(data);
@@ -106,7 +122,7 @@ public class ArbolJ48 {
         try {
             discretize.setInputFormat(data);
            // discretize.setOptions(new String[]{"-R","5","-B","2","-V","false"});
-            discretize.setOptions(new String[]{"-R","4","-B","2","-V","false"});
+            discretize.setOptions(new String[]{"-R","3","-B","4","-V","false"});
            // discretize.setOptions(new String[]{"-R","5","-B","2","-V","true"});
 
 
