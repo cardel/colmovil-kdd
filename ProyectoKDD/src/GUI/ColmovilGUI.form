@@ -111,7 +111,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -635,14 +635,13 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jComboBoxPerfilPreproc" min="-2" pref="325" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                              <Component id="jButtonDiscretizar" pref="89" max="32767" attributes="1"/>
+                                              <EmptySpace pref="49" max="32767" attributes="0"/>
+                                              <Component id="jButtonCargarPerfilPreproc" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jButtonLimpiarNulos" min="-2" max="-2" attributes="1"/>
                                           </Group>
                                           <Component id="jSpinnerMesPreproc" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabelConsPersonPreproc" min="-2" max="-2" attributes="0"/>
@@ -650,15 +649,10 @@
                                       <Component id="jTextFieldConsultaSQLPreproc" pref="501" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="jButtonCargarPerfilPreproc" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButtonConsultaSQL" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jButtonDiscretizar" max="32767" attributes="1"/>
+                                  <Component id="jButtonConsultaSQL" alignment="0" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           </Group>
@@ -670,8 +664,8 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabelPerfilPreproc" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jComboBoxPerfilPreproc" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonDiscretizar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButtonLimpiarNulos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonDiscretizar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButtonCargarPerfilPreproc" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
@@ -847,7 +841,7 @@
                               <Component id="jPanelSalidaAsoc" min="0" pref="388" max="32767" attributes="1"/>
                               <Component id="jPanelParametrosAsoc" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="524" max="32767" attributes="0"/>
+                          <EmptySpace pref="527" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1062,7 +1056,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="524" max="32767" attributes="0"/>
+                          <EmptySpace pref="527" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1558,7 +1552,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="994" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="997" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
