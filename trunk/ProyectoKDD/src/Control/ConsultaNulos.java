@@ -40,7 +40,7 @@ public class ConsultaNulos
 //        sql_select="SELECT COUNT(*) FROM " +nombreTabla+" where"+nombreAtributo+" is NULL;";
 //        sql_select="SELECT COUNT(*) FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
         //sql_select="SELECT "+ nombreAtributo +" FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
-        sql_select="SELECT * FROM " +nombreTabla+" where "+nombreAtributo+" = '';";
+        sql_select="SELECT * FROM " +nombreTabla+" where "+nombreAtributo+" = '' OR "+nombreAtributo+" is NULL;";
          try{
             ResultSet nulos = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sql_select);
             nulos.last();
@@ -109,7 +109,7 @@ public int porcentajeValoresNulosPorAtributo(String nombreTabla, String nombreAt
 
             //sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" is NULL ;";
             //sql_select= "SELECT COUNT(*) FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '';";
-            sql_select= "SELECT * FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '';";
+            sql_select= "SELECT * FROM "+nombreTabla+" where "+vectorNombreAtributos.elementAt(i)+" = '' OR "+vectorNombreAtributos.elementAt(i)+" is NULL ;";
             try
             {
                 ResultSet nulos = objFachadaBDConWeka.realizarConsultaABaseDeDatosTipoWeka(sql_select);

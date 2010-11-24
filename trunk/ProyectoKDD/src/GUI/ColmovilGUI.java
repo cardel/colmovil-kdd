@@ -18,6 +18,7 @@ import Control.ConsultasPredefinidas;
 import Control.ConsultasVistas;
 import Control.Controladora;
 import Discretizacion.DiscretizeCardel;
+import FiltrosYAlgortimos.ReemplazoNulos;
 import Persistencia.FachadaBDConWeka;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -51,7 +52,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     String consultaAsociacion;
     ModeloTablaAtributos modeloTablaAtributos;
     ConsultasVistas objConsultasVistas;
-    DiscretizarGUI objDiscretizarGUI;
     LimpiarOutliersGUI objLimpiarOutliersGUI;
     int indice;
     int valorIntervaloDiscretizacion;// este es el rango de discretizacion
@@ -103,7 +103,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
         //jButtonLimpiarNulos.setEnabled(false);
         //jButtonCargarPerfilPreproc.setEnabled(false);
         setLocationRelativeTo(null);
-        objDiscretizarGUI= new DiscretizarGUI();
 
         /*
          * Instancia general
@@ -423,6 +422,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         areaMostrarResultados = new javax.swing.JTextArea();
+        jPanel15 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -672,7 +672,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldNulosTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -687,7 +687,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         );
         jPanelGraficoBarrasLayout.setVerticalGroup(
             jPanelGraficoBarrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Tabla"));
@@ -854,7 +854,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -887,7 +887,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelSalidaAsoc.setLayout(jPanelSalidaAsocLayout);
         jPanelSalidaAsocLayout.setHorizontalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
         jPanelSalidaAsocLayout.setVerticalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -978,7 +978,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jButtonEjecutarAsoc)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonLimpiarAsoc)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -992,7 +992,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(418, 418, 418))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jLabelTituloAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(560, 560, 560))
         );
@@ -1003,9 +1003,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jLabelTituloAsoc)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelSalidaAsoc, 0, 385, Short.MAX_VALUE)
+                    .addComponent(jPanelSalidaAsoc, 0, 388, Short.MAX_VALUE)
                     .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(521, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Asociación", jPanel3);
@@ -1139,14 +1139,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(423, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(518, Short.MAX_VALUE))
+                .addContainerGap(524, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
@@ -1293,7 +1293,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel3)))
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(426, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1308,6 +1308,19 @@ public class ColmovilGUI extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Clustering", jPanel8);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1229, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 994, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Consulta DWH", jPanel15);
 
         jScrollPanePrincipal.setViewportView(jTabbedPane1);
 
@@ -1596,7 +1609,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonCargarPerfilPreprocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarPerfilPreprocActionPerformed
         // TODO add your handling code here:
-        valorIntervaloDiscretizacion=objDiscretizarGUI.getValorIntervalo();
+        //valorIntervaloDiscretizacion=objDiscretizarGUI.getValorIntervalo();
         System.out.println("valor Disc: "+valorIntervaloDiscretizacion);
         String consulta = "";
         DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
@@ -1609,9 +1622,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
             Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
             instanciaSinDiscretizar= new Instances(instancia);// instancia que utiliza heberth
             //Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
-            Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
+            //Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
             //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
-            instanciaGeneral = new Instances(salida);
+            //instanciaGeneral = new Instances(salida);
           
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1621,31 +1634,37 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
     private void jButtonDiscretizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiscretizarActionPerformed
         // TODO add your handling code here:
-        jButtonLimpiarNulos.setEnabled(true);
-         int opcion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de Discretizar los Atributos Numéricos?", "Discretizar Atributos", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        //jButtonLimpiarNulos.setEnabled(true);
+         int opcion = JOptionPane.showConfirmDialog(null, "¿Discretizar atributos nominales?", "Discretizar Atributos", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
          if(opcion==0)
          {
-             try {
-                    try {
-                        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    } catch (IllegalAccessException ex) {
-                        Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (UnsupportedLookAndFeelException ex) {
-                        Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    objDiscretizarGUI= new DiscretizarGUI();
-                    objDiscretizarGUI.setVisible(true);
-
-            } catch (Exception ex) {
-                Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+             ConsultasVistas objConsultasVistas2= new ConsultasVistas();
+             objConsultasVistas2.borrarVistaCliente();
+             objConsultasVistas2.discretizarEdadyEstrato();
+             //instanciaGeneral=objConsultasVistas2.retornarInstancia();
+             
+             
+            // System.out.println("instancia despues de discretizar"+instanciaGeneral);
          }
     }//GEN-LAST:event_jButtonDiscretizarActionPerformed
 
     private void jButtonLimpiarNulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarNulosActionPerformed
         // TODO add your handling code here:
-        jButtonCargarPerfilPreproc.setEnabled(true);
+        //jButtonCargarPerfilPreproc.setEnabled(true);
+        String nombreVista="vista_"+nombreTabla;
+        retornarAtributosSeleccionados();
+        Controladora objControladora= new Controladora();
+        //objControladora.bloquearTabla(nombreTabla);
+        objControladora.llenarAtributosConNull(nombreVista, vectorAtributosSeleccionados);
+        ReemplazoNulos objReemplazoNulos= new ReemplazoNulos();
+        objReemplazoNulos.reemplazarNulosInstance(instanciaGeneral);
+
+
+//        for(int i=0; i<vectorAtributosSeleccionados.size(); i++)
+//        {
+//            System.out.println("atributos Seleccionados :"+ vectorAtributosSeleccionados.elementAt(i));
+//        }
+        JOptionPane.showMessageDialog(null, "Limpieza exitosa", "Limpieza", JOptionPane.INFORMATION_MESSAGE);
         
     }//GEN-LAST:event_jButtonLimpiarNulosActionPerformed
 
@@ -1788,6 +1807,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
