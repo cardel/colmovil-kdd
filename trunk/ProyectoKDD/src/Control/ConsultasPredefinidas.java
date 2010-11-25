@@ -94,7 +94,7 @@ public class ConsultasPredefinidas {
                 consulta = "select d1.estrato_nominal,d1.edad_nominal ,d1.estado_civil, d1.duracion_nominal from (select t3.estrato_nominal, t3.edad_nominal, t3.estado_civil, t4.duracion_nominal from  vista_contrato as t2, vista_cliente as t3, vista_llamadas as t4 where t2.id_cliente=t3.idcliente and t2.id_contrato=t4.id_contrato and t2.tipo_plan = 'Prepago' and t3.genero = 'Masculino') as d1 group by estrato_nominal,edad_nominal, estado_civil";
                 break;
             case 22:
-                consulta = "select d1.fechaM, d1.genero, d1.edad, d1.estado_civil, d1.causa, count(*) as total from (select MONTH(t1.fecha) as fechaM, YEAR(Curdate()) - YEAR(t3.fecha_nacimiento) as edad, t3.genero, t3.estado_civil, t1.causa from vista_retiro as t1, vista_contrato as t2, vista_cliente as t3 where t1.id_contrato=t2.id_contrato and t2.id_cliente=t3.idcliente) as d1 group by fechaM, causa, estado_civil;";
+                consulta = "SELECT t1.genero,t1.estado_civil,t1.estrato,t1.se_va,t1.edad,t3.nombre FROM cliente_3 t1, llamada012008 t2, operador t3, contrato t4 WHERE t1.edad < 20 AND t1.idcliente = t4.id_cliente AND t4.id_contrato = t2.id_contrato AND t2.id_operador_destino = t3.id_operador";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");
