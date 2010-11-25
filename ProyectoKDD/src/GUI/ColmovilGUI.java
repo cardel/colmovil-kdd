@@ -391,6 +391,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jButtonLimpiarAsoc = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         confianzaMinima = new javax.swing.JSpinner();
+        soporteMinimo = new javax.swing.JSpinner();
+        jLabel16 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -947,6 +949,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         confianzaMinima.setModel(new javax.swing.SpinnerNumberModel(0.5d, 0.1d, 1.0d, 0.05d));
 
+        jLabel16.setText("Soporte");
+
         javax.swing.GroupLayout jPanelParametrosAsocLayout = new javax.swing.GroupLayout(jPanelParametrosAsoc);
         jPanelParametrosAsoc.setLayout(jPanelParametrosAsocLayout);
         jPanelParametrosAsocLayout.setHorizontalGroup(
@@ -968,11 +972,19 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addGroup(jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonEjecutarAsoc)
                             .addComponent(jButtonLimpiarAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(92, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(confianzaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(167, Short.MAX_VALUE))
+            .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addContainerGap(176, Short.MAX_VALUE))
+            .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(soporteMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanelParametrosAsocLayout.setVerticalGroup(
             jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -989,11 +1001,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confianzaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(soporteMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(jButtonEjecutarAsoc)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonLimpiarAsoc)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1745,7 +1761,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         System.out.println("Algoritmo seleccionado "+jComboBoxAlgoritmoAsoc.getSelectedIndex());
         DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
         Instances salida = objDiscretizeCardel.discretizar(instanciaGeneral, 10);
-        //jTextAreaAsoc.append(aplicarAsociacion.aplicarAsociacionWeka(salida, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString()),Double.parseDouble(soporteMinimo.getValue().toString())));
+        jTextAreaAsoc.append(aplicarAsociacion.aplicarAsociacionWeka(salida, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString()),Double.parseDouble(soporteMinimo.getValue().toString())));
         
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
@@ -1956,9 +1972,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimpiarNulos;
     private javax.swing.JButton jButtonNinguno;
     private javax.swing.JButton jButtonSeleccionarTodo;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBoxAlgoritmoAsoc;
     private javax.swing.JComboBox jComboBoxConsultaDWH;
     private javax.swing.JComboBox jComboBoxFestivo;
@@ -1974,6 +1987,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -2045,5 +2059,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JSpinner porcentajeDatos;
     private javax.swing.JSpinner porcentajeDatosClasificacion;
     private javax.swing.JSpinner seleccionNumeroClusters;
+    private javax.swing.JSpinner soporteMinimo;
     // End of variables declaration//GEN-END:variables
 }
