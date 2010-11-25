@@ -1743,8 +1743,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         aplicarAsociacion = new AplicarAsociacion();
         System.out.println("Algoritmo seleccionado "+jComboBoxAlgoritmoAsoc.getSelectedIndex());
-        
-        jTextAreaAsoc.append(aplicarAsociacion.aplicarAsociacionWeka(instanciaGeneral, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString())));
+        DiscretizeCardel objDiscretizeCardel = new DiscretizeCardel();
+        Instances salida = objDiscretizeCardel.discretizar(instanciaGeneral, 10);
+        //jTextAreaAsoc.append(aplicarAsociacion.aplicarAsociacionWeka(salida, jComboBoxAlgoritmoAsoc.getSelectedIndex(),Integer.parseInt(jSpinnerPorcentajeAsoc.getValue().toString()),Double.parseDouble(confianzaMinima.getValue().toString()),Double.parseDouble(soporteMinimo.getValue().toString())));
         
     }//GEN-LAST:event_jButtonEjecutarAsocActionPerformed
 
@@ -1955,6 +1956,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimpiarNulos;
     private javax.swing.JButton jButtonNinguno;
     private javax.swing.JButton jButtonSeleccionarTodo;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBoxAlgoritmoAsoc;
     private javax.swing.JComboBox jComboBoxConsultaDWH;
     private javax.swing.JComboBox jComboBoxFestivo;

@@ -41,7 +41,7 @@ public class AplicarAsociacion {
 
     }
 
-    public String aplicarAsociacionWeka(Instances instanciaInterna,int algoritmo, int porcentaje, Double confianzaMinima) {
+    public String aplicarAsociacionWeka(Instances instanciaInterna,int algoritmo, int porcentaje, Double confianzaMinima, Double soporteMinimo) {
         String salida = "";
         this.instancia = instanciaInterna;
         if (porcentaje < 100) {
@@ -51,7 +51,7 @@ public class AplicarAsociacion {
 
         switch (algoritmo) {
             case 0:
-                salida = algoritmoApriori(instanciaInterna, confianzaMinima);
+                salida = algoritmoApriori(instanciaInterna, confianzaMinima, soporteMinimo);
                 break;
             case 1:
                 salida = algoritmoFPGrowth(instanciaInterna, confianzaMinima);
@@ -65,11 +65,12 @@ public class AplicarAsociacion {
         return salida;
     }
 
-    public String algoritmoApriori(Instances instanciaInterna, Double confianzaMinima) {
+    public String algoritmoApriori(Instances instanciaInterna, Double confianzaMinima, Double soporteMinimo) {
         String salida = "";
 
         Apriori objApriori = new Apriori();
         objApriori.setMinMetric(confianzaMinima);
+        objApriori.setUpperBoundMinSupport(soporteMinimo);
 
         try {
             objApriori.buildAssociations(instanciaInterna);

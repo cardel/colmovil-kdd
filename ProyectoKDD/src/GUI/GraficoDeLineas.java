@@ -29,14 +29,12 @@ public class GraficoDeLineas
 
      public BufferedImage crearGrafico()
     {
-         //estos dos vectores son los que le entrarían a la funcion crear grafico
         Vector<String> vectorCategoriaEjeX= new Vector<String>();
         Vector<Double> vectorValoresEjeY= new Vector<Double>();
         // categorías
         String series1 = "Consumo";
         int tamaNoVector=18;
 
-        //********************** esto es para llenar los vectores
         for(int i=0; i<tamaNoVector; i++)
         {
             String operador= "Region"+i;
@@ -62,7 +60,7 @@ public class GraficoDeLineas
         vectorValoresEjeY.addElement(7671000.0);
         vectorValoresEjeY.addElement(3560845.0);
         vectorValoresEjeY.addElement(7925000.0);
-        //******************************************************
+
 
         // create the dataset...
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -74,8 +72,8 @@ public class GraficoDeLineas
          //create the chart...
         JFreeChart chart = ChartFactory.createLineChart(
             "Bar Chart",       // chart title
-            "Region",               // domain axis label
-            "Consumo plan",                  // range axis label
+            "Operador",               // domain axis label
+            "Frecuencia",                  // range axis label
             dataset,                  // data
             PlotOrientation.VERTICAL, // orientation
             false,                     // include legend
