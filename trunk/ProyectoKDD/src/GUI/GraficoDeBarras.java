@@ -41,12 +41,14 @@ public class GraficoDeBarras {
 
     public BufferedImage crearGrafico()
     {
+        //estos dos vectores son los que le entrarían a la funcion crear grafico
         Vector<String> vectorCategoriaEjeX= new Vector<String>();
         Vector<Double> vectorValoresEjeY= new Vector<Double>();
         // categorías
         String series1 = "Operadores";
         int tamaNoVector=18;
 
+        //********************** esto es para llenar los vectores
         for(int i=0; i<tamaNoVector; i++)
         {
             String operador= "Operador"+i;
@@ -72,7 +74,7 @@ public class GraficoDeBarras {
         vectorValoresEjeY.addElement(7671.0);
         vectorValoresEjeY.addElement(7671.0);
         vectorValoresEjeY.addElement(7925.0);
-
+        //******************************************************
 
         // create the dataset...
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
