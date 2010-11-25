@@ -1323,14 +1323,16 @@ public class ColmovilGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jScrollPanePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPanePrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE))
         );
 
         pack();
@@ -1617,9 +1619,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
             Instances instancia = fachadaBDConWeka.realizarConsultaABaseDeDatosTipoWekaInstances(consulta);
             instanciaSinDiscretizar= new Instances(instancia);// instancia que utiliza heberth
             //Instances salida = objDiscretizeCardel.discretizar(instancia, 10);
-            //Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
+            Instances salida = objDiscretizeCardel.discretizar(instancia, valorIntervaloDiscretizacion);
             //Instancia genera para todos los algortimos de clustering, asociacion y clasificacion
-            //instanciaGeneral = new Instances(salida);
+            instanciaGeneral = new Instances(salida);
           
         } catch (Exception ex) {
             Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
