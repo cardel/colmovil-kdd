@@ -17,6 +17,7 @@ import Control.ConsultaNulos;
 import Control.ConsultasPredefinidas;
 import Control.ConsultasVistas;
 import Control.Controladora;
+import DWH.ConsultasDWH;
 import Discretizacion.DiscretizeCardel;
 import FiltrosYAlgortimos.ReemplazoNulos;
 import Persistencia.FachadaBDConWeka;
@@ -427,21 +428,15 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jComboBoxConsultaDWH = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jComboBoxMes = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jButtonConsultarDWH = new javax.swing.JButton();
         jComboBoxHora = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
-        jSpinnerDia = new javax.swing.JSpinner();
         jSpinneraNo = new javax.swing.JSpinner();
-        jLabel11 = new javax.swing.JLabel();
         jComboBoxFestivo = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
-        jComboBoxNombredia = new javax.swing.JComboBox();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jPanelGraficoDWH = new javax.swing.JPanel();
         jLabelGraficoDWH = new javax.swing.JLabel();
 
@@ -871,7 +866,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(559, Short.MAX_VALUE))
+                .addContainerGap(563, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1025,7 +1020,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jPanelSalidaAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(568, 568, 568))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
+                .addContainerGap(241, Short.MAX_VALUE)
                 .addComponent(jLabelTituloAsoc, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(710, 710, 710))
         );
@@ -1036,9 +1031,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jLabelTituloAsoc)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelSalidaAsoc, 0, 388, Short.MAX_VALUE)
+                    .addComponent(jPanelSalidaAsoc, 0, 391, Short.MAX_VALUE)
                     .addComponent(jPanelParametrosAsoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(637, Short.MAX_VALUE))
+                .addContainerGap(640, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Asociación", jPanel3);
@@ -1179,7 +1174,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(637, Short.MAX_VALUE))
+                .addContainerGap(640, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
@@ -1345,13 +1340,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         jPanel16.setPreferredSize(new java.awt.Dimension(600, 156));
 
-        jComboBoxConsultaDWH.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Operadores nacionales mas utilizados", "Operadores extranjeron con mejores tarifas de roamming", "Consumo de plan de datos por región", "Consumo de plan de datos por país", "Franjas de mayor uso", "Planes mas escogidos" }));
-
-        jLabel2.setText("Dia");
+        jComboBoxConsultaDWH.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Operadores nacionales mas utilizados", "Operadores extranjeros mas usados para roaming", "Operadores extranjeros con mejores tarifas de roamming", "Consumo de plan de datos por región", "Consumo de plan de datos por país", "Franjas de mayor uso", "Planes mas escogidos" }));
 
         jLabel4.setText("Mes");
 
-        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
         jLabel5.setText("Hora");
 
@@ -1362,25 +1355,20 @@ public class ColmovilGUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxHora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12:00 a.m.", "01:00 a.m.", "02:00 a.m.", "03:00 a.m.", "04:00 a.m.", "05:00 a.m.", "06:00 a.m.", "07:00 a.m.", "08:00 a.m.", "09:00 a.m.", "10:00 a.m.", "11:00 a.m.", "12:00 p.m.", "01:00 p.m.", "02:00 p.m.", "03:00 p.m.", "04:00 p.m.", "05:00 p.m.", "06:00 p.m.", "07:00 p.m.", "08:00 p.m.", "09:00 p.m.", "10:00 p.m.", "11:00 p.m.", "12:00 a.m.", "01:00 a.m.", "02:00 a.m.", "03:00 a.m.", "04:00 a.m.", "05:00 a.m.", "06:00 a.m.", "07:00 a.m.", "08:00 a.m.", "09:00 a.m.", "10:00 a.m.", "11:00 a.m.", "12:00 p.m.", "01:00 p.m.", "02:00 p.m.", "03:00 p.m.", "04:00 p.m.", "05:00 p.m.", "06:00 p.m.", "07:00 p.m.", "08:00 p.m.", "09:00 p.m.", "10:00 p.m.", "11:00 p.m.", " " }));
+        jComboBoxHora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "Madrugada 12am a 6am", "Mañana 6am a 12pm", "Tarde 12pm a 6pm", "Noche 6pm a 12am" }));
+        jComboBoxHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHoraActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Año");
 
-        jSpinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 30, 1));
+        jSpinneraNo.setModel(new javax.swing.SpinnerListModel(new String[] {"Todos", "2008", "2009"}));
 
-        jSpinneraNo.setModel(new javax.swing.SpinnerListModel(new String[] {"2008", "2009"}));
+        jComboBoxFestivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas", "Fines de semana", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "Año Nuevo", "Reyes Magos", "Dia del Trabajo", "Semana Santa", "Grito de Independencia", "Batalla de Boyaca", "Dia de la Raza", "Independencia de Cartagena", "Dia de Amor y Amistad", "Halloween", "Dia de las velitas", "Navidad", " " }));
 
-        jLabel11.setText("Festivo");
-
-        jComboBoxFestivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Año Nuevo", "Reyes Magos", "Dia del Trabajo", "Semana Santa", "Grito de Independencia", "Batalla de Boyaca", "Dia de la Raza", "Independencia de Cartagena", "Dia de Amor y Amistad", "Halloween", "Dia de las velitas", "Navidad" }));
-
-        jLabel13.setText("Nombre Dia");
-
-        jComboBoxNombredia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
-
-        jRadioButton1.setText("Lunes Festivo");
-
-        jRadioButton2.setText("Fin de Semana");
+        jLabel13.setText(" Dia/Fiesta");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1390,42 +1378,25 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBoxConsultaDWH, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                        .addComponent(jButtonConsultarDWH)
-                        .addGap(58, 58, 58))
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRadioButton2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSpinnerDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxNombredia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(9, 9, 9)
-                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinneraNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addComponent(jComboBoxFestivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))))
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSpinneraNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxConsultaDWH, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(jButtonConsultarDWH)
+                .addGap(58, 58, 58))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1440,24 +1411,16 @@ public class ColmovilGUI extends javax.swing.JFrame {
                             .addComponent(jComboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jSpinnerDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel10)
-                            .addComponent(jSpinneraNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jComboBoxFestivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
-                            .addComponent(jComboBoxNombredia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jComboBoxFestivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinneraNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButtonConsultarDWH)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jPanelGraficoDWH.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grafico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -1471,13 +1434,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
             jPanelGraficoDWHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGraficoDWHLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelGraficoDWHLayout.setVerticalGroup(
             jPanelGraficoDWHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGraficoDWHLayout.createSequentialGroup()
-                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1499,7 +1462,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(jPanelGraficoDWH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(484, Short.MAX_VALUE))
+                .addContainerGap(490, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consulta DWH", jPanel15);
@@ -1924,8 +1887,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jButtonConsultarDWHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarDWHActionPerformed
         // TODO add your handling code here:
         BufferedImage imagenGraficoDWH;
-        GraficoDeBarras objGraficoDeBarras = new GraficoDeBarras();
-        GraficoDeLineas objGraficoDeLineas= new GraficoDeLineas();
+        //GraficoDeBarras objGraficoDeBarras = new GraficoDeBarras();
+        //GraficoDeLineas objGraficoDeLineas= new GraficoDeLineas();
 
         //al metodo crearGrafico le entran dos vectores con la informacion del eje x y la del ejey
         //Grafico de Barras para el resto de consumo
@@ -1933,7 +1896,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
 //        jLabelGraficoDWH.setIcon(new ImageIcon(imagenDelGrafico));
 
         //Grafico de Lineas para consultas de Consumo
-        imagenDelGrafico = objGraficoDeLineas.crearGrafico();
+        //imagenDelGrafico = objGraficoDeLineas.crearGrafico();
+        ConsultasDWH objConsultasDWH = new ConsultasDWH();
+        imagenDelGrafico =  objConsultasDWH.editarParametros(jComboBoxConsultaDWH.getSelectedIndex(), jComboBoxHora.getSelectedIndex(),  jComboBoxFestivo.getSelectedIndex(),  0,  0);
         jLabelGraficoDWH.setIcon(new ImageIcon(imagenDelGrafico));
         
     }//GEN-LAST:event_jButtonConsultarDWHActionPerformed
@@ -1941,6 +1906,10 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void jComboBoxPerfilPreprocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPerfilPreprocActionPerformed
         // TODO add your handling code here:
 }//GEN-LAST:event_jComboBoxPerfilPreprocActionPerformed
+
+    private void jComboBoxHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxHoraActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1980,11 +1949,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxHora;
     private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JComboBox jComboBoxNombreTablas;
-    private javax.swing.JComboBox jComboBoxNombredia;
     private javax.swing.JComboBox jComboBoxPerfilPreproc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1992,7 +1959,6 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
@@ -2035,15 +2001,12 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelGraficoDispersion;
     private javax.swing.JPanel jPanelParametrosAsoc;
     private javax.swing.JPanel jPanelSalidaAsoc;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPanePrincipal;
-    private javax.swing.JSpinner jSpinnerDia;
     private javax.swing.JSpinner jSpinnerMesPreproc;
     private javax.swing.JSpinner jSpinnerPorcentajeAsoc;
     private javax.swing.JSpinner jSpinneraNo;

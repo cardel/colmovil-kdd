@@ -88,7 +88,7 @@
                               </Group>
                               <Component id="jPanel10" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="559" max="32767" attributes="0"/>
+                          <EmptySpace pref="563" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -826,7 +826,7 @@
                           <EmptySpace min="-2" pref="568" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="233" max="32767" attributes="0"/>
+                          <EmptySpace pref="241" max="32767" attributes="0"/>
                           <Component id="jLabelTituloAsoc" min="-2" pref="436" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="710" max="-2" attributes="0"/>
                       </Group>
@@ -839,10 +839,10 @@
                           <Component id="jLabelTituloAsoc" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanelSalidaAsoc" min="0" pref="388" max="32767" attributes="1"/>
+                              <Component id="jPanelSalidaAsoc" min="0" pref="391" max="32767" attributes="1"/>
                               <Component id="jPanelParametrosAsoc" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="637" max="32767" attributes="0"/>
+                          <EmptySpace pref="640" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1083,7 +1083,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="637" max="32767" attributes="0"/>
+                          <EmptySpace pref="640" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1591,7 +1591,7 @@
                           <Component id="jPanel16" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           <Component id="jPanelGraficoDWH" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="484" max="32767" attributes="0"/>
+                          <EmptySpace pref="490" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1614,54 +1614,32 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jComboBoxHora" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jComboBoxConsultaDWH" alignment="0" min="-2" pref="491" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="131" max="32767" attributes="0"/>
-                                      <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxFestivo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxMes" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jSpinneraNo" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="1">
-                                              <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jSpinnerDia" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBoxNombredia" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace pref="21" max="32767" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxMes" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jSpinneraNo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBoxFestivo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jComboBoxHora" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jComboBoxConsultaDWH" alignment="0" min="-2" pref="491" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace pref="94" max="32767" attributes="0"/>
+                              <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1679,16 +1657,12 @@
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpinnerDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBoxFestivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinneraNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jComboBoxMes" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpinneraNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBoxFestivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBoxNombredia" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -1696,12 +1670,7 @@
                                       <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace pref="50" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1710,20 +1679,16 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxConsultaDWH">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="6">
+                          <StringArray count="7">
                             <StringItem index="0" value="Operadores nacionales mas utilizados"/>
-                            <StringItem index="1" value="Operadores extranjeron con mejores tarifas de roamming"/>
-                            <StringItem index="2" value="Consumo de plan de datos por regi&#xf3;n"/>
-                            <StringItem index="3" value="Consumo de plan de datos por pa&#xed;s"/>
-                            <StringItem index="4" value="Franjas de mayor uso"/>
-                            <StringItem index="5" value="Planes mas escogidos"/>
+                            <StringItem index="1" value="Operadores extranjeros mas usados para roaming"/>
+                            <StringItem index="2" value="Operadores extranjeros con mejores tarifas de roamming"/>
+                            <StringItem index="3" value="Consumo de plan de datos por regi&#xf3;n"/>
+                            <StringItem index="4" value="Consumo de plan de datos por pa&#xed;s"/>
+                            <StringItem index="5" value="Franjas de mayor uso"/>
+                            <StringItem index="6" value="Planes mas escogidos"/>
                           </StringArray>
                         </Property>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Dia"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -1734,19 +1699,20 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxMes">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="12">
-                            <StringItem index="0" value="Enero"/>
-                            <StringItem index="1" value="Febrero"/>
-                            <StringItem index="2" value="Marzo"/>
-                            <StringItem index="3" value="Abril"/>
-                            <StringItem index="4" value="Mayo"/>
-                            <StringItem index="5" value="Junio"/>
-                            <StringItem index="6" value="Julio"/>
-                            <StringItem index="7" value="Agosto"/>
-                            <StringItem index="8" value="Septiembre"/>
-                            <StringItem index="9" value="Octubre"/>
-                            <StringItem index="10" value="Noviembre"/>
-                            <StringItem index="11" value="Diciembre"/>
+                          <StringArray count="13">
+                            <StringItem index="0" value="Todos"/>
+                            <StringItem index="1" value="Enero"/>
+                            <StringItem index="2" value="Febrero"/>
+                            <StringItem index="3" value="Marzo"/>
+                            <StringItem index="4" value="Abril"/>
+                            <StringItem index="5" value="Mayo"/>
+                            <StringItem index="6" value="Junio"/>
+                            <StringItem index="7" value="Julio"/>
+                            <StringItem index="8" value="Agosto"/>
+                            <StringItem index="9" value="Septiembre"/>
+                            <StringItem index="10" value="Octubre"/>
+                            <StringItem index="11" value="Noviembre"/>
+                            <StringItem index="12" value="Diciembre"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1767,135 +1733,68 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxHora">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="49">
-                            <StringItem index="0" value="12:00 a.m."/>
-                            <StringItem index="1" value="01:00 a.m."/>
-                            <StringItem index="2" value="02:00 a.m."/>
-                            <StringItem index="3" value="03:00 a.m."/>
-                            <StringItem index="4" value="04:00 a.m."/>
-                            <StringItem index="5" value="05:00 a.m."/>
-                            <StringItem index="6" value="06:00 a.m."/>
-                            <StringItem index="7" value="07:00 a.m."/>
-                            <StringItem index="8" value="08:00 a.m."/>
-                            <StringItem index="9" value="09:00 a.m."/>
-                            <StringItem index="10" value="10:00 a.m."/>
-                            <StringItem index="11" value="11:00 a.m."/>
-                            <StringItem index="12" value="12:00 p.m."/>
-                            <StringItem index="13" value="01:00 p.m."/>
-                            <StringItem index="14" value="02:00 p.m."/>
-                            <StringItem index="15" value="03:00 p.m."/>
-                            <StringItem index="16" value="04:00 p.m."/>
-                            <StringItem index="17" value="05:00 p.m."/>
-                            <StringItem index="18" value="06:00 p.m."/>
-                            <StringItem index="19" value="07:00 p.m."/>
-                            <StringItem index="20" value="08:00 p.m."/>
-                            <StringItem index="21" value="09:00 p.m."/>
-                            <StringItem index="22" value="10:00 p.m."/>
-                            <StringItem index="23" value="11:00 p.m."/>
-                            <StringItem index="24" value="12:00 a.m."/>
-                            <StringItem index="25" value="01:00 a.m."/>
-                            <StringItem index="26" value="02:00 a.m."/>
-                            <StringItem index="27" value="03:00 a.m."/>
-                            <StringItem index="28" value="04:00 a.m."/>
-                            <StringItem index="29" value="05:00 a.m."/>
-                            <StringItem index="30" value="06:00 a.m."/>
-                            <StringItem index="31" value="07:00 a.m."/>
-                            <StringItem index="32" value="08:00 a.m."/>
-                            <StringItem index="33" value="09:00 a.m."/>
-                            <StringItem index="34" value="10:00 a.m."/>
-                            <StringItem index="35" value="11:00 a.m."/>
-                            <StringItem index="36" value="12:00 p.m."/>
-                            <StringItem index="37" value="01:00 p.m."/>
-                            <StringItem index="38" value="02:00 p.m."/>
-                            <StringItem index="39" value="03:00 p.m."/>
-                            <StringItem index="40" value="04:00 p.m."/>
-                            <StringItem index="41" value="05:00 p.m."/>
-                            <StringItem index="42" value="06:00 p.m."/>
-                            <StringItem index="43" value="07:00 p.m."/>
-                            <StringItem index="44" value="08:00 p.m."/>
-                            <StringItem index="45" value="09:00 p.m."/>
-                            <StringItem index="46" value="10:00 p.m."/>
-                            <StringItem index="47" value="11:00 p.m."/>
-                            <StringItem index="48" value=" "/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="Todas"/>
+                            <StringItem index="1" value="Madrugada 12am a 6am"/>
+                            <StringItem index="2" value="Ma&#xf1;ana 6am a 12pm"/>
+                            <StringItem index="3" value="Tarde 12pm a 6pm"/>
+                            <StringItem index="4" value="Noche 6pm a 12am"/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxHoraActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinnerDia">
-                      <Properties>
-                        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                          <SpinnerModel initial="1" maximum="30" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                        </Property>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JSpinner" name="jSpinneraNo">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                           <SpinnerModel type="list">
+                            <ListItem value="Todos"/>
                             <ListItem value="2008"/>
                             <ListItem value="2009"/>
                           </SpinnerModel>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Festivo"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JComboBox" name="jComboBoxFestivo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="12">
-                            <StringItem index="0" value="A&#xf1;o Nuevo"/>
-                            <StringItem index="1" value="Reyes Magos"/>
-                            <StringItem index="2" value="Dia del Trabajo"/>
-                            <StringItem index="3" value="Semana Santa"/>
-                            <StringItem index="4" value="Grito de Independencia"/>
-                            <StringItem index="5" value="Batalla de Boyaca"/>
-                            <StringItem index="6" value="Dia de la Raza"/>
-                            <StringItem index="7" value="Independencia de Cartagena"/>
-                            <StringItem index="8" value="Dia de Amor y Amistad"/>
-                            <StringItem index="9" value="Halloween"/>
-                            <StringItem index="10" value="Dia de las velitas"/>
-                            <StringItem index="11" value="Navidad"/>
+                          <StringArray count="22">
+                            <StringItem index="0" value="Todas"/>
+                            <StringItem index="1" value="Fines de semana"/>
+                            <StringItem index="2" value="Lunes"/>
+                            <StringItem index="3" value="Martes"/>
+                            <StringItem index="4" value="Miercoles"/>
+                            <StringItem index="5" value="Jueves"/>
+                            <StringItem index="6" value="Viernes"/>
+                            <StringItem index="7" value="Sabado"/>
+                            <StringItem index="8" value="Domingo"/>
+                            <StringItem index="9" value="A&#xf1;o Nuevo"/>
+                            <StringItem index="10" value="Reyes Magos"/>
+                            <StringItem index="11" value="Dia del Trabajo"/>
+                            <StringItem index="12" value="Semana Santa"/>
+                            <StringItem index="13" value="Grito de Independencia"/>
+                            <StringItem index="14" value="Batalla de Boyaca"/>
+                            <StringItem index="15" value="Dia de la Raza"/>
+                            <StringItem index="16" value="Independencia de Cartagena"/>
+                            <StringItem index="17" value="Dia de Amor y Amistad"/>
+                            <StringItem index="18" value="Halloween"/>
+                            <StringItem index="19" value="Dia de las velitas"/>
+                            <StringItem index="20" value="Navidad"/>
+                            <StringItem index="21" value=" "/>
                           </StringArray>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel13">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Nombre Dia"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBoxNombredia">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="7">
-                            <StringItem index="0" value="Lunes"/>
-                            <StringItem index="1" value="Martes"/>
-                            <StringItem index="2" value="Mi&#xe9;rcoles"/>
-                            <StringItem index="3" value="Jueves"/>
-                            <StringItem index="4" value="Viernes"/>
-                            <StringItem index="5" value="Sabado"/>
-                            <StringItem index="6" value="Domingo"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Lunes Festivo"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Fin de Semana"/>
+                        <Property name="text" type="java.lang.String" value=" Dia/Fiesta"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1919,7 +1818,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelGraficoDWH" pref="760" max="32767" attributes="0"/>
+                              <Component id="jLabelGraficoDWH" pref="756" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1927,7 +1826,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelGraficoDWH" pref="323" max="32767" attributes="0"/>
+                              <Component id="jLabelGraficoDWH" pref="320" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
