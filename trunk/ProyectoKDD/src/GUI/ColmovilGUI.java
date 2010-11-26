@@ -688,7 +688,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldNulosTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -703,7 +703,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         );
         jPanelGraficoBarrasLayout.setVerticalGroup(
             jPanelGraficoBarrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+            .addComponent(labelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Tabla"));
@@ -754,7 +754,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jLabelMesPreproc.setText("Mes");
 
-        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perfil de usuarios femenino que contratan plan de datos", "Perfil de usuarios masculino que contratan plan de datos", "Relaciones entre características socioeconómicas y tipos de planes (femenino)", "Relaciones entre características socioeconómicas y tipos de planes (masculino)", "Perfil prepago masculino sin duración minutos", "Perfil prepago masculino con duración minutos", "Perfil postpago masculino sin duración minutos", "Perfil postpago masculino con duración minutos", "Perfil prepago femenino sin duración minutos", "Perfil prepago femenino con duración minutos", "Perfil postpago femenino sin duración minutos", "Perfil postpago femenino con duración minutos", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año", "Perfil plan prepago", "Perfil usuarios que se retiran" }));
+        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perfil de usuarios femenino que contratan plan de datos", "Perfil de usuarios masculino que contratan plan de datos", "Relaciones entre características socioeconómicas y tipos de planes (femenino)", "Relaciones entre características socioeconómicas y tipos de planes (masculino)", "Perfil prepago masculino sin duración minutos", "Perfil prepago masculino con duración minutos", "Perfil postpago masculino sin duración minutos", "Perfil postpago masculino con duración minutos", "Perfil prepago femenino sin duración minutos", "Perfil prepago femenino con duración minutos", "Perfil postpago femenino sin duración minutos", "Perfil postpago femenino con duración minutos", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año", "Perfil plan prepago", "Perfil usuarios que se retiran por (Usuario)", "Perfil usuarios que se retiran por (Operador)", "Perfil usuarios que se retiran por (Localizacion)" }));
         jComboBoxPerfilPreproc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPerfilPreprocActionPerformed(evt);
@@ -866,7 +866,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jPanelGraficoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(563, Short.MAX_VALUE))
+                .addContainerGap(567, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -899,7 +899,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
         jPanelSalidaAsoc.setLayout(jPanelSalidaAsocLayout);
         jPanelSalidaAsocLayout.setHorizontalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
         jPanelSalidaAsocLayout.setVerticalGroup(
             jPanelSalidaAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -944,7 +944,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         confianzaMinima.setModel(new javax.swing.SpinnerNumberModel(0.5d, 0.1d, 1.0d, 0.05d));
 
-        soporteMinimo.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.5f), Float.valueOf(0.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)));
+        soporteMinimo.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.1f), Float.valueOf(0.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)));
 
         jLabel16.setText("Soporte");
 
@@ -1006,7 +1006,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jButtonEjecutarAsoc)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonLimpiarAsoc)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1167,14 +1167,14 @@ public class ColmovilGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(573, Short.MAX_VALUE))
+                .addContainerGap(581, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(640, Short.MAX_VALUE))
+                .addContainerGap(643, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Clasificación", jPanel2);
@@ -1321,7 +1321,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel3)))
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addContainerGap(584, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1379,7 +1379,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(jComboBoxFestivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71)
                         .addComponent(jLabel4)
@@ -1394,7 +1394,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jComboBoxConsultaDWH, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jButtonConsultarDWH)
                 .addGap(58, 58, 58))
         );
@@ -1420,7 +1420,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButtonConsultarDWH)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jPanelGraficoDWH.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Grafico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -1434,13 +1434,13 @@ public class ColmovilGUI extends javax.swing.JFrame {
             jPanelGraficoDWHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGraficoDWHLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelGraficoDWHLayout.setVerticalGroup(
             jPanelGraficoDWHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGraficoDWHLayout.createSequentialGroup()
-                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addComponent(jLabelGraficoDWH, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1738,7 +1738,11 @@ public class ColmovilGUI extends javax.swing.JFrame {
     private void botonEjecutarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEjecutarClasificacionActionPerformed
         // TODO add your handling code here:
         indice = comboAlgortimoClasificacion.getSelectedIndex();
-        areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()), 4, instanciaGeneral));
+        try {
+            areaMostrarResultadosAsociacion.setText(arbolJ48ConInterfaz.construirArbolJ48(Integer.parseInt(porcentajeDatosClasificacion.getValue().toString()), comboAlgortimoClasificacion.getSelectedIndex(), instanciaSinDiscretizar));
+        } catch (Exception ex) {
+            Logger.getLogger(ColmovilGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonEjecutarClasificacionActionPerformed
 
     private void botonLimpiarAreaClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAreaClasificacionActionPerformed

@@ -88,7 +88,7 @@
                               </Group>
                               <Component id="jPanel10" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="563" max="32767" attributes="0"/>
+                          <EmptySpace pref="567" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -386,7 +386,7 @@
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldNulosTabla" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="39" max="32767" attributes="0"/>
+                              <EmptySpace pref="42" max="32767" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="92" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -524,7 +524,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelGrafico" alignment="0" pref="212" max="32767" attributes="0"/>
+                          <Component id="labelGrafico" alignment="0" pref="215" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -732,7 +732,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxPerfilPreproc">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="23">
+                          <StringArray count="25">
                             <StringItem index="0" value="Perfil de usuarios femenino que contratan plan de datos"/>
                             <StringItem index="1" value="Perfil de usuarios masculino que contratan plan de datos"/>
                             <StringItem index="2" value="Relaciones entre caracter&#xed;sticas socioecon&#xf3;micas y tipos de planes (femenino)"/>
@@ -746,7 +746,7 @@
                             <StringItem index="10" value="Perfil postpago femenino sin duraci&#xf3;n minutos"/>
                             <StringItem index="11" value="Perfil postpago femenino con duraci&#xf3;n minutos"/>
                             <StringItem index="12" value="Planes de voz por sexo, edad y estado civil"/>
-                            <StringItem index="13" value="Planes de datos por sexo, edad y estado civil "/>
+                            <StringItem index="13" value="Planes de datos por sexo, edad y estado civil"/>
                             <StringItem index="14" value="Modalidad servicio por sexo, estrato y edad"/>
                             <StringItem index="15" value="Modalidad servicio por sexo, edad, estrato y estado civil"/>
                             <StringItem index="16" value="Numero de recargas por medio por d&#xed;a"/>
@@ -755,7 +755,9 @@
                             <StringItem index="19" value="Causa retiro por sexo, edad y estado civil por mes en todos los a&#xf1;os"/>
                             <StringItem index="20" value="Causa retiro por sexo, edad y estado civil por mes en cada a&#xf1;o"/>
                             <StringItem index="21" value="Perfil plan prepago"/>
-                            <StringItem index="22" value="Perfil usuarios que se retiran"/>
+                            <StringItem index="22" value="Perfil usuarios que se retiran por (Usuario)"/>
+                            <StringItem index="23" value="Perfil usuarios que se retiran por (Operador)"/>
+                            <StringItem index="24" value="Perfil usuarios que se retiran por (Localizacion)"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -862,7 +864,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" alignment="1" pref="487" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="1" pref="495" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -979,7 +981,7 @@
                               <Component id="jButtonEjecutarAsoc" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonLimpiarAsoc" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <EmptySpace pref="51" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1046,7 +1048,7 @@
                     <Component class="javax.swing.JSpinner" name="soporteMinimo">
                       <Properties>
                         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                          <SpinnerModel initial="0.5" maximum="1.0" minimum="0.0" numberType="java.lang.Float" stepSize="0.1" type="number"/>
+                          <SpinnerModel initial="0.1" maximum="1.0" minimum="0.0" numberType="java.lang.Float" stepSize="0.1" type="number"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -1074,7 +1076,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="573" max="32767" attributes="0"/>
+                          <EmptySpace pref="581" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1083,7 +1085,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="640" max="32767" attributes="0"/>
+                          <EmptySpace pref="643" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1325,7 +1327,7 @@
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="576" max="32767" attributes="0"/>
+                          <EmptySpace pref="584" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1619,7 +1621,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                                      <EmptySpace pref="18" max="32767" attributes="0"/>
                                       <Component id="jComboBoxFestivo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -1637,7 +1639,7 @@
                                   </Group>
                                   <Component id="jComboBoxConsultaDWH" alignment="0" min="-2" pref="491" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="94" max="32767" attributes="0"/>
+                              <EmptySpace pref="96" max="32767" attributes="0"/>
                               <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
@@ -1670,7 +1672,7 @@
                                       <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="50" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1818,7 +1820,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelGraficoDWH" pref="756" max="32767" attributes="0"/>
+                              <Component id="jLabelGraficoDWH" pref="760" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1826,7 +1828,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelGraficoDWH" pref="320" max="32767" attributes="0"/>
+                              <Component id="jLabelGraficoDWH" pref="323" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
