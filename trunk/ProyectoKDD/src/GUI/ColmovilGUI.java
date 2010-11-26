@@ -759,7 +759,7 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         jLabelMesPreproc.setText("Mes");
 
-        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nùmero llamadas por hora", "Promedio duracion llamadas por hora", "Numero llamadas por dia", "Uso de la red por dia", "Nùmero llamadas por hora por sexo, edad y estado civil", "Promedio duracion llamadas por hora por sexo, edad y estado civil", "Numero llamadas por dia por sexo, edad y estado civil", "Uso de la red por dia por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil", "Promedio duración llamadas por sexo, edad y estado civil", "Número llamadas por sexo, edad y estado civil a destino", "Promedio duración llamadas por sexo, edad y estado civil a destino", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año", "Perfil plan prepago", "Perfil usuarios que se retiran" }));
+        jComboBoxPerfilPreproc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perfil de usuarios femenino que contratan plan de datos", "Perfil de usuarios masculino que contratan plan de datos", "Relaciones entre características socioeconómicas y tipos de planes (femenino)", "Relaciones entre características socioeconómicas y tipos de planes (masculino)", "Perfil prepago masculino sin duración minutos", "Perfil prepago masculino con duración minutos", "Perfil postpago masculino sin duración minutos", "Perfil postpago masculino con duración minutos", "Perfil prepago femenino sin duración minutos", "Perfil prepago femenino con duración minutos", "Perfil postpago femenino sin duración minutos", "Perfil postpago femenino con duración minutos", "Planes de voz por sexo, edad y estado civil", "Planes de datos por sexo, edad y estado civil ", "Modalidad servicio por sexo, estrato y edad", "Modalidad servicio por sexo, edad, estrato y estado civil", "Numero de recargas por medio por día", "Valor promedio por recargas por medio por día", "Causa retiro por sexo, edad y estado civil", "Causa retiro por sexo, edad y estado civil por mes en todos los años", "Causa retiro por sexo, edad y estado civil por mes en cada año", "Perfil plan prepago", "Perfil usuarios que se retiran" }));
         jComboBoxPerfilPreproc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPerfilPreprocActionPerformed(evt);
@@ -949,6 +949,8 @@ public class ColmovilGUI extends javax.swing.JFrame {
 
         confianzaMinima.setModel(new javax.swing.SpinnerNumberModel(0.5d, 0.1d, 1.0d, 0.05d));
 
+        soporteMinimo.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.5f), Float.valueOf(0.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)));
+
         jLabel16.setText("Soporte");
 
         javax.swing.GroupLayout jPanelParametrosAsocLayout = new javax.swing.GroupLayout(jPanelParametrosAsoc);
@@ -982,9 +984,9 @@ public class ColmovilGUI extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addContainerGap(176, Short.MAX_VALUE))
             .addGroup(jPanelParametrosAsocLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(soporteMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanelParametrosAsocLayout.setVerticalGroup(
             jPanelParametrosAsocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

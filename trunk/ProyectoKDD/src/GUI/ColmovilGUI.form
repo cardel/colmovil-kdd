@@ -733,18 +733,18 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="23">
-                            <StringItem index="0" value="N&#xf9;mero llamadas por hora"/>
-                            <StringItem index="1" value="Promedio duracion llamadas por hora"/>
-                            <StringItem index="2" value="Numero llamadas por dia"/>
-                            <StringItem index="3" value="Uso de la red por dia"/>
-                            <StringItem index="4" value="N&#xf9;mero llamadas por hora por sexo, edad y estado civil"/>
-                            <StringItem index="5" value="Promedio duracion llamadas por hora por sexo, edad y estado civil"/>
-                            <StringItem index="6" value="Numero llamadas por dia por sexo, edad y estado civil"/>
-                            <StringItem index="7" value="Uso de la red por dia por sexo, edad y estado civil"/>
-                            <StringItem index="8" value="N&#xfa;mero llamadas por sexo, edad y estado civil"/>
-                            <StringItem index="9" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil"/>
-                            <StringItem index="10" value="N&#xfa;mero llamadas por sexo, edad y estado civil a destino"/>
-                            <StringItem index="11" value="Promedio duraci&#xf3;n llamadas por sexo, edad y estado civil a destino"/>
+                            <StringItem index="0" value="Perfil de usuarios femenino que contratan plan de datos"/>
+                            <StringItem index="1" value="Perfil de usuarios masculino que contratan plan de datos"/>
+                            <StringItem index="2" value="Relaciones entre caracter&#xed;sticas socioecon&#xf3;micas y tipos de planes (femenino)"/>
+                            <StringItem index="3" value="Relaciones entre caracter&#xed;sticas socioecon&#xf3;micas y tipos de planes (masculino)"/>
+                            <StringItem index="4" value="Perfil prepago masculino sin duraci&#xf3;n minutos"/>
+                            <StringItem index="5" value="Perfil prepago masculino con duraci&#xf3;n minutos"/>
+                            <StringItem index="6" value="Perfil postpago masculino sin duraci&#xf3;n minutos"/>
+                            <StringItem index="7" value="Perfil postpago masculino con duraci&#xf3;n minutos"/>
+                            <StringItem index="8" value="Perfil prepago femenino sin duraci&#xf3;n minutos"/>
+                            <StringItem index="9" value="Perfil prepago femenino con duraci&#xf3;n minutos"/>
+                            <StringItem index="10" value="Perfil postpago femenino sin duraci&#xf3;n minutos"/>
+                            <StringItem index="11" value="Perfil postpago femenino con duraci&#xf3;n minutos"/>
                             <StringItem index="12" value="Planes de voz por sexo, edad y estado civil"/>
                             <StringItem index="13" value="Planes de datos por sexo, edad y estado civil "/>
                             <StringItem index="14" value="Modalidad servicio por sexo, estrato y edad"/>
@@ -950,9 +950,9 @@
                               <EmptySpace pref="176" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="soporteMinimo" min="-2" pref="54" max="-2" attributes="0"/>
-                              <EmptySpace pref="150" max="32767" attributes="0"/>
+                              <EmptySpace pref="160" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1044,6 +1044,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JSpinner" name="soporteMinimo">
+                      <Properties>
+                        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                          <SpinnerModel initial="0.5" maximum="1.0" minimum="0.0" numberType="java.lang.Float" stepSize="0.1" type="number"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel16">
                       <Properties>
