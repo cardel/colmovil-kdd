@@ -252,9 +252,9 @@ public class ConsultasVistas {
    public void discretizarEdadyEstrato()
    {
         String consulta_sql="CREATE VIEW vista_cliente AS SELECT idcliente, tipo_identificacion, numero_identificacion, nombre, apellido, direccion_residencia, estrato, CAST(estrato AS CHAR) AS estrato_nominal, email, YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) AS edad, ("
-                                    + " CASE WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=19 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <40 THEN 'joven'"
-                                    + " WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=40 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <65 THEN 'adulto'"
-                                    + " WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=65 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <100 THEN 'adulto_Mayor'"
+                                    + " CASE WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=11 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <18 THEN 'muy joven'"
+                                    + " WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=18 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <25 THEN 'joven'"
+                                    + " WHEN YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) >=25 AND YEAR( Curdate( ) ) - YEAR( fecha_nacimiento ) <50 THEN 'adulto'"
                                     + " END) AS edad_nominal, "
                                     + " fecha_nacimiento, genero, estado_civil "
                           + "FROM cliente";

@@ -94,8 +94,18 @@ public class ConsultasPredefinidas {
             case 21:
                 consulta = "select d1.estrato_nominal,d1.edad_nominal ,d1.estado_civil, d1.duracion_nominal from (select t3.estrato_nominal, t3.edad_nominal, t3.estado_civil, t4.duracion_nominal from  vista_contrato as t2, vista_cliente as t3, vista_llamadas as t4 where t2.id_cliente=t3.idcliente and t2.id_contrato=t4.id_contrato and t2.tipo_plan = 'Prepago' and t3.genero = 'Masculino') as d1 group by estrato_nominal,edad_nominal, estado_civil";
                 break;
+
+                //se van -> caracterisitcas del usaurio
             case 22:
-                consulta = "SELECT t1.genero,t1.estado_civil,t1.estrato,t1.se_va,t1.edad,t3.nombre FROM cliente_3 t1, llamada012008 t2, operador t3, contrato t4 WHERE t1.edad < 20 AND t1.idcliente = t4.id_cliente AND t4.id_contrato = t2.id_contrato AND t2.id_operador_destino = t3.id_operador";
+                consulta = "SELECT t1.genero,t1.estado_civil,t1.estrato,t1.se_fue,t1.edad FROM vista_cliente_se_van3 t1";
+                break;
+                //se van -> operador
+            case 23:
+                consulta = "SELECT t1.genero,t1.estado_civil,t1.estrato,t1.se_fue,t1.edad,t3.nombre FROM vista_cliente_se_van3 t1, llamada012008 t2, vista_operador t3, vista_contrato t4 WHERE t1.edad < 20 AND t1.id_cliente = t4.id_cliente AND t4.id_contrato = t2.id_contrato AND t2.id_operador_destino = t3.id_operador ";
+                break;
+               // se van -> localizacion
+            case 24:
+                consulta = "SELECT t1.genero,t1.estado_civil,t1.estrato,t1.se_fue,t1.edad,t3.ciudad  FROM vista_cliente_se_van3 t1, vista_oficina t2, vista_localizacion t3, vista_contrato t4  WHERE t1.edad < 20 AND t1.id_cliente = t4.id_cliente AND t4.id_oficina = t2.id_oficina AND t2.id_localizacion = t3.idlocalizacion ";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Error en aplicacion");

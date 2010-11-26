@@ -78,7 +78,7 @@ public class ConsultasDWH {
                 //DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND),'%W'), DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND), '%M')
                 case 1:
 
-                restriccionPorDia =" and (DATE_FORMAT(fecha_inicio,'%W')='Viernes' or DATE_FORMAT(fecha_inicio,'%W')='Sabado' or DATE_FORMAT(fecha_inicio,'%W')='Domingo') ";
+                restriccionPorDia =" and DATE_FORMAT(fecha_inicio,'%W')='Viernes' or DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND),'%W')='Sabado' or DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND),'%W')='Domingo') ";
                 /*
                 Lunes
                 /*
