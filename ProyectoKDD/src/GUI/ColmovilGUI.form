@@ -88,7 +88,7 @@
                               </Group>
                               <Component id="jPanel10" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="567" max="32767" attributes="0"/>
+                          <EmptySpace pref="571" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -828,7 +828,7 @@
                           <EmptySpace min="-2" pref="568" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="241" max="32767" attributes="0"/>
+                          <EmptySpace pref="249" max="32767" attributes="0"/>
                           <Component id="jLabelTituloAsoc" min="-2" pref="436" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="710" max="-2" attributes="0"/>
                       </Group>
@@ -841,10 +841,10 @@
                           <Component id="jLabelTituloAsoc" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanelSalidaAsoc" min="0" pref="391" max="32767" attributes="1"/>
+                              <Component id="jPanelSalidaAsoc" min="0" pref="394" max="32767" attributes="1"/>
                               <Component id="jPanelParametrosAsoc" alignment="0" max="32767" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="640" max="32767" attributes="0"/>
+                          <EmptySpace pref="643" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1085,7 +1085,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="643" max="32767" attributes="0"/>
+                          <EmptySpace pref="646" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1593,7 +1593,7 @@
                           <Component id="jPanel16" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           <Component id="jPanelGraficoDWH" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="490" max="32767" attributes="0"/>
+                          <EmptySpace pref="496" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1619,29 +1619,39 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="18" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxFestivo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxMes" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jSpinneraNo" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace pref="16" max="32767" attributes="0"/>
+                                              <Component id="jComboBoxFestivo" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jComboBoxMes" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jSpinneraNo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jComboBoxHora" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jComboBoxConsultaDWH" alignment="0" min="-2" pref="491" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="94" max="32767" attributes="0"/>
+                                      <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxHora" min="-2" max="-2" attributes="0"/>
+                                      <Component id="comboPaisDestino" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jComboBoxConsultaDWH" alignment="0" min="-2" pref="491" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="96" max="32767" attributes="0"/>
-                              <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1672,7 +1682,12 @@
                                       <Component id="jButtonConsultarDWH" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboPaisDestino" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1681,14 +1696,13 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxConsultaDWH">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="7">
+                          <StringArray count="6">
                             <StringItem index="0" value="Operadores nacionales mas utilizados"/>
                             <StringItem index="1" value="Operadores extranjeros mas usados para roaming"/>
                             <StringItem index="2" value="Operadores extranjeros con mejores tarifas de roamming"/>
-                            <StringItem index="3" value="Consumo de plan de datos por regi&#xf3;n"/>
-                            <StringItem index="4" value="Consumo de plan de datos por pa&#xed;s"/>
-                            <StringItem index="5" value="Franjas de mayor uso"/>
-                            <StringItem index="6" value="Planes mas escogidos"/>
+                            <StringItem index="3" value="Franjas de mayor uso"/>
+                            <StringItem index="4" value="Planes mas escogidos de voz"/>
+                            <StringItem index="5" value="Planes mas escogidos de datos"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1767,7 +1781,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBoxFestivo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="22">
+                          <StringArray count="21">
                             <StringItem index="0" value="Todas"/>
                             <StringItem index="1" value="Fines de semana"/>
                             <StringItem index="2" value="Lunes"/>
@@ -1785,11 +1799,10 @@
                             <StringItem index="14" value="Batalla de Boyaca"/>
                             <StringItem index="15" value="Dia de la Raza"/>
                             <StringItem index="16" value="Independencia de Cartagena"/>
-                            <StringItem index="17" value="Dia de Amor y Amistad"/>
-                            <StringItem index="18" value="Halloween"/>
-                            <StringItem index="19" value="Dia de las velitas"/>
-                            <StringItem index="20" value="Navidad"/>
-                            <StringItem index="21" value=" "/>
+                            <StringItem index="17" value="Halloween"/>
+                            <StringItem index="18" value="Dia de las velitas"/>
+                            <StringItem index="19" value="Navidad"/>
+                            <StringItem index="20" value=" "/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1797,6 +1810,54 @@
                     <Component class="javax.swing.JLabel" name="jLabel13">
                       <Properties>
                         <Property name="text" type="java.lang.String" value=" Dia/Fiesta"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Pais destino"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="comboPaisDestino">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="35">
+                            <StringItem index="0" value="Todos"/>
+                            <StringItem index="1" value="Alemania"/>
+                            <StringItem index="2" value="Argentina"/>
+                            <StringItem index="3" value="Australia"/>
+                            <StringItem index="4" value="Austria"/>
+                            <StringItem index="5" value="Belgica"/>
+                            <StringItem index="6" value="Brasil"/>
+                            <StringItem index="7" value="Canada"/>
+                            <StringItem index="8" value="Chile"/>
+                            <StringItem index="9" value="Dinamarca"/>
+                            <StringItem index="10" value="Ecuador"/>
+                            <StringItem index="11" value="EEUU"/>
+                            <StringItem index="12" value="Espa&#xf1;a"/>
+                            <StringItem index="13" value="Francia"/>
+                            <StringItem index="14" value="Guatemala"/>
+                            <StringItem index="15" value="Inglaterra"/>
+                            <StringItem index="16" value="Italia"/>
+                            <StringItem index="17" value="Marruecos"/>
+                            <StringItem index="18" value="Mexico"/>
+                            <StringItem index="19" value="Nicaragua"/>
+                            <StringItem index="20" value="Noruega"/>
+                            <StringItem index="21" value="Nueva Zelanda"/>
+                            <StringItem index="22" value="Panama"/>
+                            <StringItem index="23" value="Paraguay"/>
+                            <StringItem index="24" value="Peru"/>
+                            <StringItem index="25" value="Polonia"/>
+                            <StringItem index="26" value="Portugal"/>
+                            <StringItem index="27" value="Puerto rico"/>
+                            <StringItem index="28" value="Rumania"/>
+                            <StringItem index="29" value="Rusia"/>
+                            <StringItem index="30" value="Sudafrica"/>
+                            <StringItem index="31" value="Suecia"/>
+                            <StringItem index="32" value="Suiza"/>
+                            <StringItem index="33" value="Uruguay"/>
+                            <StringItem index="34" value="Venezuela"/>
+                          </StringArray>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1820,7 +1881,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelGraficoDWH" pref="760" max="32767" attributes="0"/>
+                              <Component id="jLabelGraficoDWH" pref="756" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1828,7 +1889,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelGraficoDWH" pref="323" max="32767" attributes="0"/>
+                              <Component id="jLabelGraficoDWH" pref="320" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
