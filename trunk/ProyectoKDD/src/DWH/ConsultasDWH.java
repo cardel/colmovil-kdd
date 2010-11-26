@@ -303,7 +303,7 @@ public class ConsultasDWH {
                 default:
                     return null;
             }
-            System.out.println(consulta);
+            //System.out.println(consulta);
             ResultSet resultado = objFachadaBD.realizarConsultaABaseDeDatos(consulta);
             GraficoDeBarras graficoDeBarras = new GraficoDeBarras();
 
