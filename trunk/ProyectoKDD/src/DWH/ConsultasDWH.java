@@ -67,42 +67,58 @@ public class ConsultasDWH {
             }
 
 
-            switch(dia) {
+            switch (dia) {
                 /*
                  * Todas*/
-            case 0:
-                restriccionPorDia = "";
-                break;
-               /*
-                Fines de semana*/
-                //DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND),'%W'), DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND), '%M')
+                case 0:
+                    restriccionPorDia = "";
+                    break;
+                /* Fines de semana*/
                 case 1:
 
-                restriccionPorDia =" and DATE_FORMAT(fecha_inicio,'%W')='Viernes' or DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND),'%W')='Sabado' or DATE_FORMAT(DATE_ADD( startdate, INTERVAL ctr SECOND),'%W')='Domingo') ";
-                /*
-                Lunes
-                /*
-                Martes
-                Miercoles
-                Jueves
-                Viernes
-                Sabado
-                Domingo
-                Año Nuevo
-                Reyes Magos
-                Dia del Trabajo
-                Semana Santa
-                Grito de Independencia
-                Batalla de Boyaca
-                Dia de la Raza
-                Independencia de Cartagena
-                Dia de Amor y Amistad
-                Halloween
-                Dia de las velitas
-                Navidad
+                    restriccionPorDia = " and (DATE_FORMAT(a.fecha_inicio,'%W')='Friday' or DATE_FORMAT(a.fecha_inicio,'%W')='Saturday' or DATE_FORMAT(a.fecha_inicio,'%W')='Sunday') ";
+                    break;
+                /*   Lunes*/
+                case 2:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Monday' ";
+                    break;
+                //Martes
+                case 3:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Tuesday' ";
+                    break;
+                    //Miercoles
+                case 4:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Wednesday' ";
+                    break;
+                    //Jueves
+                case 5:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Thursday' ";
+                    break;
+                    //Viernes
+                case 6:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Friday' ";
+                    break;
+                    //Sabado
+                case 7:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Saturday' ";
+                    break;
+                    //Domingo
+                case 8:
+                    restriccionPorDia = " and DATE_FORMAT(a.fecha_inicio,'%W')='Sunday";
+                    break;
+                //Año Nuevo
+                //Reyes Magos
+                //Dia del Trabajo
+                //Semana Santa
+                //Grito de Independencia
+                //Batalla de Boyaca
+                //Dia de la Raza
+                //Independencia de Cartagena
+                //Dia de Amor y Amistad
+                //Halloween
+                //Dia de las velitas
+                //Navidad
 
-                 */
-                
             }
 
             if (mes == 0) {
@@ -114,7 +130,7 @@ public class ConsultasDWH {
             }
             switch (numeroConsulta) {
                 case 0:
-                    consulta = "select nombre, count(*) as total_llamadas from (select b.nombre from llamada a, operador b where a.id_operador_destino=b.id_operador and a.utilizo_roaming='NO' " + restriccionPorHora + restriccionPorDia+" ) as c group by nombre";
+                    consulta = "select nombre, count(*) as total_llamadas from (select b.nombre from llamada a, operador b where a.id_operador_destino=b.id_operador and a.utilizo_roaming='NO' " + restriccionPorHora + restriccionPorDia + " ) as c group by nombre";
                     break;
                 default:
                     return null;
