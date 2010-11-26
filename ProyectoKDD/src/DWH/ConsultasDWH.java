@@ -289,7 +289,7 @@ public class ConsultasDWH {
                 case 4:
                     consulta = "select nombre, count(*) from (select b.nombre from contrato a, plan_voz b where a.id_plan_voz=b.id_plan_voz and a.id_plan_voz != 1) as t group by nombre";
                     titulo = "Planes de voz";
-                    titulobarra = "Planes de Datos";
+                    titulobarra = "Planes de voz";
                     tituloEjeX = "Total";
                     break;
                 //Planes mas escogidos de datos
