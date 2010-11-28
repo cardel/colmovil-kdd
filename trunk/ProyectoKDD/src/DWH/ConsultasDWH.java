@@ -280,7 +280,7 @@ public class ConsultasDWH {
                     break;
                 //Franjas de mayor uso
                 case 3:
-                    consulta = "select hora, sum(duracion_segundos) as total_llamadas from (select HOUR(DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S')) as hora, TIME_TO_SEC(TIMEDIFF(DATE_FORMAT(fecha_finalizacion, '%Y-%m-%d %H:%i:%S'), DATE_FORMAT(fecha_inicio, '%Y-%m-%d %H:%i:%S'))) as duracion_segundos from llamada where  1 " + restriccionPorHora + restriccionPorDia + restriccionPorMes + restriccionPorAnnio + " ) as c group by hora";
+                    consulta = "select hora, sum(duracion_segundos) as total_llamadas from (select HOUR(DATE_FORMAT(a.fecha_inicio, '%Y-%m-%d %H:%i:%S')) as hora, TIME_TO_SEC(TIMEDIFF(DATE_FORMAT(a.fecha_finalizacion, '%Y-%m-%d %H:%i:%S'), DATE_FORMAT(a.fecha_inicio, '%Y-%m-%d %H:%i:%S'))) as duracion_segundos from llamada a where  1 " + restriccionPorHora + restriccionPorDia + restriccionPorMes + restriccionPorAnnio + " ) as c group by hora";
                     titulo = "Uso de la red en segundos";
                     titulobarra = "Grafico uso de la red";
                     tituloEjeX = "Hora";
@@ -303,7 +303,7 @@ public class ConsultasDWH {
                 default:
                     return null;
             }
-            //System.out.println(consulta);
+           System.out.println(consulta);
             ResultSet resultado = objFachadaBD.realizarConsultaABaseDeDatos(consulta);
             GraficoDeBarras graficoDeBarras = new GraficoDeBarras();
 
